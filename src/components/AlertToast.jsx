@@ -1,19 +1,25 @@
 import { useEffect, useRef } from "react";
 
-const AlertToast = ({ toast, alertToasts, setAlertToasts, time }) => {
+const AlertToast = ({
+  toast,
+  alertToasts,
+  setAlertToasts,
+  containerAutoCloseTime,
+}) => {
   const timeoutRef = useRef(null);
   const timerRef = useRef(null);
   const remaindRef = useRef(null);
 
   useEffect(() => {
     if (toast.autoClose) {
-      timerRef.current = Date.now() + (toast.duringTime ?? time);
+      timerRef.current =
+        Date.now() + (toast.autoCloseTime ?? containerAutoCloseTime);
 
       timeoutRef.current = setTimeout(() => {
         setAlertToasts((prevToasts) =>
           prevToasts.filter((t) => t.id !== toast.id)
         );
-      }, toast.duringTime ?? time);
+      }, toast.autoCloseTime ?? containerAutoCloseTime);
     }
   }, []);
 
@@ -47,19 +53,24 @@ const AlertToast = ({ toast, alertToasts, setAlertToasts, time }) => {
       }}
       onClick={() => toast.closeOnClick && closeAlert(toast.id)}
       onMouseEnter={(e) => {
-        toast.pauseOnHover && (e.target.classList.add("on"), stopTimeout());
+        toast.autoClose &&
+          toast.pauseOnHover &&
+          (e.target.classList.add("on"), stopTimeout());
       }}
       onMouseLeave={(e) => {
-        toast.pauseOnHover &&
+        toast.autoClose &&
+          toast.pauseOnHover &&
           (e.target.classList.remove("on"), startTimeout(toast.id));
       }}
     >
       {toast.message}
-      {toast.autoClose && (
+      {toast.autoClose && !toast.hideProgressBar && (
         <div
           className="progress"
           style={{
-            animationDuration: `${toast.duringTime ?? time}ms`,
+            animationDuration: `${
+              toast.autoCloseTime ?? containerAutoCloseTime
+            }ms`,
           }}
         ></div>
       )}
