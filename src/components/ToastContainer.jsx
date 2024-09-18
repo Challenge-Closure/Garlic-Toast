@@ -48,18 +48,16 @@ const ToastContainer = ({ position, time }) => {
   };
 
   const stopTimeout = () => {
-    console.log("멈춤");
-
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
       remaindRef.current = timerRef.current - Date.now();
     }
   };
 
-  const startTimeout = () => {
+  const startTimeout = (toastId) => {
     timerRef.current = Date.now() + remaindRef.current;
-    setTimeout(() => {
-      timeoutRef.current = setToasts((prevToasts) => prevToasts.slice(1));
+    timeoutRef.current = setTimeout(() => {
+      setToasts((prevToasts) => prevToasts.filter((t) => t.id !== toastId));
     }, remaindRef.current);
   };
 
@@ -81,7 +79,7 @@ const ToastContainer = ({ position, time }) => {
             onClick={() => closeAlert(toast.id)}
             onMouseLeave={(e) => {
               e.target.classList.remove("on");
-              stopTimeout();
+              startTimeout(toast.id);
             }}
             onMouseEnter={(e) => {
               e.target.classList.add("on");
