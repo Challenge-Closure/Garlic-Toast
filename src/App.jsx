@@ -4,7 +4,7 @@ import toast from './utils/toast';
 const App = () => {
   return (
     <div className="App">
-      <ToastContainer isFold={true} position="t-c" time={5000} />
+      <ToastContainer isFold={false} position="t-c" time={5000} />
       <h1>First Sparta Open Sorce Library</h1>
       <div>
         <h2>기본 알림</h2>
@@ -15,13 +15,17 @@ const App = () => {
         <button onClick={() => toast.success('success!', o8)}>toast.success</button>
         <button
           onClick={() => {
-            toast.confirm('confirm?').then((res) => {
-              if (res) {
-                toast.alert('킹킹 준호님', o8);
-              } else {
-                toast.error('confirm cancel', o8);
-              }
-            });
+            toast
+              .confirm('confirm?', {
+                customImage: 'https://online.spartacodingclub.kr/assets/images/profile/rtan_thumb_01.png'
+              })
+              .then((res) => {
+                if (res) {
+                  toast.alert('킹킹 준호님', o8);
+                } else {
+                  toast.error('confirm cancel', o8);
+                }
+              });
           }}>
           toast.confirm
         </button>
@@ -63,7 +67,8 @@ const o2 = {
   autoClose: true,
   progressBar: false,
   pauseOnHover: false,
-  closeOnClick: true
+  closeOnClick: true,
+  customImage: 'https://online.spartacodingclub.kr/assets/images/profile/rtan_thumb_01.png'
 };
 const o3 = {
   autoClose: true,

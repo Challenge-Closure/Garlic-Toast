@@ -46,9 +46,9 @@ const toast = () => {
     });
   };
 
-  const confirm = (message) => {
+  const confirm = (message, option) => {
     return new Promise((resolve) => {
-      EventBus.publish('SHOW_CONFIRM_TOAST', { message, resolve });
+      EventBus.publish('SHOW_CONFIRM_TOAST', { message, ...option, resolve });
     });
   };
 
