@@ -1,6 +1,7 @@
 h1 {
   display: flex;
   justify-content: center;
+  color: var(--sparta-color);
 }
 
 button {
@@ -9,7 +10,7 @@ button {
   border-radius: 8px;
 }
 
-#guide {
+#option {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -20,11 +21,18 @@ button {
 #common-alert {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
-#grid-wrap{
+#common-alert span {
+  display: flex;
+  gap: 8px;
+}
+
+#grid-wrap {
   display: flex;
   justify-content: center;
+
 }
 
 #grid-container {
@@ -35,7 +43,8 @@ button {
   height: 90vh;
   align-items: center;
   justify-items: center;
-  gap: 10px
+  gap: 10px;
+  max-width: 1200px;
 }
 
 #grid-container span,
@@ -47,4 +56,5 @@ button {
 .cell {
   display: flex;
   flex-direction: column;
+  gap: 8px;
 }

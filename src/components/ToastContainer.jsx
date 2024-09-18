@@ -64,8 +64,6 @@ const ToastContainer = ({ isFold, position = "t-r", time }) => {
             <div
               className={`alert-container ${position} ${isFold && "isFold"}`}
               key={position}
-              onMouseEnter={(e) => e.target.classList.add("on")}
-              onMouseLeave={(e) => e.target.classList.remove("on")}
             >
               {positionToasts.map((toast) => (
                 <AlertToast

@@ -6,7 +6,7 @@ const App = () => {
     <>
       <ToastContainer isFold={true} position="t-r" time={5000} />
       <h1>First Sparta Open Sorce Library</h1>
-      <div id="guide">
+      <div id="option">
         <span className="cell">
           <h2>기본 알림</h2>
           <span id="common-alert">
@@ -35,7 +35,7 @@ const App = () => {
                 onClick={() => {
                   toast.confirm("confirm?").then((res) => {
                     if (res) {
-                      toast.alert("킹킹 준호님", o8);
+                      toast.success("킹킹 준호님", o8);
                     } else {
                       toast.error("confirm cancel", o8);
                     }
@@ -74,7 +74,7 @@ const App = () => {
             onClick={() => {
               toast.confirm("confirm?").then((res) => {
                 if (res) {
-                  toast.error("킹킹 준호님", o8);
+                  toast.success("킹킹 준호님", o8);
                 } else {
                   toast.error("confirm cancel", o8);
                 }
@@ -87,7 +87,7 @@ const App = () => {
             onClick={() => {
               toast.confirm("confirm?", customImg).then((res) => {
                 if (res) {
-                  toast.error("킹킹 준호님", o8);
+                  toast.success("킹킹 준호님", o8);
                 } else {
                   toast.error("confirm cancel", o8);
                 }
@@ -122,7 +122,7 @@ const App = () => {
             <button onClick={() => toast.warning("warning!", cr)}>c-r</button>
           </span>
 
-          <span className="cell">
+          <span className="cell ">
             <button onClick={() => toast.warning("warning!", bl)}>b-l</button>
           </span>
           <span className="cell">
