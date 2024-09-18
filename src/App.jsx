@@ -2,8 +2,17 @@ import { useState } from 'react';
 import ToastContainer from './components/ToastContainer';
 import toast from './utils/toast';
 
+const initialState = {
+  type: 'alert',
+  autoClose: true,
+  progressBar: true,
+  pauseOnHover: true,
+  closeOnClick: true,
+  customImage: false
+};
+
 const App = () => {
-  const [option, setOption] = useState({});
+  const [option, setOption] = useState(initialState);
 
   const buttonClick = (e, key, value) => {
     if (document.querySelectorAll(`.${key}-on`).length !== 0) {
@@ -44,7 +53,9 @@ const App = () => {
           <h2>기본 알림</h2>
           <span id="common-alert">
             <span>
-              <button onClick={(e) => buttonClick(e, 'type', 'alert')}>alert</button>
+              <button className="type-on" onClick={(e) => buttonClick(e, 'type', 'alert')}>
+                alert
+              </button>
               <button onClick={(e) => buttonClick(e, 'type', 'success')}>success</button>
             </span>
             <span>
@@ -67,37 +78,34 @@ const App = () => {
           <h2>autoClose</h2>
 
           <button onClick={(e) => buttonClick(e, 'autoClose', false)}>false</button>
-          <button onClick={(e) => buttonClick(e, 'autoClose', true)}>true</button>
+          <button className="autoClose-on" onClick={(e) => buttonClick(e, 'autoClose', true)}>
+            true
+          </button>
         </span>
         <span className="cell">
           <h2>progressBar</h2>
           <button onClick={(e) => buttonClick(e, 'progressBar', false)}>false</button>
-          <button onClick={(e) => buttonClick(e, 'progressBar', true)}>true</button>
+          <button className="progressBar-on" onClick={(e) => buttonClick(e, 'progressBar', true)}>
+            true
+          </button>
         </span>
         <span className="cell">
           <h2>pauseOnHover</h2>
           <button onClick={(e) => buttonClick(e, 'pauseOnHover', false)}>false</button>
-          <button onClick={(e) => buttonClick(e, 'pauseOnHover', true)}>true</button>
+          <button className="pauseOnHover-on" onClick={(e) => buttonClick(e, 'pauseOnHover', true)}>
+            true
+          </button>
         </span>
         <span className="cell">
           <h2>closeOnClick</h2>
           <button onClick={(e) => buttonClick(e, 'closeOnClick', false)}>false</button>
-          <button onClick={(e) => buttonClick(e, 'closeOnClick', true)}>true</button>
+          <button className="closeOnClick-on" onClick={(e) => buttonClick(e, 'closeOnClick', true)}>
+            true
+          </button>
         </span>
         <span className="cell">
           <h2>customImage</h2>
-          <button
-            onClick={(e) => buttonClick(e, 'customImage', false)}
-            // onClick={() => {
-            //   toast.confirm('confirm?').then((res) => {
-            //     if (res) {
-            //       toast.error('킹킹 준호님', o8);
-            //     } else {
-            //       toast.error('confirm cancel', o8);
-            //     }
-            //   });
-            // }}
-          >
+          <button className="customImage-on" onClick={(e) => buttonClick(e, 'customImage', false)}>
             false
           </button>
           <button
@@ -107,17 +115,7 @@ const App = () => {
                 'customImage',
                 'https://online.spartacodingclub.kr/assets/images/profile/rtan_thumb_01.png'
               )
-            }
-            // onClick={() => {
-            //   toast.confirm('confirm?', customImg).then((res) => {
-            //     if (res) {
-            //       toast.error('킹킹 준호님', o8);
-            //     } else {
-            //       toast.error('confirm cancel', o8);
-            //     }
-            //   });
-            // }}
-          >
+            }>
             true
           </button>
         </span>
