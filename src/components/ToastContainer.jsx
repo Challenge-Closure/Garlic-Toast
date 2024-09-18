@@ -1,53 +1,83 @@
-import "./../styles/tost.css";
-import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
-import EventBus from "../utils/eventBus";
-import AlertToast from "./AlertToast";
-import ConfirmToast from "./ConfirmToast";
+import './../styles/toast.css';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import EventBus from '../utils/eventBus';
+import AlertToast from './AlertToast';
+import ConfirmToast from './ConfirmToast';
 
-const ToastContainer = ({ position, time }) => {
-  const [alertToasts, setAlertToasts] = useState([]);
+const initialState = {
+  't-l': [],
+  't-c': [],
+  't-r': [],
+  'c-l': [],
+  'c-c': [],
+  'c-r': [],
+  'r-l': [],
+  'r-c': [],
+  'r-r': []
+};
+
+const ToastContainer = ({ isFold, position = 't-r', time }) => {
+  const [alertToasts, setAlertToasts] = useState(initialState);
   const [confirmToasts, setConfirmToasts] = useState([]);
 
   useEffect(() => {
     const handleToastEvent = (toast) => {
-      setAlertToasts((prevToasts) => [{ ...toast }, ...prevToasts.slice(0, 2)]);
+      const toastPosition = toast.position ?? position;
+      setAlertToasts((prevToasts) => {
+        const updatedToasts = { ...prevToasts };
+        console.log(updatedToasts);
+
+        isFold
+          ? (updatedToasts[toastPosition] = [{ ...toast }, ...updatedToasts[toastPosition].slice(0, 2)])
+          : (updatedToasts[toastPosition] = [{ ...toast }, ...updatedToasts[toastPosition]]);
+        return updatedToasts;
+      });
     };
 
     const handleConfirmToastEvent = (toast) => {
       const confirmToast = {
         id: Date.now(),
         ...toast,
-        confirm: true,
+        confirm: true
       };
       setConfirmToasts((prevToasts) => [confirmToast, ...prevToasts]);
     };
 
-    EventBus.subscribe("SHOW_TOAST", handleToastEvent);
-    EventBus.subscribe("SHOW_CONFIRM_TOAST", handleConfirmToastEvent);
+    EventBus.subscribe('SHOW_TOAST', handleToastEvent);
+    EventBus.subscribe('SHOW_CONFIRM_TOAST', handleConfirmToastEvent);
 
     return () => EventBus.unsubscribe();
   }, []);
 
   return createPortal(
     <>
-      <div className={`toast-container ${position}`}>
-        {alertToasts.map((toast) => (
-          <AlertToast
-            key={toast.id}
-            toast={toast}
-            alertToasts={alertToasts}
-            setAlertToasts={setAlertToasts}
-            containerAutoCloseTime={time}
-          />
-        ))}
+      <div className={`toast-container`}>
+        <div>abc</div>
+        {Object.keys(alertToasts).map((position) => {
+          const positionToasts = alertToasts[position];
+          console.log(positionToasts);
+          return positionToasts.length > 0 ? (
+            <div
+              className={`alert-container ${position} ${isFold ? 'isFold' : null}`}
+              key={position}
+              onMouseEnter={(e) => e.target.classList.add('on')}
+              onMouseLeave={(e) => e.target.classList.remove('on')}>
+              {positionToasts.map((toast) => (
+                <AlertToast
+                  key={toast.id}
+                  toast={toast}
+                  containerAutoCloseTime={time}
+                  setAlertToasts={setAlertToasts}
+                  position={position}
+                />
+              ))}
+            </div>
+          ) : null;
+        })}
 
         {confirmToasts.map((toast) => (
-          <ConfirmToast
-            key={toast.id}
-            toast={toast}
-            setConfirmToasts={setConfirmToasts}
-          />
+          <ConfirmToast key={toast.id} toast={toast} setConfirmToasts={setConfirmToasts} />
         ))}
       </div>
     </>,
