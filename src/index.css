@@ -21,6 +21,7 @@ button {
 #common-alert {
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   gap: 10px;
 }
 
@@ -29,6 +30,17 @@ button {
   gap: 8px;
 }
 
+=======
+  gap: 8px;
+
+  span {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+}
+
+>>>>>>> 2eb08c6af5afb5532da43cd0fc9231f4a7d76fb2
 #grid-wrap {
   display: flex;
   justify-content: center;
@@ -44,7 +56,10 @@ button {
   align-items: center;
   justify-items: center;
   gap: 10px;
+<<<<<<< HEAD
   max-width: 1200px;
+=======
+>>>>>>> 2eb08c6af5afb5532da43cd0fc9231f4a7d76fb2
 }
 
 #grid-container span,
@@ -57,4 +72,17 @@ button {
   display: flex;
   flex-direction: column;
   gap: 8px;
+<<<<<<< HEAD
 }
+=======
+}
+
+button.type-on,
+button.autoClose-on,
+button.progressBar-on,
+button.pauseOnHover-on,
+button.closeOnClick-on,
+button.customImage-on {
+  border: 2px solid black;
+}
+>>>>>>> 2eb08c6af5afb5532da43cd0fc9231f4a7d76fb2

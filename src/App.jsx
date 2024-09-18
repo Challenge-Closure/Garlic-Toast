@@ -1,7 +1,48 @@
+import { useState } from "react";
 import ToastContainer from "./components/ToastContainer";
 import toast from "./utils/toast";
 
 const App = () => {
+  const [option, setOption] = useState({});
+
+  const buttonClick = (e, key, value) => {
+    if (document.querySelectorAll(`.${key}-on`).length !== 0) {
+      document.querySelector(`.${key}-on`).classList.remove(`${key}-on`);
+    }
+    e.target.classList.add(`${key}-on`);
+    setOption({ ...option, [key]: value });
+  };
+
+  const showToastButton = (position) => {
+    if (option.type === "alert") {
+      toast.alert("alert message!", {
+        ...option,
+        type: "normal",
+        position: position,
+      });
+    } else if (option.type === "success") {
+      toast.success("success message!", { ...option, position: position });
+    } else if (option.type === "warning") {
+      toast.warning("warning message!", { ...option, position: position });
+    } else if (option.type === "error") {
+      toast.error("error message!", { ...option, position: position });
+    } else if (option.type === "info") {
+      toast.info("info message!", { ...option, position: position });
+    } else if (option.type === "confirm") {
+      toast.confirm("confirm?").then((res) => {
+        if (res) {
+          toast.alert("킹킹 준호님", { ...option });
+        } else {
+          toast.error("confirm cancel", {
+            ...option,
+            type: "error",
+            position: position,
+          });
+        }
+      });
+    }
+  };
+
   return (
     <>
       <ToastContainer isFold={true} position="t-r" time={5000} />
@@ -11,87 +52,86 @@ const App = () => {
           <h2>기본 알림</h2>
           <span id="common-alert">
             <span>
-              <button onClick={() => toast.alert("alert!", o8)}>
-                toast.alert
+              <button onClick={(e) => buttonClick(e, "type", "alert")}>
+                alert
               </button>
-              <button onClick={() => toast.success("success!", o8)}>
-                toast.success
-              </button>
-            </span>
-            <span>
-              <button onClick={() => toast.warning("warning!", o8)}>
-                toast.warning
-              </button>
-              <button onClick={() => toast.info("info!", o8)}>
-                toast.info
+              <button onClick={(e) => buttonClick(e, "type", "success")}>
+                success
               </button>
             </span>
             <span>
-              <button onClick={() => toast.error("error!", o8)}>
-                toast.error
+              <button onClick={(e) => buttonClick(e, "type", "warning")}>
+                warning
+              </button>
+              <button onClick={(e) => buttonClick(e, "type", "info")}>
+                info
+              </button>
+            </span>
+            <span>
+              <button onClick={(e) => buttonClick(e, "type", "error")}>
+                error
               </button>
 
               <button
-                onClick={() => {
-                  toast.confirm("confirm?").then((res) => {
-                    if (res) {
-                      toast.success("킹킹 준호님", o8);
-                    } else {
-                      toast.error("confirm cancel", o8);
-                    }
-                  });
+                onClick={(e) => {
+                  buttonClick(e, "type", "confirm");
                 }}
               >
-                toast.confirm
+                confirm
               </button>
             </span>
           </span>
         </span>
         <span className="cell">
           <h2>autoClose</h2>
-          <button onClick={() => toast.warning("warning!", o1)}>fasle</button>
-          <button onClick={() => toast.success("success!", o2)}>true</button>
+
+          <button onClick={(e) => buttonClick(e, "autoClose", false)}>
+            false
+          </button>
+          <button onClick={(e) => buttonClick(e, "autoClose", true)}>
+            true
+          </button>
         </span>
         <span className="cell">
           <h2>progressBar</h2>
-          <button onClick={() => toast.warning("warning!", o3)}>fasle</button>
-          <button onClick={() => toast.success("success!", o4)}>true</button>
+          <button onClick={(e) => buttonClick(e, "progressBar", false)}>
+            false
+          </button>
+          <button onClick={(e) => buttonClick(e, "progressBar", true)}>
+            true
+          </button>
         </span>
         <span className="cell">
           <h2>pauseOnHover</h2>
-          <button onClick={() => toast.warning("warning!", o5)}>fasle</button>
-          <button onClick={() => toast.success("success!", o6)}>true</button>
+          <button onClick={(e) => buttonClick(e, "pauseOnHover", false)}>
+            false
+          </button>
+          <button onClick={(e) => buttonClick(e, "pauseOnHover", true)}>
+            true
+          </button>
         </span>
         <span className="cell">
           <h2>closeOnClick</h2>
-          <button onClick={() => toast.warning("warning!", o7)}>fasle</button>
-          <button onClick={() => toast.success("success!", o8)}>true</button>
+          <button onClick={(e) => buttonClick(e, "closeOnClick", false)}>
+            false
+          </button>
+          <button onClick={(e) => buttonClick(e, "closeOnClick", true)}>
+            true
+          </button>
         </span>
         <span className="cell">
           <h2>customImage</h2>
-          <button
-            onClick={() => {
-              toast.confirm("confirm?").then((res) => {
-                if (res) {
-                  toast.success("킹킹 준호님", o8);
-                } else {
-                  toast.error("confirm cancel", o8);
-                }
-              });
-            }}
-          >
+          <button onClick={(e) => buttonClick(e, "customImage", false)}>
             false
           </button>
           <button
-            onClick={() => {
-              toast.confirm("confirm?", customImg).then((res) => {
-                if (res) {
-                  toast.success("킹킹 준호님", o8);
-                } else {
-                  toast.error("confirm cancel", o8);
-                }
-              });
-            }}
+            onClick={(e) =>
+              buttonClick(
+                e,
+                "customImage",
+                "https://online.spartacodingclub.kr/assets/images/profile/rtan_thumb_01.png"
+              )
+            }
           >
             true
           </button>
@@ -100,35 +140,35 @@ const App = () => {
       <div id="grid-wrap">
         <div id="grid-container" className="App">
           <span className="cell">
-            <button onClick={() => toast.warning("warning!", tl)}>t-l</button>
+            <button onClick={() => showToastButton("t-l")}>t-l</button>
           </span>
 
           <span className="cell">
-            <button onClick={() => toast.warning("warning!", tc)}>t-c</button>
+            <button onClick={() => showToastButton("t-c")}>t-c</button>
           </span>
 
           <span className="cell">
-            <button onClick={() => toast.warning("warning!", tr)}>t-r</button>
+            <button onClick={() => showToastButton("t-r")}>t-r</button>
           </span>
 
           <span className="cell">
-            <button onClick={() => toast.warning("warning!", cl)}>c-l</button>
+            <button onClick={() => showToastButton("c-l")}>c-l</button>
           </span>
           <span className="cell">
-            <button onClick={() => toast.warning("warning!", cc)}>c-c</button>
+            <button onClick={() => showToastButton("c-c")}>c-c</button>
           </span>
           <span className="cell">
-            <button onClick={() => toast.warning("warning!", cr)}>c-r</button>
+            <button onClick={() => showToastButton("c-r")}>c-r</button>
           </span>
 
-          <span className="cell ">
-            <button onClick={() => toast.warning("warning!", bl)}>b-l</button>
+          <span className="cell">
+            <button onClick={() => showToastButton("b-l")}>b-l</button>
           </span>
           <span className="cell">
-            <button onClick={() => toast.warning("warning!", bc)}>b-c</button>
+            <button onClick={() => showToastButton("b-c")}>b-c</button>
           </span>
           <span className="cell">
-            <button onClick={() => toast.warning("warning!", br)}>b-r</button>
+            <button onClick={() => showToastButton("b-r")}>b-r</button>
           </span>
         </div>
       </div>
@@ -137,124 +177,3 @@ const App = () => {
 };
 
 export default App;
-
-const o1 = {
-  autoClose: false,
-  progressBar: false,
-  pauseOnHover: false,
-  closeOnClick: true,
-};
-const o2 = {
-  autoClose: true,
-  progressBar: false,
-  pauseOnHover: false,
-  closeOnClick: true,
-};
-const o3 = {
-  autoClose: true,
-  progressBar: false,
-  pauseOnHover: false,
-  closeOnClick: false,
-};
-const o4 = {
-  autoClose: true,
-  progressBar: true,
-  pauseOnHover: false,
-  closeOnClick: false,
-};
-const o5 = {
-  autoClose: true,
-  progressBar: true,
-  pauseOnHover: false,
-  closeOnClick: false,
-};
-const o6 = {
-  autoClose: true,
-  progressBar: true,
-  pauseOnHover: true,
-  closeOnClick: false,
-};
-const o7 = {
-  autoClose: true,
-  progressBar: true,
-  pauseOnHover: true,
-  closeOnClick: false,
-};
-const o8 = {
-  autoClose: true,
-  progressBar: true,
-  pauseOnHover: true,
-  closeOnClick: true,
-};
-const tl = {
-  position: "t-l",
-  autoClose: true,
-  progressBar: true,
-  pauseOnHover: true,
-  closeOnClick: true,
-};
-const tc = {
-  position: "t-c",
-  autoClose: true,
-  progressBar: true,
-  pauseOnHover: true,
-  closeOnClick: true,
-};
-const tr = {
-  position: "t-r",
-  autoClose: true,
-  progressBar: true,
-  pauseOnHover: true,
-  closeOnClick: true,
-};
-const cl = {
-  position: "c-l",
-  autoClose: true,
-  progressBar: true,
-  pauseOnHover: true,
-  closeOnClick: true,
-};
-const cc = {
-  position: "c-c",
-  autoClose: true,
-  progressBar: true,
-  pauseOnHover: true,
-  closeOnClick: true,
-};
-const cr = {
-  position: "c-r",
-  autoClose: true,
-  progressBar: true,
-  pauseOnHover: true,
-  closeOnClick: true,
-};
-const bl = {
-  position: "b-l",
-  autoClose: true,
-  progressBar: true,
-  pauseOnHover: true,
-  closeOnClick: true,
-};
-const bc = {
-  position: "b-c",
-  autoClose: true,
-  progressBar: true,
-  pauseOnHover: true,
-  closeOnClick: true,
-};
-const br = {
-  position: "b-r",
-  autoClose: true,
-  progressBar: true,
-  pauseOnHover: true,
-  closeOnClick: true,
-};
-
-const customImg = {
-  customImage:
-    "https://online.spartacodingclub.kr/assets/images/profile/rtan_thumb_01.png",
-  autoClose: true,
-  progressBar: true,
-  pauseOnHover: true,
-  closeOnClick: true,
-};
