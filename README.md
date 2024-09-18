@@ -49,8 +49,11 @@ toast.confirm(내용).then(isConfirm => {
 ### 전체 설정 방법
 
 #### `<ToastContainer />`에 position과 time(ms)을 props로 내려준다. <br/>
+
 #### ex) `<ToastContainer position="t-r" time={5000} />`<br/>
-- isFold
+
+- time(ms) 후 알림이 사라집니다.
+- isFold true 시 
 
 ### 부분 설정 방법
 
