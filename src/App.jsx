@@ -1,29 +1,29 @@
-import ToastContainer from "./components/ToastContainer";
-import toast from "./utils/toast";
+import ToastContainer from './components/ToastContainer';
+import toast from './utils/toast';
 
 const App = () => {
   const toastAlert = () => {
-    toast.alert("alert!", {
-      autoClose: true,
-      hideProgressBar: true,
-      progress: undefined,
-      pauseOnHover: true,
-      closeOnClick: true,
-      duringTime:5000,
-      // position: "top-center",
-      // draggable: true,
-      // theme: "light",
-      // transition: Bounce,
-    });
-  };
-  const toastError = () => {
-    toast.error("error!", {
+    toast.alert('alert!', {
       autoClose: true,
       hideProgressBar: true,
       progress: undefined,
       pauseOnHover: true,
       closeOnClick: true,
       duringTime: 5000,
+      position: 'top-center'
+      // draggable: true,
+      // theme: "light",
+      // transition: Bounce,
+    });
+  };
+  const toastError = () => {
+    toast.error('error!', {
+      autoClose: true,
+      hideProgressBar: true,
+      progress: undefined,
+      pauseOnHover: true,
+      closeOnClick: true,
+      duringTime: 5000
       // position: "top-center",
       // draggable: true,
       // theme: "light",
@@ -31,13 +31,13 @@ const App = () => {
     });
   };
   const toastWarning = () => {
-    toast.warning("warning!", {
+    toast.warning('warning!', {
       autoClose: true,
       hideProgressBar: true,
       progress: undefined,
       pauseOnHover: true,
       closeOnClick: true,
-      duringTime: 5000,
+      duringTime: 5000
       // position: "top-center",
       // draggable: true,
       // theme: "light",
@@ -45,13 +45,13 @@ const App = () => {
     });
   };
   const toastInfo = () => {
-    toast.info("info!", {
+    toast.info('info!', {
       autoClose: true,
       hideProgressBar: true,
       progress: undefined,
       pauseOnHover: false,
       closeOnClick: true,
-      duringTime: 5000,
+      duringTime: 5000
       // position: "top-center",
       // draggable: true,
       // theme: "light",
@@ -59,13 +59,13 @@ const App = () => {
     });
   };
   const toastSuccess = () => {
-    toast.success("success!", {
+    toast.success('successsuccesssuccesssuccesssuccesssuccesssuccesssuccesssuccesssuccesssuccesssuccess!', {
       autoClose: false,
       hideProgressBar: true,
       progress: undefined,
       pauseOnHover: true,
       closeOnClick: true,
-      duringTime: 5000,
+      duringTime: 5000
       // position: "top-center",
       // draggable: true,
       // theme: "light",
@@ -74,7 +74,7 @@ const App = () => {
   };
   return (
     <div className="App">
-      <ToastContainer position="top-center" time={3000} />
+      <ToastContainer isFold={true} position="top-right" time={3000} />
       <h1>First Sparta Open Sorce Library</h1>
       <button onClick={() => toastAlert()}>알림</button>
       <button onClick={() => toastError()}>에러</button>
@@ -83,13 +83,12 @@ const App = () => {
       <button onClick={() => toastSuccess()}>성공</button>
       <button
         onClick={() => {
-          toast.confirm("Do you want to proceed?").then((res) => {
+          toast.confirm('Do you want to proceed?').then((res) => {
             if (res) {
-              console.log("킹킹 GPT");
+              console.log('킹킹 GPT');
             }
           });
-        }}
-      >
+        }}>
         Show Confirm Toast
       </button>
     </div>
