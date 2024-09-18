@@ -45,7 +45,6 @@ const AlertToast = ({
 
   return (
     <div
-      key={toast.id}
       className={`toast ${toast.type}`}
       style={{
         display: "flex",

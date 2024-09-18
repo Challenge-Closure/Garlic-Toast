@@ -4,11 +4,11 @@ import toast from "./utils/toast";
 const App = () => {
   const toastAlert = () => {
     toast.alert("alert!", {
-      autoClose: false,
+      autoClose: true,
       hideProgressBar: false,
       pauseOnHover: true,
       closeOnClick: true,
-      autoCloseTime: 5000,
+      autoCloseTime: 3000,
     });
   };
   const toastError = () => {
