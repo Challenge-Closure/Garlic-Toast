@@ -20,9 +20,16 @@ button {
 #common-alert {
   display: flex;
   flex-direction: column;
+  gap: 8px;
+
+  span {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
 }
 
-#grid-wrap{
+#grid-wrap {
   display: flex;
   justify-content: center;
 }
@@ -35,7 +42,7 @@ button {
   height: 90vh;
   align-items: center;
   justify-items: center;
-  gap: 10px
+  gap: 10px;
 }
 
 #grid-container span,
@@ -47,4 +54,14 @@ button {
 .cell {
   display: flex;
   flex-direction: column;
+  gap: 8px;
+}
+
+button.type-on,
+button.autoClose-on,
+button.progressBar-on,
+button.pauseOnHover-on,
+button.closeOnClick-on,
+button.customImage-on {
+  border: 2px solid black;
 }
