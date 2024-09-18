@@ -26,7 +26,6 @@ const ToastContainer = ({ isFold, position = "t-r", time }) => {
       const toastPosition = toast.position ?? position;
       setAlertToasts((prevToasts) => {
         const updatedToasts = { ...prevToasts };
-        console.log(updatedToasts);
 
         isFold
           ? (updatedToasts[toastPosition] = [

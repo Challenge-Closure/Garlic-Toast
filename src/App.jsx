@@ -3,6 +3,7 @@ import toast from "./utils/toast";
 
 const App = () => {
   return (
+<<<<<<< HEAD
     <>
       <ToastContainer isFold={true} position="t-r" time={5000} />
       <h1>First Sparta Open Sorce Library</h1>
@@ -68,6 +69,34 @@ const App = () => {
           <button onClick={() => toast.warning("warning!", o7)}>fasle</button>
           <button onClick={() => toast.success("success!", o8)}>true</button>
         </span>
+=======
+    <div className="App">
+      <ToastContainer isFold={false} position="t-c" time={5000} />
+      <h1>First Sparta Open Sorce Library</h1>
+      <div>
+        <h2>기본 알림</h2>
+        <button onClick={() => toast.alert('alert!', o8)}>toast.alert</button>
+        <button onClick={() => toast.error('error!', o8)}>toast.error</button>
+        <button onClick={() => toast.warning('warning!', o8)}>toast.warning</button>
+        <button onClick={() => toast.info('info!', o8)}>toast.info</button>
+        <button onClick={() => toast.success('success!', o8)}>toast.success</button>
+        <button
+          onClick={() => {
+            toast
+              .confirm('confirm?', {
+                customImage: 'https://online.spartacodingclub.kr/assets/images/profile/rtan_thumb_01.png'
+              })
+              .then((res) => {
+                if (res) {
+                  toast.alert('킹킹 준호님', o8);
+                } else {
+                  toast.error('confirm cancel', o8);
+                }
+              });
+          }}>
+          toast.confirm
+        </button>
+>>>>>>> 87600406daccc54d3edfe2340b928adf4ad53e5b
       </div>
       <div id="grid-wrap">
         <div id="grid-container" className="App">
@@ -121,6 +150,10 @@ const o2 = {
   progressBar: false,
   pauseOnHover: false,
   closeOnClick: true,
+<<<<<<< HEAD
+=======
+  customImage: 'https://online.spartacodingclub.kr/assets/images/profile/rtan_thumb_01.png'
+>>>>>>> 87600406daccc54d3edfe2340b928adf4ad53e5b
 };
 const o3 = {
   autoClose: true,
