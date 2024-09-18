@@ -20,20 +20,21 @@
 
 ## 사용 방법
 
-1. ### `ToastContainer`를 import 하여 toast를 사용할 컴포넌트에서 `<ToastContainer/ >`형태로 실행 해준다.
-2. ### `toast`를 import 하여 `toast.alert(내용, 옵션)`, `toast.info(내용, 옵션)`,
+### 1. `ToastContainer`를 import 하여 toast를 사용할 컴포넌트에서 `<ToastContainer/ >`형태로 실행 해준다.
 
-   ```
-   toast.confirm(내용).then(isConfirm => {
-     if (isConfirm) {
-       toast.success("확인", 옵션)
-       } else {
-       toast.error("취소", 옵션)
-       }
-   })
-   ```
+### 2. `toast`를 import 하여 `toast.alert(내용, 옵션)`, `toast.info(내용, 옵션)`,
 
-   ### 와 같은 형식으로 사용한다.
+```
+toast.confirm(내용).then(isConfirm => {
+  if (isConfirm) {
+    toast.success("확인", 옵션)
+    } else {
+    toast.error("취소", 옵션)
+    }
+})
+```
+
+### 와 같은 형식으로 사용한다.
 
 ## 설정 방법
 
