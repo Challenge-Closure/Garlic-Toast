@@ -42,7 +42,7 @@
     top: 0;
   }
 
-  &.isFold .toast + .toast {
+  &.isFold .toast+.toast {
     z-index: 2;
     position: absolute;
     top: 20px;
@@ -51,14 +51,14 @@
     width: 95%;
     box-sizing: border-box;
 
-    & + .toast {
+    &+.toast {
       z-index: 1;
       top: 40px;
       width: 80%;
     }
   }
 
-  &.isFold:hover .toast + .toast {
+  &.isFold:hover .toast+.toast {
     top: calc(100% + 10px);
     width: auto;
     min-width: 100%;
@@ -73,7 +73,7 @@
       bottom: 100%;
     }
 
-    & + .toast {
+    &+.toast {
       top: calc(200% + 20px);
     }
   }
@@ -109,20 +109,23 @@
 
   cursor: default;
 
-  > img {
+  >img {
     max-width: 50%;
   }
 
   .message {
     font-size: 28px;
+
     &:before {
       content: none;
     }
   }
 }
+
 .confirm-toast .inner-box .button-area {
   display: flex;
   gap: 16px;
+
   button {
     width: 80px;
     height: 40px;
@@ -137,13 +140,15 @@
 
     cursor: pointer;
     transition: 0.5s;
+
     &:hover {
       background-color: var(--success-bg);
     }
 
-    & + button {
+    &+button {
       border-color: var(--warning-text);
       color: var(--warning-text);
+
       &:hover {
         background-color: var(--warning-bg);
       }
@@ -164,6 +169,7 @@
 
 .c-l {
   top: 50%;
+  right: auto;
   transform: translateY(-50%);
 }
 
@@ -228,20 +234,23 @@
   align-items: center;
   width: 100%;
 
-  > img {
+  >img {
     max-width: 50%;
     margin-bottom: 16px;
-    + .message {
+
+    +.message {
       justify-content: center;
     }
   }
 }
+
 .alert-container .message {
   display: flex;
   align-items: center;
   width: 100%;
   gap: 8px;
   height: 24px;
+
   &:before {
     content: url(../assets/normal.svg);
     display: block;
@@ -277,6 +286,7 @@
   background-color: var(--success-bg);
   color: var(--success-text);
   border-color: var(--success-border);
+
   .message:before {
     content: url(../assets/success.svg);
   }
@@ -286,6 +296,7 @@
   background-color: var(--info-bg);
   color: var(--info-text);
   border-color: var(--info-border);
+
   .message:before {
     content: url(../assets/info.svg);
   }
@@ -295,6 +306,7 @@
   background-color: var(--warning-bg);
   color: var(--warning-text);
   border-color: var(--warning-border);
+
   .message:before {
     content: url(../assets/warning.svg);
   }
@@ -304,6 +316,7 @@
   background-color: var(--error-bg);
   color: var(--error-text);
   border-color: var(--error-border);
+
   .message:before {
     content: url(../assets/error.svg);
   }
