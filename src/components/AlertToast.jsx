@@ -53,10 +53,6 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime })
     <>
       <div
         className={`toast ${toast.type}`}
-        style={{
-          display: 'flex',
-          flexDirection: 'column'
-        }}
         onClick={() => toast.closeOnClick && closeAlert(toast.id)}
         onMouseEnter={(e) => {
           toast.autoClose && toast.pauseOnHover && (e.target.classList.add('on'), stopTimeout());
@@ -64,7 +60,10 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime })
         onMouseLeave={(e) => {
           toast.autoClose && toast.pauseOnHover && (e.target.classList.remove('on'), startTimeout(toast.id));
         }}>
-        {toast.message}
+        <div className="inner">
+          {toast.customImage ? <img src={toast.customImage} /> : null}
+          <div className="message">{toast.message}</div>
+        </div>
         {toast.autoClose && toast.progressBar && (
           <div
             className="progress"

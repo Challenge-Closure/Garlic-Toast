@@ -26,7 +26,6 @@ const ToastContainer = ({ isFold, position = 't-r', time }) => {
       const toastPosition = toast.position ?? position;
       setAlertToasts((prevToasts) => {
         const updatedToasts = { ...prevToasts };
-        console.log(updatedToasts);
 
         isFold
           ? (updatedToasts[toastPosition] = [{ ...toast }, ...updatedToasts[toastPosition].slice(0, 2)])
@@ -53,13 +52,12 @@ const ToastContainer = ({ isFold, position = 't-r', time }) => {
   return createPortal(
     <>
       <div className={`toast-container`}>
-        <div>abc</div>
         {Object.keys(alertToasts).map((position) => {
           const positionToasts = alertToasts[position];
-          console.log(positionToasts);
+
           return positionToasts.length > 0 ? (
             <div
-              className={`alert-container ${position} ${isFold ? 'isFold' : null}`}
+              className={`alert-container ${position} ${isFold ? 'isFold' : ''}`}
               key={position}
               onMouseEnter={(e) => e.target.classList.add('on')}
               onMouseLeave={(e) => e.target.classList.remove('on')}>
