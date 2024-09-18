@@ -48,6 +48,8 @@ const ToastContainer = ({ position, time }) => {
   };
 
   const stopTimeout = () => {
+    console.log("멈춤");
+
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
       remaindRef.current = timerRef.current - Date.now();
@@ -77,10 +79,14 @@ const ToastContainer = ({ position, time }) => {
               flexDirection: "column",
             }}
             onClick={() => closeAlert(toast.id)}
-            onMouseOver={stopTimeout}
-            onMouseOut={startTimeout}
-            onMouseLeave={(e) => e.target.classList.remove("on")}
-            onMouseEnter={(e) => e.target.classList.add("on")}
+            onMouseLeave={(e) => {
+              e.target.classList.remove("on");
+              stopTimeout();
+            }}
+            onMouseEnter={(e) => {
+              e.target.classList.add("on");
+              stopTimeout();
+            }}
           >
             {toast.message}
             <div
