@@ -67,6 +67,7 @@ toast.info("info", {
 
 - promise 로딩 알림
 - 알림 position 부분 설정
+- 옵션 상수
 - 아이콘 커스텀
 - 자유롭고 편리한 css 설정
 - 폭탄이 터지는 듯한 효과
