@@ -56,7 +56,7 @@ toast.confirm(내용).then(isConfirm => {
 ```
 toast.info("info", {
       autoClose: true/false,       // 알림을 자동으로 닫기게 할 지 설정
-      hideProgressBar: true/false, // progressBar를 보이게 할 지 설정
+      progressBar: true/false, // progressBar를 보이게 할 지 설정
       pauseOnHover: true/false,    // 알림에 마우스를 올렸을 때 알림을 일시정지 할 지 설정
       autoCloseTime: 숫자,          // 몇 ms 후 알림을 닫을 지 설정
       closeOnClick: true/false,    // 알림을 클릭하여 닫을 지 설정
@@ -67,6 +67,7 @@ toast.info("info", {
 
 - promise 로딩 알림
 - 알림 position 부분 설정
+- 옵션 상수
 - 아이콘 커스텀
 - 자유롭고 편리한 css 설정
 - 폭탄이 터지는 듯한 효과

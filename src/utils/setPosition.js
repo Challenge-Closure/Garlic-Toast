@@ -1,3 +1,4 @@
+// toast 부분 설정 기능 업데이트 시 inline style에 적용 예정
 const setPosition = (position) => {
   switch (position) {
     case "top-left":
