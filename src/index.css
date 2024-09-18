@@ -14,6 +14,7 @@ button {
   flex-direction: row;
   width: 100%;
   justify-content: space-around;
+  margin: 20px;
 }
 
 #common-alert {
