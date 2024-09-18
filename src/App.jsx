@@ -8,23 +8,27 @@ const App = () => {
       <h1>First Sparta Open Sorce Library</h1>
       <div>
         <h2>기본 알림</h2>
-        <button onClick={() => toast.alert("alert!", o8)}>알림</button>
-        <button onClick={() => toast.error("error!", o8)}>에러</button>
-        <button onClick={() => toast.warning("warning!", o8)}>경고</button>
-        <button onClick={() => toast.info("info!", o8)}>정보</button>
-        <button onClick={() => toast.success("success!", o8)}>성공</button>
+        <button onClick={() => toast.alert("alert!", o8)}>toast.alert</button>
+        <button onClick={() => toast.error("error!", o8)}>toast.error</button>
+        <button onClick={() => toast.warning("warning!", o8)}>
+          toast.warning
+        </button>
+        <button onClick={() => toast.info("info!", o8)}>toast.info</button>
+        <button onClick={() => toast.success("success!", o8)}>
+          toast.success
+        </button>
         <button
           onClick={() => {
             toast.confirm("confirm?").then((res) => {
               if (res) {
                 toast.alert("킹킹 준호님", o8);
               } else {
-                toast.error("취소", o8);
+                toast.error("confirm cancel", o8);
               }
             });
           }}
         >
-          확인
+          toast.confirm
         </button>
       </div>
       <span>
