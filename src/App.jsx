@@ -4,77 +4,52 @@ import toast from "./utils/toast";
 const App = () => {
   const toastAlert = () => {
     toast.alert("alert!", {
-      autoClose: true,
-      hideProgressBar: true,
-      progress: undefined,
+      autoClose: false,
+      hideProgressBar: false,
       pauseOnHover: true,
       closeOnClick: true,
-      duringTime:5000,
-      // position: "top-center",
-      // draggable: true,
-      // theme: "light",
-      // transition: Bounce,
+      autoCloseTime: 5000,
     });
   };
   const toastError = () => {
     toast.error("error!", {
       autoClose: true,
       hideProgressBar: true,
-      progress: undefined,
       pauseOnHover: true,
       closeOnClick: true,
-      duringTime: 5000,
-      // position: "top-center",
-      // draggable: true,
-      // theme: "light",
-      // transition: Bounce,
+      autoCloseTime: 5000,
     });
   };
   const toastWarning = () => {
     toast.warning("warning!", {
       autoClose: true,
       hideProgressBar: true,
-      progress: undefined,
       pauseOnHover: true,
       closeOnClick: true,
-      duringTime: 5000,
-      // position: "top-center",
-      // draggable: true,
-      // theme: "light",
-      // transition: Bounce,
+      autoCloseTime: 5000,
     });
   };
   const toastInfo = () => {
     toast.info("info!", {
       autoClose: true,
       hideProgressBar: true,
-      progress: undefined,
       pauseOnHover: false,
       closeOnClick: true,
-      duringTime: 5000,
-      // position: "top-center",
-      // draggable: true,
-      // theme: "light",
-      // transition: Bounce,
+      autoCloseTime: 5000,
     });
   };
   const toastSuccess = () => {
     toast.success("success!", {
       autoClose: false,
       hideProgressBar: true,
-      progress: undefined,
       pauseOnHover: true,
       closeOnClick: true,
-      duringTime: 5000,
-      // position: "top-center",
-      // draggable: true,
-      // theme: "light",
-      // transition: Bounce,
+      autoCloseTime: 5000,
     });
   };
   return (
     <div className="App">
-      <ToastContainer position="top-center" time={3000} />
+      <ToastContainer position="t-r" time={3000} />
       <h1>First Sparta Open Sorce Library</h1>
       <button onClick={() => toastAlert()}>알림</button>
       <button onClick={() => toastError()}>에러</button>
@@ -85,7 +60,9 @@ const App = () => {
         onClick={() => {
           toast.confirm("Do you want to proceed?").then((res) => {
             if (res) {
-              console.log("킹킹 GPT");
+              toast.alert("킹킹 준호님");
+            } else {
+              toast.error("취소");
             }
           });
         }}
@@ -98,13 +75,4 @@ const App = () => {
 
 export default App;
 
-// alert
-// error
-// success
-// info
-// confirm
 // promise
-
-// 종속성X
-// 복잡성X
-// 사용 실용성, 디자인

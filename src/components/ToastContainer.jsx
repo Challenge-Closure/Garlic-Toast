@@ -45,9 +45,9 @@ const ToastContainer = ({ position, time }) => {
           <AlertToast
             key={toast.id}
             toast={toast}
-            time={time}
             alertToasts={alertToasts}
             setAlertToasts={setAlertToasts}
+            containerAutoCloseTime={time}
           />
         ))}
 
