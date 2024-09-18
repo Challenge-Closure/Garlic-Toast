@@ -6,18 +6,18 @@ import AlertToast from './AlertToast';
 import ConfirmToast from './ConfirmToast';
 
 const initialState = {
-  'top-left': [],
-  'top-center': [],
-  'top-right': [],
-  'center-left': [],
-  'center-center': [],
-  'center-right': [],
-  'right-left': [],
-  'right-center': [],
-  'right-right': []
+  't-l': [],
+  't-c': [],
+  't-r': [],
+  'c-l': [],
+  'c-c': [],
+  'c-r': [],
+  'r-l': [],
+  'r-c': [],
+  'r-r': []
 };
 
-const ToastContainer = ({ isFold, position, time }) => {
+const ToastContainer = ({ isFold, position = 't-r', time }) => {
   const [alertToasts, setAlertToasts] = useState(initialState);
   const [confirmToasts, setConfirmToasts] = useState([]);
 
@@ -26,6 +26,7 @@ const ToastContainer = ({ isFold, position, time }) => {
       const toastPosition = toast.position ?? position;
       setAlertToasts((prevToasts) => {
         const updatedToasts = { ...prevToasts };
+        console.log(updatedToasts);
 
         isFold
           ? (updatedToasts[toastPosition] = [{ ...toast }, ...updatedToasts[toastPosition].slice(0, 2)])
@@ -52,8 +53,10 @@ const ToastContainer = ({ isFold, position, time }) => {
   return createPortal(
     <>
       <div className={`toast-container`}>
+        <div>abc</div>
         {Object.keys(alertToasts).map((position) => {
           const positionToasts = alertToasts[position];
+          console.log(positionToasts);
           return positionToasts.length > 0 ? (
             <div
               className={`alert-container ${position} ${isFold ? 'isFold' : null}`}
@@ -64,8 +67,7 @@ const ToastContainer = ({ isFold, position, time }) => {
                 <AlertToast
                   key={toast.id}
                   toast={toast}
-                  time={time}
-                  alertToasts={alertToasts}
+                  containerAutoCloseTime={time}
                   setAlertToasts={setAlertToasts}
                   position={position}
                 />

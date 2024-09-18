@@ -50,29 +50,31 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime })
   };
 
   return (
-    <div
-      className={`toast ${toast.type}`}
-      style={{
-        display: 'flex',
-        flexDirection: 'column'
-      }}
-      onClick={() => toast.closeOnClick && closeAlert(toast.id)}
-      onMouseEnter={(e) => {
-        toast.autoClose && toast.pauseOnHover && (e.target.classList.add('on'), stopTimeout());
-      }}
-      onMouseLeave={(e) => {
-        toast.autoClose && toast.pauseOnHover && (e.target.classList.remove('on'), startTimeout(toast.id));
-      }}>
-      {toast.message}
-      {toast.autoClose && !toast.hideProgressBar && (
-        <div
-          className="progress"
-          style={{
-            background: `var(--${toast.type}-text)`,
-            animationDuration: `${toast.autoCloseTime ?? containerAutoCloseTime}ms`
-          }}></div>
-      )}
-    </div>
+    <>
+      <div
+        className={`toast ${toast.type}`}
+        style={{
+          display: 'flex',
+          flexDirection: 'column'
+        }}
+        onClick={() => toast.closeOnClick && closeAlert(toast.id)}
+        onMouseEnter={(e) => {
+          toast.autoClose && toast.pauseOnHover && (e.target.classList.add('on'), stopTimeout());
+        }}
+        onMouseLeave={(e) => {
+          toast.autoClose && toast.pauseOnHover && (e.target.classList.remove('on'), startTimeout(toast.id));
+        }}>
+        {toast.message}
+        {toast.autoClose && toast.progressBar && (
+          <div
+            className="progress"
+            style={{
+              background: `var(--${toast.type}-text)`,
+              animationDuration: `${toast.autoCloseTime ?? containerAutoCloseTime}ms`
+            }}></div>
+        )}
+      </div>
+    </>
   );
 };
 
