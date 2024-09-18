@@ -9,6 +9,7 @@ const App = () => {
       progress: undefined,
       pauseOnHover: true,
       closeOnClick: true,
+      duringTime:5000,
       // position: "top-center",
       // draggable: true,
       // theme: "light",
@@ -16,20 +17,64 @@ const App = () => {
     });
   };
   const toastError = () => {
-    toast.error("error!");
+    toast.error("error!", {
+      autoClose: true,
+      hideProgressBar: true,
+      progress: undefined,
+      pauseOnHover: true,
+      closeOnClick: true,
+      duringTime: 5000,
+      // position: "top-center",
+      // draggable: true,
+      // theme: "light",
+      // transition: Bounce,
+    });
   };
   const toastWarning = () => {
-    toast.warning("warning!");
+    toast.warning("warning!", {
+      autoClose: true,
+      hideProgressBar: true,
+      progress: undefined,
+      pauseOnHover: true,
+      closeOnClick: true,
+      duringTime: 5000,
+      // position: "top-center",
+      // draggable: true,
+      // theme: "light",
+      // transition: Bounce,
+    });
   };
   const toastInfo = () => {
-    toast.info("info!");
+    toast.info("info!", {
+      autoClose: true,
+      hideProgressBar: true,
+      progress: undefined,
+      pauseOnHover: false,
+      closeOnClick: true,
+      duringTime: 5000,
+      // position: "top-center",
+      // draggable: true,
+      // theme: "light",
+      // transition: Bounce,
+    });
   };
   const toastSuccess = () => {
-    toast.success("success!");
+    toast.success("success!", {
+      autoClose: false,
+      hideProgressBar: true,
+      progress: undefined,
+      pauseOnHover: true,
+      closeOnClick: true,
+      duringTime: 5000,
+      // position: "top-center",
+      // draggable: true,
+      // theme: "light",
+      // transition: Bounce,
+    });
   };
   return (
     <div className="App">
-      <ToastContainer position="top-center" time={5000} />
+      <ToastContainer position="top-center" time={3000} />
       <h1>First Sparta Open Sorce Library</h1>
       <button onClick={() => toastAlert()}>알림</button>
       <button onClick={() => toastError()}>에러</button>
