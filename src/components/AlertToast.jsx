@@ -5,6 +5,8 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime })
   const timerRef = useRef(null);
   const remaindRef = useRef(null);
 
+  console.log(toast);
+
   const toastPosition = toast.position ?? position;
   useEffect(() => {
     if (toast.autoClose) {
