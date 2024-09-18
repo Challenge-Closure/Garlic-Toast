@@ -9,11 +9,6 @@ const App = () => {
       pauseOnHover: true,
       closeOnClick: true,
       autoCloseTime: 5000,
-      // progress: undefined,
-      // position: "top-center",
-      // draggable: true,
-      // theme: "light",
-      // transition: Bounce,
     });
   };
   const toastError = () => {
@@ -54,7 +49,7 @@ const App = () => {
   };
   return (
     <div className="App">
-      <ToastContainer position="top-right" autoCloseTime={3000} />
+      <ToastContainer position="t-r" time={3000} />
       <h1>First Sparta Open Sorce Library</h1>
       <button onClick={() => toastAlert()}>알림</button>
       <button onClick={() => toastError()}>에러</button>

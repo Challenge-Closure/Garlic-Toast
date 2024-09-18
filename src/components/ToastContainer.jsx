@@ -4,7 +4,7 @@ import { createPortal } from "react-dom";
 import EventBus from "../utils/eventBus";
 import AlertToast from "./AlertToast";
 
-const ToastContainer = ({ position, autoCloseTime }) => {
+const ToastContainer = ({ position, time }) => {
   const [alertToasts, setAlertToasts] = useState([]);
   const [confirmToasts, setConfirmToasts] = useState([]);
 
@@ -47,7 +47,7 @@ const ToastContainer = ({ position, autoCloseTime }) => {
             toast={toast}
             alertToasts={alertToasts}
             setAlertToasts={setAlertToasts}
-            containerAutoCloseTime={autoCloseTime}
+            containerAutoCloseTime={time}
           />
         ))}
 
