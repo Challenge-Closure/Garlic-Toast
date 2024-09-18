@@ -63,7 +63,7 @@ const AlertToast = ({
       }}
     >
       {toast.message}
-      {toast.autoClose && !toast.hideProgressBar && (
+      {toast.autoClose && toast.progressBar && (
         <div
           className="progress"
           style={{
