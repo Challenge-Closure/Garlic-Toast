@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-const AlertToast = ({ toast, position, setAlertToasts, time }) => {
+const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }) => {
   const timeoutRef = useRef(null);
   const timerRef = useRef(null);
   const remaindRef = useRef(null);
@@ -8,7 +8,7 @@ const AlertToast = ({ toast, position, setAlertToasts, time }) => {
   const toastPosition = toast.position ?? position;
   useEffect(() => {
     if (toast.autoClose) {
-      timerRef.current = Date.now() + (toast.duringTime ?? time);
+      timerRef.current = Date.now() + (toast.autoCloseTime ?? containerAutoCloseTime);
 
       timeoutRef.current = setTimeout(() => {
         setAlertToasts((prevToasts) => {
@@ -17,7 +17,7 @@ const AlertToast = ({ toast, position, setAlertToasts, time }) => {
           updatedToasts[toastPosition] = [...updatedToasts[toastPosition].filter((t) => t.id !== toast.id)];
           return updatedToasts;
         });
-      }, toast.duringTime ?? time);
+      }, toast.autoCloseTime ?? containerAutoCloseTime);
     }
   }, []);
 
@@ -51,7 +51,6 @@ const AlertToast = ({ toast, position, setAlertToasts, time }) => {
 
   return (
     <div
-      key={toast.id}
       className={`toast ${toast.type}`}
       style={{
         display: 'flex',
@@ -59,18 +58,18 @@ const AlertToast = ({ toast, position, setAlertToasts, time }) => {
       }}
       onClick={() => toast.closeOnClick && closeAlert(toast.id)}
       onMouseEnter={(e) => {
-        toast.pauseOnHover && (e.target.classList.add('on'), stopTimeout());
+        toast.autoClose && toast.pauseOnHover && (e.target.classList.add('on'), stopTimeout());
       }}
       onMouseLeave={(e) => {
-        toast.pauseOnHover && (e.target.classList.remove('on'), startTimeout(toast.id));
+        toast.autoClose && toast.pauseOnHover && (e.target.classList.remove('on'), startTimeout(toast.id));
       }}>
       {toast.message}
-      {toast.autoClose && (
+      {toast.autoClose && !toast.hideProgressBar && (
         <div
           className="progress"
           style={{
             background: `var(--${toast.type}-text)`,
-            animationDuration: `${toast.duringTime ?? time}ms`
+            animationDuration: `${toast.autoCloseTime ?? containerAutoCloseTime}ms`
           }}></div>
       )}
     </div>
