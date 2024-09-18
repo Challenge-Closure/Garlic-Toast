@@ -54,10 +54,10 @@ const ToastContainer = ({ position, time }) => {
     }
   };
 
-  const startTimeout = () => {
+  const startTimeout = (toastId) => {
     timerRef.current = Date.now() + remaindRef.current;
-    setTimeout(() => {
-      timeoutRef.current = setToasts((prevToasts) => prevToasts.slice(1));
+    timeoutRef.current = setTimeout(() => {
+      setToasts((prevToasts) => prevToasts.filter((t) => t.id !== toastId));
     }, remaindRef.current);
   };
 
@@ -77,10 +77,14 @@ const ToastContainer = ({ position, time }) => {
               flexDirection: "column",
             }}
             onClick={() => closeAlert(toast.id)}
-            onMouseOver={stopTimeout}
-            onMouseOut={startTimeout}
-            onMouseLeave={(e) => e.target.classList.remove("on")}
-            onMouseEnter={(e) => e.target.classList.add("on")}
+            onMouseLeave={(e) => {
+              e.target.classList.remove("on");
+              startTimeout(toast.id);
+            }}
+            onMouseEnter={(e) => {
+              e.target.classList.add("on");
+              stopTimeout();
+            }}
           >
             {toast.message}
             <div
