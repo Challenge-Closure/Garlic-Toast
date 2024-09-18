@@ -1,25 +1,16 @@
 import "./../styles/tost.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import EventBus from "../utils/eventBus";
+import AlertToast from "./AlertToast";
 
 const ToastContainer = ({ position, time }) => {
-  const [toasts, setToasts] = useState([]);
+  const [alertToasts, setAlertToasts] = useState([]);
   const [confirmToasts, setConfirmToasts] = useState([]);
-
-  const timeoutRef = useRef(null);
-  const timerRef = useRef(null);
-  const remaindRef = useRef(null);
 
   useEffect(() => {
     const handleToastEvent = (toast) => {
-      setToasts((prevToasts) => [{ ...toast }, ...prevToasts.slice(0, 2)]);
-
-      timerRef.current = Date.now() + time;
-
-      timeoutRef.current = setTimeout(() => {
-        setToasts((prevToasts) => prevToasts.filter((t) => t.id !== toast.id));
-      }, time);
+      setAlertToasts((prevToasts) => [{ ...toast }, ...prevToasts.slice(0, 2)]);
     };
 
     const handleConfirmToastEvent = (toast) => {
@@ -47,53 +38,17 @@ const ToastContainer = ({ position, time }) => {
     resolve(false);
   };
 
-  const stopTimeout = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      remaindRef.current = timerRef.current - Date.now();
-    }
-  };
-
-  const startTimeout = (toastId) => {
-    timerRef.current = Date.now() + remaindRef.current;
-    timeoutRef.current = setTimeout(() => {
-      setToasts((prevToasts) => prevToasts.filter((t) => t.id !== toastId));
-    }, remaindRef.current);
-  };
-
-  const closeAlert = (targetId) => {
-    setToasts(toasts.filter((toast) => toast.id !== targetId));
-  };
-
   return createPortal(
     <>
       <div className={`toast-container ${position}`}>
-        {toasts.map((toast) => (
-          <div
+        {alertToasts.map((toast) => (
+          <AlertToast
             key={toast.id}
-            className={`toast ${toast.type}`}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-            }}
-            onClick={() => closeAlert(toast.id)}
-            onMouseLeave={(e) => {
-              e.target.classList.remove("on");
-              startTimeout(toast.id);
-            }}
-            onMouseEnter={(e) => {
-              e.target.classList.add("on");
-              stopTimeout();
-            }}
-          >
-            {toast.message}
-            <div
-              className="progress"
-              style={{
-                animationDuration: "3000ms",
-              }}
-            ></div>
-          </div>
+            toast={toast}
+            time={time}
+            alertToasts={alertToasts}
+            setAlertToasts={setAlertToasts}
+          />
         ))}
 
         {confirmToasts.map((toast) => (
