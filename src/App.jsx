@@ -49,7 +49,6 @@ const App = () => {
         </span>
         <span className="cell">
           <h2>autoClose</h2>
-
           <button onClick={() => toast.warning("warning!", o1)}>fasle</button>
           <button onClick={() => toast.success("success!", o2)}>true</button>
         </span>
