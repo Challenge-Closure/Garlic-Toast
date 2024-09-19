@@ -1,7 +1,7 @@
 h1 {
   display: flex;
   justify-content: center;
-  color: var(--sparta-color);
+  /* color: var(--sparta-color); */
 }
 
 button {
@@ -33,7 +33,6 @@ button {
 #grid-wrap {
   display: flex;
   justify-content: center;
-
 }
 
 #grid-container {

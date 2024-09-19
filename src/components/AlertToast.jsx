@@ -94,6 +94,15 @@ const AlertToast = ({
             }}
           ></div>
         )}
+        <span
+          className="toast-close"
+          style={{
+            color: `var(--${toast.type}-text)`,
+          }}
+          onClick={() => closeAlert(toast.id)}
+        >
+          X
+        </span>
       </div>
     </>
   );

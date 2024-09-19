@@ -1,6 +1,15 @@
-import { useState } from "react";
-import ToastContainer from "./components/ToastContainer";
-import toast from "./utils/toast";
+import { useState } from 'react';
+import ToastContainer from './components/ToastContainer';
+import toast from './utils/toast';
+
+const initialState = {
+  type: 'alert',
+  autoClose: true,
+  progressBar: true,
+  pauseOnHover: true,
+  closeOnClick: true,
+  customImage: false
+};
 
 const initialState = {
   type: 'alert',
