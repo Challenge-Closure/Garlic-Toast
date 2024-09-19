@@ -346,3 +346,15 @@
     margin-top: 0;
   }
 }
+
+.toast-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 60%;
+  }
+}
