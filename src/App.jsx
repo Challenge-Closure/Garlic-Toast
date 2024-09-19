@@ -1,23 +1,14 @@
-import { useState } from 'react';
-import ToastContainer from './components/ToastContainer';
-import toast from './utils/toast';
+import { useState } from "react";
+import ToastContainer from "./components/ToastContainer";
+import toast from "./utils/toast";
 
 const initialState = {
-  type: 'alert',
+  type: "alert",
   autoClose: true,
   progressBar: true,
   pauseOnHover: true,
   closeOnClick: true,
-  customImage: false
-};
-
-const initialState = {
-  type: 'alert',
-  autoClose: true,
-  progressBar: true,
-  pauseOnHover: true,
-  closeOnClick: true,
-  customImage: false
+  customImage: false,
 };
 
 const App = () => {
@@ -70,10 +61,15 @@ const App = () => {
           <h2>기본 알림</h2>
           <span id="common-alert">
             <span>
-              <button className="type-on" onClick={(e) => buttonClick(e, 'type', 'alert')}>
+              <button
+                className="type-on"
+                onClick={(e) => buttonClick(e, "type", "alert")}
+              >
                 alert
               </button>
-              <button onClick={(e) => buttonClick(e, 'type', 'success')}>success</button>
+              <button onClick={(e) => buttonClick(e, "type", "success")}>
+                success
+              </button>
             </span>
             <span>
               <button onClick={(e) => buttonClick(e, "type", "warning")}>
@@ -101,35 +97,58 @@ const App = () => {
         <span className="cell">
           <h2>autoClose</h2>
 
-          <button onClick={(e) => buttonClick(e, 'autoClose', false)}>false</button>
-          <button className="autoClose-on" onClick={(e) => buttonClick(e, 'autoClose', true)}>
+          <button onClick={(e) => buttonClick(e, "autoClose", false)}>
+            false
+          </button>
+          <button
+            className="autoClose-on"
+            onClick={(e) => buttonClick(e, "autoClose", true)}
+          >
             true
           </button>
         </span>
         <span className="cell">
           <h2>progressBar</h2>
-          <button onClick={(e) => buttonClick(e, 'progressBar', false)}>false</button>
-          <button className="progressBar-on" onClick={(e) => buttonClick(e, 'progressBar', true)}>
+          <button onClick={(e) => buttonClick(e, "progressBar", false)}>
+            false
+          </button>
+          <button
+            className="progressBar-on"
+            onClick={(e) => buttonClick(e, "progressBar", true)}
+          >
             true
           </button>
         </span>
         <span className="cell">
           <h2>pauseOnHover</h2>
-          <button onClick={(e) => buttonClick(e, 'pauseOnHover', false)}>false</button>
-          <button className="pauseOnHover-on" onClick={(e) => buttonClick(e, 'pauseOnHover', true)}>
+          <button onClick={(e) => buttonClick(e, "pauseOnHover", false)}>
+            false
+          </button>
+          <button
+            className="pauseOnHover-on"
+            onClick={(e) => buttonClick(e, "pauseOnHover", true)}
+          >
             true
           </button>
         </span>
         <span className="cell">
           <h2>closeOnClick</h2>
-          <button onClick={(e) => buttonClick(e, 'closeOnClick', false)}>false</button>
-          <button className="closeOnClick-on" onClick={(e) => buttonClick(e, 'closeOnClick', true)}>
+          <button onClick={(e) => buttonClick(e, "closeOnClick", false)}>
+            false
+          </button>
+          <button
+            className="closeOnClick-on"
+            onClick={(e) => buttonClick(e, "closeOnClick", true)}
+          >
             true
           </button>
         </span>
         <span className="cell">
           <h2>customImage</h2>
-          <button className="customImage-on" onClick={(e) => buttonClick(e, 'customImage', false)}>
+          <button
+            className="customImage-on"
+            onClick={(e) => buttonClick(e, "customImage", false)}
+          >
             false
           </button>
           <button
@@ -139,7 +158,8 @@ const App = () => {
                 "customImage",
                 "https://online.spartacodingclub.kr/assets/images/profile/rtan_thumb_01.png"
               )
-            }>
+            }
+          >
             true
           </button>
         </span>
