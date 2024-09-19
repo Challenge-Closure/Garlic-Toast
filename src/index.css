@@ -1,6 +1,7 @@
 h1 {
   display: flex;
   justify-content: center;
+  color: var(--sparta-color);
 }
 
 button {
@@ -9,7 +10,7 @@ button {
   border-radius: 8px;
 }
 
-#guide {
+#option {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -32,6 +33,7 @@ button {
 #grid-wrap {
   display: flex;
   justify-content: center;
+
 }
 
 #grid-container {
