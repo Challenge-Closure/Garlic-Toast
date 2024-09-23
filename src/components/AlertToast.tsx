@@ -1,14 +1,15 @@
 import { useEffect, useRef } from "react";
 
+
 const AlertToast = ({
   toast,
   position,
   setAlertToasts,
   containerAutoCloseTime,
-}) => {
-  const timeoutRef = useRef(null);
-  const timerRef = useRef(null);
-  const remaindRef = useRef(null);
+}:any) => {
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<number>(0);
+  const remaindRef = useRef<number>(0);
 
   const toastPosition = toast.position ?? position;
   useEffect(() => {
@@ -17,11 +18,11 @@ const AlertToast = ({
         Date.now() + (toast.autoCloseTime ?? containerAutoCloseTime);
 
       timeoutRef.current = setTimeout(() => {
-        setAlertToasts((prevToasts) => {
+        setAlertToasts((prevToasts:any) => {
           const updatedToasts = { ...prevToasts };
 
           updatedToasts[toastPosition] = [
-            ...updatedToasts[toastPosition].filter((t) => t.id !== toast.id),
+            ...updatedToasts[toastPosition].filter((t:any) => t.id !== toast.id),
           ];
           return updatedToasts;
         });
@@ -29,12 +30,12 @@ const AlertToast = ({
     }
   }, []);
 
-  const closeAlert = (targetId) => {
-    setAlertToasts((prevToasts) => {
+  const closeAlert = (targetId:string) => {
+    setAlertToasts((prevToasts:any) => {
       const updatedToasts = { ...prevToasts };
 
       updatedToasts[toastPosition] = [
-        ...updatedToasts[toastPosition].filter((t) => t.id !== targetId),
+        ...updatedToasts[toastPosition].filter((t:any) => t.id !== targetId),
       ];
       return updatedToasts;
     });
@@ -47,14 +48,14 @@ const AlertToast = ({
     }
   };
 
-  const startTimeout = (toastId) => {
+  const startTimeout = (toastId:string) => {
     timerRef.current = Date.now() + remaindRef.current;
     timeoutRef.current = setTimeout(() => {
-      setAlertToasts((prevToasts) => {
+      setAlertToasts((prevToasts:any) => {
         const updatedToasts = { ...prevToasts };
 
         updatedToasts[toastPosition] = [
-          ...updatedToasts[toastPosition].filter((t) => t.id !== toastId),
+          ...updatedToasts[toastPosition].filter((t:any) => t.id !== toastId),
         ];
         return updatedToasts;
       });
@@ -69,12 +70,12 @@ const AlertToast = ({
         onMouseEnter={(e) => {
           toast.autoClose &&
             toast.pauseOnHover &&
-            (e.target.classList.add("on"), stopTimeout());
+            (e.currentTarget.classList.add("on"), stopTimeout());
         }}
         onMouseLeave={(e) => {
           toast.autoClose &&
             toast.pauseOnHover &&
-            (e.target.classList.remove("on"), startTimeout(toast.id));
+            (e.currentTarget.classList.remove("on"), startTimeout(toast.id));
         }}
       >
         <div className="inner">

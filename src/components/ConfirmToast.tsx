@@ -1,11 +1,11 @@
-const ConfirmToast = ({ toast, setConfirmToasts }) => {
-  const handleConfirm = (id, resolve) => {
-    setConfirmToasts((prevToasts) => prevToasts.filter((t) => t.id !== id));
+const ConfirmToast = ({ toast, setConfirmToasts }:any) => {
+  const handleConfirm = (id:string, resolve:any) => {
+    setConfirmToasts((prevToasts:any) => prevToasts.filter((t:any) => t.id !== id));
     resolve(true);
   };
 
-  const handleCancel = (id, resolve) => {
-    setConfirmToasts((prevToasts) => prevToasts.filter((t) => t.id !== id));
+  const handleCancel = (id:string, resolve:any) => {
+    setConfirmToasts((prevToasts:any) => prevToasts.filter((t:any) => t.id !== id));
     resolve(false);
   };
 
@@ -13,7 +13,7 @@ const ConfirmToast = ({ toast, setConfirmToasts }) => {
     <div
       className="toast confirm-toast"
       onClick={(e) => {
-        if (e.target.classList.contains('toast')) {
+        if (e.currentTarget.classList.contains('toast')) {
           handleCancel(toast.id, toast.resolve);
         }
       }}>

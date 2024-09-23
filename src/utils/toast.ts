@@ -1,52 +1,53 @@
+import { Toast } from '../types/Type';
 import EventBus from './eventBus';
 
 const toast = () => {
-  const alert = (message, option) => {
+  const alert = (message:string, option:Toast) => {
     EventBus.publish('SHOW_TOAST', {
+      ...option,
       message,
-      id: crypto.randomUUID(),
-      type: 'normal',
-      ...option
+      id: Date.now(),
+      type: 'normal'
     });
   };
 
-  const error = (message, option) => {
+  const error = (message:string, option:Toast) => {
     EventBus.publish('SHOW_TOAST', {
+      ...option,
       message,
-      id: crypto.randomUUID(),
-      type: 'error',
-      ...option
+      id: Date.now(),
+      type: 'error'
     });
   };
 
-  const warning = (message, option) => {
-    EventBus.publish('SHOW_TOAST', {
+  const warning = (message:string, option:Toast) => {
+    EventBus.publish('SHOW_TOAST', {  
+      ...option,
       message,
-      id: crypto.randomUUID(),
+      id: Date.now(),
       type: 'warning',
-      ...option
     });
   };
 
-  const success = (message, option) => {
+  const success = (message:string, option:Toast) => {
     EventBus.publish('SHOW_TOAST', {
+      ...option,
       message,
-      id: crypto.randomUUID(),
+      id: Date.now(),
       type: 'success',
-      ...option
     });
   };
 
-  const info = (message, option) => {
+  const info = (message:string, option:Toast) => {
     EventBus.publish('SHOW_TOAST', {
+      ...option,
       message,
-      id: crypto.randomUUID(),
+      id: Date.now(),
       type: 'info',
-      ...option
     });
   };
 
-  const confirm = (message, option) => {
+  const confirm = (message:string, option:Toast) => {
     return new Promise((resolve) => {
       EventBus.publish('SHOW_CONFIRM_TOAST', { message, ...option, resolve });
     });

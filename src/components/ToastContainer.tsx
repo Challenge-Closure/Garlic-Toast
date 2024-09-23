@@ -4,6 +4,7 @@ import { createPortal } from 'react-dom';
 import EventBus from '../utils/eventBus';
 import AlertToast from './AlertToast';
 import ConfirmToast from './ConfirmToast';
+import { Toast } from '../types/Type';
 
 const initialState = {
   't-l': [],
@@ -17,14 +18,14 @@ const initialState = {
   'b-r': []
 };
 
-const ToastContainer = ({ isFold, position = 't-r', time }) => {
-  const [alertToasts, setAlertToasts] = useState(initialState);
-  const [confirmToasts, setConfirmToasts] = useState([]);
+const ToastContainer = ({ isFold, position = 't-r', time }:any) => {
+  const [alertToasts, setAlertToasts] = useState<any>(initialState);
+  const [confirmToasts, setConfirmToasts] = useState<any>([]);
 
   useEffect(() => {
-    const handleToastEvent = (toast) => {
+    const handleToastEvent = (toast:any) => {
       const toastPosition = toast.position ?? position;
-      setAlertToasts((prevToasts) => {
+      setAlertToasts((prevToasts:any) => {
         const updatedToasts = { ...prevToasts };
 
         isFold
@@ -34,13 +35,13 @@ const ToastContainer = ({ isFold, position = 't-r', time }) => {
       });
     };
 
-    const handleConfirmToastEvent = (toast) => {
+    const handleConfirmToastEvent = (toast:any) => {
       const confirmToast = {
         id: Date.now(),
         ...toast,
         confirm: true
       };
-      setConfirmToasts((prevToasts) => [confirmToast, ...prevToasts]);
+      setConfirmToasts((prevToasts:any) => [confirmToast, ...prevToasts]);
     };
 
     EventBus.subscribe('SHOW_TOAST', handleToastEvent);
@@ -56,7 +57,7 @@ const ToastContainer = ({ isFold, position = 't-r', time }) => {
           const positionToasts = alertToasts[position];
           return positionToasts.length > 0 ? (
             <div className={`alert-container ${position} ${isFold && 'isFold'}`} key={position}>
-              {positionToasts.map((toast) => (
+              {positionToasts.map((toast:Toast) => (
                 <AlertToast
                   key={toast.id}
                   toast={toast}
@@ -69,7 +70,7 @@ const ToastContainer = ({ isFold, position = 't-r', time }) => {
           ) : null;
         })}
 
-        {confirmToasts.map((toast) => (
+        {confirmToasts.map((toast:Toast) => (
           <ConfirmToast key={toast.id} toast={toast} setConfirmToasts={setConfirmToasts} />
         ))}
       </div>
