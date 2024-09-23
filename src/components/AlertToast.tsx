@@ -10,8 +10,8 @@ interface AlertToastType {
 
 const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }: AlertToastType) => {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const timerRef = useRef<number | undefined>();
-  const remaindRef = useRef<any>(null);
+  const timerRef = useRef<number | undefined>(undefined);
+  const remaindRef = useRef<number | undefined>(undefined);
 
   const toastPosition = toast.position ?? position;
   useEffect(() => {
