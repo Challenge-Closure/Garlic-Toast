@@ -12,11 +12,12 @@ const ConfirmToast = ({ toast, setConfirmToasts }) => {
   return (
     <div
       className="toast confirm-toast"
-      onClick={(e) => {
-        if (e.target.classList.contains('toast')) {
+      onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        if (e.target.classList.contains("toast")) {
           handleCancel(toast.id, toast.resolve);
         }
-      }}>
+      }}
+    >
       <div className="inner-box">
         {toast.customImage ? <img src={toast.customImage} /> : null}
         <div className="message">{toast.message}</div>
@@ -25,14 +26,16 @@ const ConfirmToast = ({ toast, setConfirmToasts }) => {
             onClick={(e) => {
               e.preventDefault();
               handleConfirm(toast.id, toast.resolve);
-            }}>
+            }}
+          >
             OK
           </button>
           <button
             onClick={(e) => {
               e.preventDefault();
               handleCancel(toast.id, toast.resolve);
-            }}>
+            }}
+          >
             Cancel
           </button>
         </div>

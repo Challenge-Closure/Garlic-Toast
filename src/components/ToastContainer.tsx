@@ -1,28 +1,45 @@
-import './../styles/toast.css';
-import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
-import EventBus from '../utils/eventBus';
-import AlertToast from './AlertToast';
-import ConfirmToast from './ConfirmToast';
+import "./../styles/toast.css";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import EventBus from "../utils/eventBus";
+import AlertToast from "./AlertToast";
+import ConfirmToast from "./ConfirmToast";
 
+interface InitiolStateType {
+  "t-l": object[];
+  "t-c": object[];
+  "t-r": object[];
+  "c-l": object[];
+  "c-c": object[];
+  "c-r": object[];
+  "b-l": object[];
+  "b-c": object[];
+  "b-r": object[];
+}
 const initialState = {
-  't-l': [],
-  't-c': [],
-  't-r': [],
-  'c-l': [],
-  'c-c': [],
-  'c-r': [],
-  'b-l': [],
-  'b-c': [],
-  'b-r': []
+  "t-l": [],
+  "t-c": [],
+  "t-r": [],
+  "c-l": [],
+  "c-c": [],
+  "c-r": [],
+  "b-l": [],
+  "b-c": [],
+  "b-r": []
 };
 
-const ToastContainer = ({ isFold, position = 't-r', time }) => {
-  const [alertToasts, setAlertToasts] = useState(initialState);
-  const [confirmToasts, setConfirmToasts] = useState([]);
+interface ToastContainerProps {
+  isFold: boolean;
+  position: string;
+  time: number;
+}
+
+const ToastContainer = ({ isFold, position = "t-r", time }: ToastContainerProps) => {
+  const [alertToasts, setAlertToasts] = useState<InitiolStateType>(initialState);
+  const [confirmToasts, setConfirmToasts] = useState<any[]>([]);
 
   useEffect(() => {
-    const handleToastEvent = (toast) => {
+    const handleToastEvent = (toast: any) => {
       const toastPosition = toast.position ?? position;
       setAlertToasts((prevToasts) => {
         const updatedToasts = { ...prevToasts };
@@ -34,7 +51,7 @@ const ToastContainer = ({ isFold, position = 't-r', time }) => {
       });
     };
 
-    const handleConfirmToastEvent = (toast) => {
+    const handleConfirmToastEvent = (toast: any) => {
       const confirmToast = {
         id: Date.now(),
         ...toast,
@@ -43,8 +60,8 @@ const ToastContainer = ({ isFold, position = 't-r', time }) => {
       setConfirmToasts((prevToasts) => [confirmToast, ...prevToasts]);
     };
 
-    EventBus.subscribe('SHOW_TOAST', handleToastEvent);
-    EventBus.subscribe('SHOW_CONFIRM_TOAST', handleConfirmToastEvent);
+    EventBus.subscribe("SHOW_TOAST", handleToastEvent);
+    EventBus.subscribe("SHOW_CONFIRM_TOAST", handleConfirmToastEvent);
 
     return () => EventBus.unsubscribe();
   }, []);
@@ -55,7 +72,7 @@ const ToastContainer = ({ isFold, position = 't-r', time }) => {
         {Object.keys(alertToasts).map((position) => {
           const positionToasts = alertToasts[position];
           return positionToasts.length > 0 ? (
-            <div className={`alert-container ${position} ${isFold && 'isFold'}`} key={position}>
+            <div className={`alert-container ${position} ${isFold && "isFold"}`} key={position}>
               {positionToasts.map((toast) => (
                 <AlertToast
                   key={toast.id}

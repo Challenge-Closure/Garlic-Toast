@@ -1,54 +1,54 @@
-import EventBus from './eventBus';
+import EventBus from "./eventBus";
 
 const toast = () => {
-  const alert = (message, option) => {
-    EventBus.publish('SHOW_TOAST', {
+  const alert = (message: string, option: any) => {
+    EventBus.publish("SHOW_TOAST", {
       message,
       id: crypto.randomUUID(),
-      type: 'normal',
+      type: "normal",
       ...option
     });
   };
 
-  const error = (message, option) => {
-    EventBus.publish('SHOW_TOAST', {
+  const error = (message: string, option: any) => {
+    EventBus.publish("SHOW_TOAST", {
       message,
       id: crypto.randomUUID(),
-      type: 'error',
+      type: "error",
       ...option
     });
   };
 
-  const warning = (message, option) => {
-    EventBus.publish('SHOW_TOAST', {
+  const warning = (message: string, option: any) => {
+    EventBus.publish("SHOW_TOAST", {
       message,
       id: crypto.randomUUID(),
-      type: 'warning',
+      type: "warning",
       ...option
     });
   };
 
-  const success = (message, option) => {
-    EventBus.publish('SHOW_TOAST', {
+  const success = (message: string, option: any) => {
+    EventBus.publish("SHOW_TOAST", {
       message,
       id: crypto.randomUUID(),
-      type: 'success',
+      type: "success",
       ...option
     });
   };
 
-  const info = (message, option) => {
-    EventBus.publish('SHOW_TOAST', {
+  const info = (message: string, option: any) => {
+    EventBus.publish("SHOW_TOAST", {
       message,
       id: crypto.randomUUID(),
-      type: 'info',
+      type: "info",
       ...option
     });
   };
 
-  const confirm = (message, option) => {
+  const confirm = (message: string, option: any) => {
     return new Promise((resolve) => {
-      EventBus.publish('SHOW_CONFIRM_TOAST', { message, ...option, resolve });
+      EventBus.publish("SHOW_CONFIRM_TOAST", { message, ...option, resolve });
     });
   };
 
@@ -56,3 +56,13 @@ const toast = () => {
 };
 
 export default toast();
+
+interface AlertOptionType {
+  position: string;
+  autoClose: boolean;
+  progressBar: boolean;
+  pauseOnHover: boolean;
+  autoCloseTime: number;
+  closeOnClick: boolean;
+  customImage: string;
+}

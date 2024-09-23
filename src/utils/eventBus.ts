@@ -1,7 +1,7 @@
 const EventBus = () => {
   const topics = new Map();
 
-  const subscribe = (topic, listener) => {
+  const subscribe = (topic: string, listener: Function) => {
     if (!topics.has(topic)) {
       topics.set(topic, []);
     }
@@ -13,12 +13,19 @@ const EventBus = () => {
     topics.clear();
   };
 
-  const publish = (topic, data) => {
+  const publish = (topic: string, data: any) => {
     if (!topics.has(topic)) return;
-    topics.get(topic).forEach((listener) => listener(data));
+    topics.get(topic).forEach((listener: any) => listener(data));
   };
 
   return { subscribe, unsubscribe, publish };
 };
 
 export default EventBus();
+
+// interface ArlertData {
+//   message: string;
+//   id: string;
+//   type: string;
+// ...option
+// }

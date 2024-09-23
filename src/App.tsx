@@ -8,11 +8,20 @@ const initialState = {
   progressBar: true,
   pauseOnHover: true,
   closeOnClick: true,
-  customImage: false,
+  customImage: false
 };
 
+interface initialStateType {
+  type: string;
+  autoClose: boolean;
+  progressBar: boolean;
+  pauseOnHover: boolean;
+  closeOnClick: boolean;
+  customImage: boolean | string;
+}
+
 const App = () => {
-  const [option, setOption] = useState(initialState);
+  const [option, setOption] = useState<initialStateType>(initialState);
 
   const buttonClick = (e, key, value) => {
     if (document.querySelectorAll(`.${key}-on`).length !== 0) {
@@ -27,7 +36,7 @@ const App = () => {
       toast.alert("alert message!", {
         ...option,
         type: "normal",
-        position: position,
+        position: position
       });
     } else if (option.type === "success") {
       toast.success("success message!", { ...option, position: position });
@@ -38,14 +47,14 @@ const App = () => {
     } else if (option.type === "info") {
       toast.info("info message!", { ...option, position: position });
     } else if (option.type === "confirm") {
-      toast.confirm("confirm?").then((res) => {
+      toast.confirm("confirm?", null).then((res) => {
         if (res) {
           toast.alert("킹킹 준호님", { ...option });
         } else {
           toast.error("confirm cancel", {
             ...option,
             type: "error",
-            position: position,
+            position: position
           });
         }
       });
@@ -61,28 +70,17 @@ const App = () => {
           <h2>기본 알림</h2>
           <span id="common-alert">
             <span>
-              <button
-                className="type-on"
-                onClick={(e) => buttonClick(e, "type", "alert")}
-              >
+              <button className="type-on" onClick={(e) => buttonClick(e, "type", "alert")}>
                 alert
               </button>
-              <button onClick={(e) => buttonClick(e, "type", "success")}>
-                success
-              </button>
+              <button onClick={(e) => buttonClick(e, "type", "success")}>success</button>
             </span>
             <span>
-              <button onClick={(e) => buttonClick(e, "type", "warning")}>
-                warning
-              </button>
-              <button onClick={(e) => buttonClick(e, "type", "info")}>
-                info
-              </button>
+              <button onClick={(e) => buttonClick(e, "type", "warning")}>warning</button>
+              <button onClick={(e) => buttonClick(e, "type", "info")}>info</button>
             </span>
             <span>
-              <button onClick={(e) => buttonClick(e, "type", "error")}>
-                error
-              </button>
+              <button onClick={(e) => buttonClick(e, "type", "error")}>error</button>
 
               <button
                 onClick={(e) => {
@@ -97,58 +95,35 @@ const App = () => {
         <span className="cell">
           <h2>autoClose</h2>
 
-          <button onClick={(e) => buttonClick(e, "autoClose", false)}>
-            false
-          </button>
-          <button
-            className="autoClose-on"
-            onClick={(e) => buttonClick(e, "autoClose", true)}
-          >
+          <button onClick={(e) => buttonClick(e, "autoClose", false)}>false</button>
+          <button className="autoClose-on" onClick={(e) => buttonClick(e, "autoClose", true)}>
             true
           </button>
         </span>
         <span className="cell">
           <h2>progressBar</h2>
-          <button onClick={(e) => buttonClick(e, "progressBar", false)}>
-            false
-          </button>
-          <button
-            className="progressBar-on"
-            onClick={(e) => buttonClick(e, "progressBar", true)}
-          >
+          <button onClick={(e) => buttonClick(e, "progressBar", false)}>false</button>
+          <button className="progressBar-on" onClick={(e) => buttonClick(e, "progressBar", true)}>
             true
           </button>
         </span>
         <span className="cell">
           <h2>pauseOnHover</h2>
-          <button onClick={(e) => buttonClick(e, "pauseOnHover", false)}>
-            false
-          </button>
-          <button
-            className="pauseOnHover-on"
-            onClick={(e) => buttonClick(e, "pauseOnHover", true)}
-          >
+          <button onClick={(e) => buttonClick(e, "pauseOnHover", false)}>false</button>
+          <button className="pauseOnHover-on" onClick={(e) => buttonClick(e, "pauseOnHover", true)}>
             true
           </button>
         </span>
         <span className="cell">
           <h2>closeOnClick</h2>
-          <button onClick={(e) => buttonClick(e, "closeOnClick", false)}>
-            false
-          </button>
-          <button
-            className="closeOnClick-on"
-            onClick={(e) => buttonClick(e, "closeOnClick", true)}
-          >
+          <button onClick={(e) => buttonClick(e, "closeOnClick", false)}>false</button>
+          <button className="closeOnClick-on" onClick={(e) => buttonClick(e, "closeOnClick", true)}>
             true
           </button>
         </span>
         <span className="cell">
           <h2>customImage</h2>
-          <button
-            className="customImage-on"
-            onClick={(e) => buttonClick(e, "customImage", false)}
-          >
+          <button className="customImage-on" onClick={(e) => buttonClick(e, "customImage", false)}>
             false
           </button>
           <button
