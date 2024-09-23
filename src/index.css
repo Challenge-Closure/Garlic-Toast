@@ -10,23 +10,69 @@ button {
   border-radius: 8px;
 }
 
+#main-frame {
+  display: flex;
+  flex-direction: row;
+  padding: 3vh 3vw;
+  gap: 1vw;
+}
+
 #option {
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: space-around;
   margin: 20px;
+  gap: 2vw
+}
+
+.option-division {
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
+  width: 100%;
+}
+
+.option-cell {
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  width: 100%;
+  gap: 8px;
+  align-items: center;
+
+  div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1vh;
+
+    button {
+      width: 50%;
+      height: 5vh;
+    }
+  }
 }
 
 #common-alert {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 1vh;
 
   span {
     display: flex;
-    justify-content: space-between;
-    gap: 8px;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    gap: 1vw;
+
+    button {
+      width: 6vw;
+      height: 4.5vh;
+    }
   }
 }
 
@@ -39,10 +85,8 @@ button {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
-  width: 90vw;
-  height: 90vh;
-  align-items: center;
-  justify-items: center;
+  width: 60vw;
+  height: 80vh;
   gap: 10px;
 }
 

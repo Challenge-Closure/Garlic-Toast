@@ -65,115 +65,130 @@ const App = () => {
     <>
       <ToastContainer isFold={true} position="t-r" time={5000} />
       <h1>First Sparta Open Sorce Library</h1>
-      <div id="option">
-        <span className="cell">
-          <h2>기본 알림</h2>
-          <span id="common-alert">
-            <span>
-              <button className="type-on" onClick={(e) => buttonClick(e, "type", "alert")}>
-                alert
-              </button>
-              <button onClick={(e) => buttonClick(e, "type", "success")}>success</button>
+      <main id="main-frame">
+        <div id="option">
+          <div className="option-division">
+            <span className="option-cell">
+              <h2>기본 알림</h2>
+              <span id="common-alert">
+                <span>
+                  <button className="type-on" onClick={(e) => buttonClick(e, "type", "alert")}>
+                    alert
+                  </button>
+                  <button onClick={(e) => buttonClick(e, "type", "success")}>success</button>
+                </span>
+                <span>
+                  <button onClick={(e) => buttonClick(e, "type", "warning")}>warning</button>
+                  <button onClick={(e) => buttonClick(e, "type", "info")}>info</button>
+                </span>
+                <span>
+                  <button onClick={(e) => buttonClick(e, "type", "error")}>error</button>
+
+                  <button
+                    onClick={(e) => {
+                      buttonClick(e, "type", "confirm");
+                    }}
+                  >
+                    confirm
+                  </button>
+                </span>
+              </span>
             </span>
-            <span>
-              <button onClick={(e) => buttonClick(e, "type", "warning")}>warning</button>
-              <button onClick={(e) => buttonClick(e, "type", "info")}>info</button>
+            <span className="option-cell">
+              <h2>autoClose</h2>
+              <div>
+                <button onClick={(e) => buttonClick(e, "autoClose", false)}>false</button>
+                <button className="autoClose-on" onClick={(e) => buttonClick(e, "autoClose", true)}>
+                  true
+                </button>
+              </div>
             </span>
-            <span>
-              <button onClick={(e) => buttonClick(e, "type", "error")}>error</button>
-
-              <button
-                onClick={(e) => {
-                  buttonClick(e, "type", "confirm");
-                }}
-              >
-                confirm
-              </button>
+            <span className="option-cell">
+              <h2>progressBar</h2>
+              <div>
+                <button onClick={(e) => buttonClick(e, "progressBar", false)}>false</button>
+                <button className="progressBar-on" onClick={(e) => buttonClick(e, "progressBar", true)}>
+                  true
+                </button>
+              </div>
             </span>
-          </span>
-        </span>
-        <span className="cell">
-          <h2>autoClose</h2>
-
-          <button onClick={(e) => buttonClick(e, "autoClose", false)}>false</button>
-          <button className="autoClose-on" onClick={(e) => buttonClick(e, "autoClose", true)}>
-            true
-          </button>
-        </span>
-        <span className="cell">
-          <h2>progressBar</h2>
-          <button onClick={(e) => buttonClick(e, "progressBar", false)}>false</button>
-          <button className="progressBar-on" onClick={(e) => buttonClick(e, "progressBar", true)}>
-            true
-          </button>
-        </span>
-        <span className="cell">
-          <h2>pauseOnHover</h2>
-          <button onClick={(e) => buttonClick(e, "pauseOnHover", false)}>false</button>
-          <button className="pauseOnHover-on" onClick={(e) => buttonClick(e, "pauseOnHover", true)}>
-            true
-          </button>
-        </span>
-        <span className="cell">
-          <h2>closeOnClick</h2>
-          <button onClick={(e) => buttonClick(e, "closeOnClick", false)}>false</button>
-          <button className="closeOnClick-on" onClick={(e) => buttonClick(e, "closeOnClick", true)}>
-            true
-          </button>
-        </span>
-        <span className="cell">
-          <h2>customImage</h2>
-          <button className="customImage-on" onClick={(e) => buttonClick(e, "customImage", false)}>
-            false
-          </button>
-          <button
-            onClick={(e) =>
-              buttonClick(
-                e,
-                "customImage",
-                "https://online.spartacodingclub.kr/assets/images/profile/rtan_thumb_01.png"
-              )
-            }
-          >
-            true
-          </button>
-        </span>
-      </div>
-      <div id="grid-wrap">
-        <div id="grid-container" className="App">
-          <span className="cell">
-            <button onClick={() => showToastButton("t-l")}>t-l</button>
-          </span>
-
-          <span className="cell">
-            <button onClick={() => showToastButton("t-c")}>t-c</button>
-          </span>
-
-          <span className="cell">
-            <button onClick={() => showToastButton("t-r")}>t-r</button>
-          </span>
-
-          <span className="cell">
-            <button onClick={() => showToastButton("c-l")}>c-l</button>
-          </span>
-          <span className="cell">
-            <button onClick={() => showToastButton("c-c")}>c-c</button>
-          </span>
-          <span className="cell">
-            <button onClick={() => showToastButton("c-r")}>c-r</button>
-          </span>
-
-          <span className="cell">
-            <button onClick={() => showToastButton("b-l")}>b-l</button>
-          </span>
-          <span className="cell">
-            <button onClick={() => showToastButton("b-c")}>b-c</button>
-          </span>
-          <span className="cell">
-            <button onClick={() => showToastButton("b-r")}>b-r</button>
-          </span>
+          </div>
+          <div className="option-division">
+            <span className="option-cell">
+              <h2>pauseOnHover</h2>
+              <div>
+                <button onClick={(e) => buttonClick(e, "pauseOnHover", false)}>false</button>
+                <button className="pauseOnHover-on" onClick={(e) => buttonClick(e, "pauseOnHover", true)}>
+                  true
+                </button>
+              </div>
+            </span>
+            <span className="option-cell">
+              <h2>closeOnClick</h2>
+              <div>
+                <button onClick={(e) => buttonClick(e, "closeOnClick", false)}>false</button>
+                <button className="closeOnClick-on" onClick={(e) => buttonClick(e, "closeOnClick", true)}>
+                  true
+                </button>
+              </div>
+            </span>
+            <span className="option-cell">
+              <h2>customImage</h2>
+              <div>
+                <button className="customImage-on" onClick={(e) => buttonClick(e, "customImage", false)}>
+                  false
+                </button>
+                <button
+                  onClick={(e) =>
+                    buttonClick(
+                      e,
+                      "customImage",
+                      "https://online.spartacodingclub.kr/assets/images/profile/rtan_thumb_01.png"
+                    )
+                  }
+                >
+                  true
+                </button>
+              </div>
+            </span>
+          </div>
         </div>
-      </div>
+        <div id="grid-wrap">
+          <div id="grid-container" className="App">
+            <span className="cell">
+              <button onClick={() => showToastButton("t-l")}>t-l</button>
+            </span>
+
+            <span className="cell">
+              <button onClick={() => showToastButton("t-c")}>t-c</button>
+            </span>
+
+            <span className="cell">
+              <button onClick={() => showToastButton("t-r")}>t-r</button>
+            </span>
+
+            <span className="cell">
+              <button onClick={() => showToastButton("c-l")}>c-l</button>
+            </span>
+            <span className="cell">
+              <button onClick={() => showToastButton("c-c")}>c-c</button>
+            </span>
+            <span className="cell">
+              <button onClick={() => showToastButton("c-r")}>c-r</button>
+            </span>
+
+            <span className="cell">
+              <button onClick={() => showToastButton("b-l")}>b-l</button>
+            </span>
+            <span className="cell">
+              <button onClick={() => showToastButton("b-c")}>b-c</button>
+            </span>
+            <span className="cell">
+              <button onClick={() => showToastButton("b-r")}>b-r</button>
+            </span>
+          </div>
+        </div>
+      </main>
     </>
   );
 };
