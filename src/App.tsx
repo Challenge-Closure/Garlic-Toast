@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ToastContainer from "./components/ToastContainer";
 import toast from "./utils/toast";
+import { ToastPosition } from "./types/ToastType";
 
 const initialState = {
   type: "alert",
@@ -31,7 +32,7 @@ const App = () => {
     setOption({ ...option, [key]: value });
   };
 
-  const showToastButton = (position) => {
+  const showToastButton = (position: ToastPosition) => {
     if (option.type === "alert") {
       toast.alert("alert message!", {
         ...option,

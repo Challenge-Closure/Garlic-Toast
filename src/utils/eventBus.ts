@@ -13,7 +13,7 @@ const EventBus = () => {
     topics.clear();
   };
 
-  const publish = (topic: string, data: any) => {
+  const publish = (topic: string, data: object) => {
     if (!topics.has(topic)) return;
     topics.get(topic).forEach((listener: any) => listener(data));
   };

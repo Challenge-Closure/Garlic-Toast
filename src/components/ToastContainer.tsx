@@ -4,6 +4,7 @@ import { createPortal } from "react-dom";
 import EventBus from "../utils/eventBus";
 import AlertToast from "./AlertToast";
 import ConfirmToast from "./ConfirmToast";
+import ToastTypeObj from "../types/ToastType";
 
 interface InitiolStateType {
   "t-l": object[];
@@ -73,7 +74,7 @@ const ToastContainer = ({ isFold, position = "t-r", time }: ToastContainerProps)
           const positionToasts = alertToasts[position];
           return positionToasts.length > 0 ? (
             <div className={`alert-container ${position} ${isFold && "isFold"}`} key={position}>
-              {positionToasts.map((toast) => (
+              {positionToasts.map((toast: ToastTypeObj) => (
                 <AlertToast
                   key={toast.id}
                   toast={toast}

@@ -1,7 +1,7 @@
 import EventBus from "./eventBus";
 
 const toast = () => {
-  const alert = (message: string, option: any) => {
+  const alert = (message: string, option: object) => {
     EventBus.publish("SHOW_TOAST", {
       message,
       id: crypto.randomUUID(),
@@ -10,7 +10,7 @@ const toast = () => {
     });
   };
 
-  const error = (message: string, option: any) => {
+  const error = (message: string, option: object) => {
     EventBus.publish("SHOW_TOAST", {
       message,
       id: crypto.randomUUID(),
@@ -19,7 +19,7 @@ const toast = () => {
     });
   };
 
-  const warning = (message: string, option: any) => {
+  const warning = (message: string, option: object) => {
     EventBus.publish("SHOW_TOAST", {
       message,
       id: crypto.randomUUID(),
@@ -28,7 +28,7 @@ const toast = () => {
     });
   };
 
-  const success = (message: string, option: any) => {
+  const success = (message: string, option: object) => {
     EventBus.publish("SHOW_TOAST", {
       message,
       id: crypto.randomUUID(),
@@ -37,7 +37,7 @@ const toast = () => {
     });
   };
 
-  const info = (message: string, option: any) => {
+  const info = (message: string, option: object) => {
     EventBus.publish("SHOW_TOAST", {
       message,
       id: crypto.randomUUID(),
@@ -46,7 +46,7 @@ const toast = () => {
     });
   };
 
-  const confirm = (message: string, option: any) => {
+  const confirm = (message: string, option: object) => {
     return new Promise((resolve) => {
       EventBus.publish("SHOW_CONFIRM_TOAST", { message, ...option, resolve });
     });

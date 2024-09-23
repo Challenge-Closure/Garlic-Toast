@@ -1,11 +1,18 @@
-const ConfirmToast = ({ toast, setConfirmToasts }) => {
-  const handleConfirm = (id, resolve) => {
-    setConfirmToasts((prevToasts) => prevToasts.filter((t) => t.id !== id));
+import ToastTypeObj from "../types/ToastType";
+
+interface ConfirmToastType {
+  toast: ToastTypeObj;
+  setConfirmToasts: Function;
+}
+
+const ConfirmToast = ({ toast, setConfirmToasts }: ConfirmToastType) => {
+  const handleConfirm = (id: string, resolve: Function) => {
+    setConfirmToasts((prevToasts: []) => prevToasts.filter((t: ToastTypeObj) => t.id !== id));
     resolve(true);
   };
 
-  const handleCancel = (id, resolve) => {
-    setConfirmToasts((prevToasts) => prevToasts.filter((t) => t.id !== id));
+  const handleCancel = (id: string, resolve: Function) => {
+    setConfirmToasts((prevToasts: []) => prevToasts.filter((t: ToastTypeObj) => t.id !== id));
     resolve(false);
   };
 

@@ -1,6 +1,14 @@
 import { useEffect, useRef } from "react";
+import ToastTypeObj from "../types/ToastType";
 
-const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }) => {
+interface AlertToastType {
+  toast: ToastTypeObj;
+  containerAutoCloseTime: number;
+  setAlertToasts: Function;
+  position: string;
+}
+
+const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }: AlertToastType) => {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const timerRef = useRef<number | undefined>();
   const remaindRef = useRef<any>(null);
@@ -11,10 +19,12 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime })
       timerRef.current = Date.now() + (toast.autoCloseTime ?? containerAutoCloseTime);
 
       timeoutRef.current = setTimeout(() => {
-        setAlertToasts((prevToasts) => {
+        setAlertToasts((prevToasts: []) => {
           const updatedToasts = { ...prevToasts };
 
-          updatedToasts[toastPosition] = [...updatedToasts[toastPosition].filter((t) => t.id !== toast.id)];
+          updatedToasts[toastPosition] = [
+            ...updatedToasts[toastPosition].filter((t: ToastTypeObj) => t.id !== toast.id)
+          ];
           return updatedToasts;
         });
       }, toast.autoCloseTime ?? containerAutoCloseTime);
@@ -25,7 +35,7 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime })
     setAlertToasts((prevToasts: any) => {
       const updatedToasts = { ...prevToasts };
 
-      updatedToasts[toastPosition] = [...updatedToasts[toastPosition].filter((t) => t.id !== targetId)];
+      updatedToasts[toastPosition] = [...updatedToasts[toastPosition].filter((t: ToastTypeObj) => t.id !== targetId)];
       return updatedToasts;
     });
   };
