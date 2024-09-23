@@ -6,12 +6,12 @@ interface ConfirmToastType {
 }
 
 const ConfirmToast = ({ toast, setConfirmToasts }: ConfirmToastType) => {
-  const handleConfirm = (id: string, resolve: Function) => {
+  const handleConfirm = (id: any, resolve: any) => {
     setConfirmToasts((prevToasts: []) => prevToasts.filter((t: ToastOptionType) => t.id !== id));
     resolve(true);
   };
 
-  const handleCancel = (id: string, resolve: Function) => {
+  const handleCancel = (id: any, resolve: any) => {
     setConfirmToasts((prevToasts: []) => prevToasts.filter((t: ToastOptionType) => t.id !== id));
     resolve(false);
   };
@@ -26,7 +26,7 @@ const ConfirmToast = ({ toast, setConfirmToasts }: ConfirmToastType) => {
       }}
     >
       <div className="inner-box">
-        {toast.customImage ? <img src={toast.customImage} /> : null}
+        {toast.customImage && <img src={toast.customImage} />}
         <div className="message">{toast.message}</div>
         <div className="button-area">
           <button

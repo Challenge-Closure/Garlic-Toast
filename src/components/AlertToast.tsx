@@ -31,7 +31,7 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
     }
   }, []);
 
-  const closeAlert = (targetId: string) => {
+  const closeAlert = (targetId: any) => {
     setAlertToasts((prevToasts: any) => {
       const updatedToasts = { ...prevToasts };
 
@@ -49,7 +49,7 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
     }
   };
 
-  const startTimeout = (toastId: string) => {
+  const startTimeout = (toastId: any) => {
     timerRef.current = Date.now() + remaindRef.current;
     timeoutRef.current = setTimeout(() => {
       setAlertToasts((prevToasts: any) => {

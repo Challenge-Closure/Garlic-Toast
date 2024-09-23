@@ -4,8 +4,7 @@ interface ToastOptionType {
   progressBar: boolean;
   pauseOnHover: boolean;
   closeOnClick: boolean;
-  customImage: boolean | string;
-
+  customImage: undefined | string;
   position?: ToastPosition;
   autoCloseTime?: number;
   id?: string | number;
