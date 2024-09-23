@@ -1,26 +1,26 @@
-import ToastTypeObj from "../types/ToastType";
+import ToastOptionType from "../types/ToastType";
 
 interface ConfirmToastType {
-  toast: ToastTypeObj;
+  toast: ToastOptionType;
   setConfirmToasts: Function;
 }
 
 const ConfirmToast = ({ toast, setConfirmToasts }: ConfirmToastType) => {
   const handleConfirm = (id: string, resolve: Function) => {
-    setConfirmToasts((prevToasts: []) => prevToasts.filter((t: ToastTypeObj) => t.id !== id));
+    setConfirmToasts((prevToasts: []) => prevToasts.filter((t: ToastOptionType) => t.id !== id));
     resolve(true);
   };
 
   const handleCancel = (id: string, resolve: Function) => {
-    setConfirmToasts((prevToasts: []) => prevToasts.filter((t: ToastTypeObj) => t.id !== id));
+    setConfirmToasts((prevToasts: []) => prevToasts.filter((t: ToastOptionType) => t.id !== id));
     resolve(false);
   };
 
   return (
     <div
       className="toast confirm-toast"
-      onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        if (e.target.classList.contains("toast")) {
+      onClick={(e) => {
+        if (e.currentTarget.classList.contains("toast")) {
           handleCancel(toast.id, toast.resolve);
         }
       }}

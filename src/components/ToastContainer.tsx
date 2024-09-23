@@ -4,18 +4,18 @@ import { createPortal } from "react-dom";
 import EventBus from "../utils/eventBus";
 import AlertToast from "./AlertToast";
 import ConfirmToast from "./ConfirmToast";
-import ToastTypeObj from "../types/ToastType";
+import ToastOptionType from "../types/ToastType";
 
 interface InitiolStateType {
-  "t-l": object[];
-  "t-c": object[];
-  "t-r": object[];
-  "c-l": object[];
-  "c-c": object[];
-  "c-r": object[];
-  "b-l": object[];
-  "b-c": object[];
-  "b-r": object[];
+  "t-l": object | string[];
+  "t-c": object | string[];
+  "t-r": object | string[];
+  "c-l": object | string[];
+  "c-c": object | string[];
+  "c-r": object | string[];
+  "b-l": object | string[];
+  "b-c": object | string[];
+  "b-r": object | string[];
 }
 const initialState = {
   "t-l": [],
@@ -36,13 +36,13 @@ interface ToastContainerProps {
 }
 
 const ToastContainer = ({ isFold, position = "t-r", time }: ToastContainerProps) => {
-  const [alertToasts, setAlertToasts] = useState<InitiolStateType>(initialState);
+  const [alertToasts, setAlertToasts] = useState<any>(initialState);
   const [confirmToasts, setConfirmToasts] = useState<any[]>([]);
 
   useEffect(() => {
-    const handleToastEvent = (toast: any) => {
+    const handleToastEvent = (toast: ToastOptionType) => {
       const toastPosition = toast.position ?? position;
-      setAlertToasts((prevToasts) => {
+      setAlertToasts((prevToasts: any) => {
         const updatedToasts = { ...prevToasts };
 
         isFold
@@ -58,7 +58,7 @@ const ToastContainer = ({ isFold, position = "t-r", time }: ToastContainerProps)
         ...toast,
         confirm: true
       };
-      setConfirmToasts((prevToasts) => [confirmToast, ...prevToasts]);
+      setConfirmToasts((prevToasts: any) => [confirmToast, ...prevToasts]);
     };
 
     EventBus.subscribe("SHOW_TOAST", handleToastEvent);
@@ -74,7 +74,7 @@ const ToastContainer = ({ isFold, position = "t-r", time }: ToastContainerProps)
           const positionToasts = alertToasts[position];
           return positionToasts.length > 0 ? (
             <div className={`alert-container ${position} ${isFold && "isFold"}`} key={position}>
-              {positionToasts.map((toast: ToastTypeObj) => (
+              {positionToasts.map((toast: ToastOptionType) => (
                 <AlertToast
                   key={toast.id}
                   toast={toast}
@@ -87,7 +87,7 @@ const ToastContainer = ({ isFold, position = "t-r", time }: ToastContainerProps)
           ) : null;
         })}
 
-        {confirmToasts.map((toast) => (
+        {confirmToasts.map((toast: ToastOptionType) => (
           <ConfirmToast key={toast.id} toast={toast} setConfirmToasts={setConfirmToasts} />
         ))}
       </div>

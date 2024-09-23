@@ -1,3 +1,5 @@
+import ToastOptionType from "../types/ToastType";
+
 const EventBus = () => {
   const topics = new Map();
 
@@ -13,7 +15,7 @@ const EventBus = () => {
     topics.clear();
   };
 
-  const publish = (topic: string, data: object) => {
+  const publish = (topic: string, data: ToastOptionType) => {
     if (!topics.has(topic)) return;
     topics.get(topic).forEach((listener: any) => listener(data));
   };
@@ -22,10 +24,3 @@ const EventBus = () => {
 };
 
 export default EventBus();
-
-// interface ArlertData {
-//   message: string;
-//   id: string;
-//   type: string;
-// ...option
-// }

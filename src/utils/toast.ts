@@ -1,52 +1,53 @@
+import ToastOptionType from "../types/ToastType";
 import EventBus from "./eventBus";
 
 const toast = () => {
-  const alert = (message: string, option: object) => {
+  const alert = (message: string, option: ToastOptionType) => {
     EventBus.publish("SHOW_TOAST", {
+      ...option,
       message,
-      id: crypto.randomUUID(),
-      type: "normal",
-      ...option
+      id: Date.now(),
+      type: "normal"
     });
   };
 
-  const error = (message: string, option: object) => {
+  const error = (message: string, option: ToastOptionType) => {
     EventBus.publish("SHOW_TOAST", {
+      ...option,
       message,
-      id: crypto.randomUUID(),
-      type: "error",
-      ...option
+      id: Date.now(),
+      type: "error"
     });
   };
 
-  const warning = (message: string, option: object) => {
+  const warning = (message: string, option: ToastOptionType) => {
     EventBus.publish("SHOW_TOAST", {
+      ...option,
       message,
-      id: crypto.randomUUID(),
-      type: "warning",
-      ...option
+      id: Date.now(),
+      type: "warning"
     });
   };
 
-  const success = (message: string, option: object) => {
+  const success = (message: string, option: ToastOptionType) => {
     EventBus.publish("SHOW_TOAST", {
+      ...option,
       message,
-      id: crypto.randomUUID(),
-      type: "success",
-      ...option
+      id: Date.now(),
+      type: "success"
     });
   };
 
-  const info = (message: string, option: object) => {
+  const info = (message: string, option: ToastOptionType) => {
     EventBus.publish("SHOW_TOAST", {
+      ...option,
       message,
-      id: crypto.randomUUID(),
-      type: "info",
-      ...option
+      id: Date.now(),
+      type: "info"
     });
   };
 
-  const confirm = (message: string, option: object) => {
+  const confirm = (message: string, option: ToastOptionType) => {
     return new Promise((resolve) => {
       EventBus.publish("SHOW_CONFIRM_TOAST", { message, ...option, resolve });
     });
@@ -56,13 +57,3 @@ const toast = () => {
 };
 
 export default toast();
-
-interface AlertOptionType {
-  position: string;
-  autoClose: boolean;
-  progressBar: boolean;
-  pauseOnHover: boolean;
-  autoCloseTime: number;
-  closeOnClick: boolean;
-  customImage: string;
-}

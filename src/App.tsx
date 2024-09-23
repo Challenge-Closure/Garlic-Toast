@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ToastContainer from "./components/ToastContainer";
 import toast from "./utils/toast";
-import { ToastPosition } from "./types/ToastType";
+import ToastOptionType, { ToastPosition } from "./types/ToastType";
 
 const initialState = {
   type: "alert",
@@ -12,24 +12,16 @@ const initialState = {
   customImage: false
 };
 
-interface initialStateType {
-  type: string;
-  autoClose: boolean;
-  progressBar: boolean;
-  pauseOnHover: boolean;
-  closeOnClick: boolean;
-  customImage: boolean | string;
-}
-
 const App = () => {
-  const [option, setOption] = useState<initialStateType>(initialState);
+  const [option, setOption] = useState<ToastOptionType>(initialState);
 
-  const buttonClick = (e, key, value) => {
-    if (document.querySelectorAll(`.${key}-on`).length !== 0) {
-      document.querySelector(`.${key}-on`).classList.remove(`${key}-on`);
+  const buttonClick = (e: React.MouseEvent<HTMLButtonElement>, key: keyof ToastOptionType, value: string | boolean) => {
+    const activeElement = document.querySelector(`.${key}-on`);
+    if (activeElement) {
+      activeElement.classList.remove(`${key}-on`);
     }
-    e.target.classList.add(`${key}-on`);
-    setOption({ ...option, [key]: value });
+    e.currentTarget.classList.add(`${key}-on`);
+    setOption((prev) => ({ ...prev, [key]: value }));
   };
 
   const showToastButton = (position: ToastPosition) => {
@@ -48,7 +40,7 @@ const App = () => {
     } else if (option.type === "info") {
       toast.info("info message!", { ...option, position: position });
     } else if (option.type === "confirm") {
-      toast.confirm("confirm?", null).then((res) => {
+      toast.confirm("confirm?", { ...option }).then((res: any) => {
         if (res) {
           toast.alert("킹킹 준호님", { ...option });
         } else {

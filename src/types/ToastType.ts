@@ -1,19 +1,20 @@
-interface ToastTypeObj {
-  position: ToastPosition;
+interface ToastOptionType {
+  type: ToastType | string;
   autoClose: boolean;
-  autoCloseTime: number;
-  closeOnClick: boolean;
-  id: string;
-  type: ToastTypeObj;
-  pauseOnHover: boolean;
-  customImage: undefined | string;
-  message: string;
   progressBar: boolean;
-  resolve: Function;
+  pauseOnHover: boolean;
+  closeOnClick: boolean;
+  customImage: boolean | string;
+
+  position?: ToastPosition;
+  autoCloseTime?: number;
+  id?: string | number;
+  message?: string;
+  resolve?: Function;
 }
 
-export default ToastTypeObj;
+export default ToastOptionType;
 
 export type ToastPosition = "t-l" | "t-c" | "t-r" | "c-l" | "c-c" | "c-r" | "b-l" | "b-c" | "b-r";
 
-export type ToastType = "normal" | "error" | "warning" | "success" | "info";
+export type ToastType = "normal" | "error" | "warning" | "success" | "info" | "alert" | "confirm";
