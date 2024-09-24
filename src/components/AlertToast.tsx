@@ -1,18 +1,21 @@
 import { useEffect, useRef } from "react";
 import { AlertToastType, ToastOptionType } from "../types/ToastType";
 
+interface TimerType {
+  setTimeout: NodeJS.Timeout | null;
+  remaind: number;
+  timer: number;
+}
+
 const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }: AlertToastType) => {
-  // NOTE 객체로 묶기
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const timerRef = useRef<number>(0);
-  const remaindRef = useRef<number>(0);
+  const timerRef = useRef<TimerType>({ setTimeout: null, remaind: 0, timer: 0 });
 
   const toastPosition = toast.position ?? position;
   useEffect(() => {
     if (toast.autoClose) {
-      timerRef.current = Date.now() + (toast.autoCloseTime ?? containerAutoCloseTime);
+      timerRef.current.timer = Date.now() + (toast.autoCloseTime ?? containerAutoCloseTime);
 
-      timeoutRef.current = setTimeout(() => {
+      timerRef.current.setTimeout = setTimeout(() => {
         setAlertToasts((prevToasts: any) => {
           const updatedToasts = { ...prevToasts };
 
@@ -37,15 +40,15 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
   };
 
   const stopTimeout = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      remaindRef.current = timerRef.current - Date.now();
+    if (timerRef.current.setTimeout) {
+      clearTimeout(timerRef.current.setTimeout);
+      timerRef.current.remaind = timerRef.current.timer - Date.now();
     }
   };
 
   const startTimeout = (toastId: any) => {
-    timerRef.current = Date.now() + remaindRef.current;
-    timeoutRef.current = setTimeout(() => {
+    timerRef.current.timer = Date.now() + timerRef.current.remaind;
+    timerRef.current.setTimeout = setTimeout(() => {
       setAlertToasts((prevToasts: any) => {
         const updatedToasts = { ...prevToasts };
 
@@ -54,14 +57,14 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
         ];
         return updatedToasts;
       });
-    }, remaindRef.current);
+    }, timerRef.current.remaind);
   };
 
   return (
     <>
       <div
         className={`toast ${toast.type}`}
-        style={{ background: toast.bg }}
+        style={{ background: toast.color }}
         onClick={() => toast.closeOnClick && closeAlert(toast.id)}
         onMouseEnter={(e) => {
           toast.autoClose && toast.pauseOnHover && (e.currentTarget.classList.add("on"), stopTimeout());
@@ -72,7 +75,7 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
       >
         <div className="inner">
           {toast.customImage ? <img src={toast.customImage} /> : null}
-          <div className="message" style={{ color: toast.color }}>
+          <div className="message" style={{ color: toast.textColor }}>
             {toast.message}
           </div>
         </div>
@@ -88,7 +91,7 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
         <span
           className="toast-close"
           style={{
-            color: toast.color || `var(--${toast.type}-text)`
+            color: toast.textColor || `var(--${toast.type}-text)`
           }}
           onClick={() => closeAlert(toast.id)}
         >

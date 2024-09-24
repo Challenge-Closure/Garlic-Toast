@@ -1,6 +1,6 @@
 # 스파르타 토스트
 
-## [소개](#1-소개)
+## 소개
 
 - ### 사용 편의성과 간편한 커스터마이징에 초점을 맞춘 toast입니다.
 
@@ -9,19 +9,19 @@
 
 [Demo Site](https://first-sparta-open-source-library.vercel.app)
 
-## 사용 방법
-
 ## 목차
 
-### [1. 소개](#1-소개)
+### [1. 소개](#소개)
 
-### [2. 목차](#2-목차)
+### [2. Demo Site](#demo-site)
 
-### [3. 사용 방법](#3-사용-방법)
+### [3. 목차](#목차)
 
-### [4. 설정 방법](#4-설정-방법)
+### [4. 사용 방법](#사용-방법)
 
-## [사용 방법](#3-사용-방법)
+### [5. 설정 방법](#설정-방법)
+
+## 사용 방법
 
 ### 1. `ToastContainer`를 import 하여 toast를 사용할 컴포넌트에서 `<ToastContainer/ >`형태로 실행 해준다.
 
@@ -75,7 +75,7 @@ toast.info(메세지 내용, 옵션)
 toast.confirm(메세지 내용, 옵션)
 ```
 
-## [설정 방법](#4-설정-방법)
+## 설정 방법
 
 #### position 종류
 
@@ -105,13 +105,13 @@ toast.confirm(메세지 내용, 옵션)
 
 - 알림을 보여줄 위치를 설정합니다.
 
-#### 2. color
+#### 2. textColor
 
 - 글자의 색상을 설정합니다.
 
-#### 3. bg
+#### 3. color
 
-- 배경색을 설정합니다.
+- 알림의 배경색을 설정합니다.
 
 #### 4. closeOnClick
 
@@ -141,19 +141,39 @@ toast.confirm(메세지 내용, 옵션)
 
 - 알림에 사용할 이미지를 설정합니다.
 
+#### 11. confirmBtn
+
+- 확인 버튼의 문구를 설정합니다.
+
+#### 12. cancleBtn
+
+- 취소 버튼의 문구를 설정합니다.
+
+#### 13. confirmBtnColor
+
+- 확인 버튼의 색상을 설정합니다.
+
+#### 14. cancleBtnColor
+
+- 취소 버튼의 색상을 설정합니다.
+
 #### 사용 예시
 
 ```
 toast.info("정보입니다.", {
-      position: position,          // 행(t, c, b) 과 열(l, c, r)을 조합하여 위치 설정
-      color: 색상,                  // 알림 글씨의 색상 지정
-      bg: 색상,                     // 토스트 배경 색상 지정
-      closeOnClick: true/false,    // 알림을 클릭하여 닫을 지 설정
-      autoClose: true/false,       // 알림을 자동으로 닫기게 할 지 설정
-      autoCloseTime: 숫자,          // 몇 ms 후 알림을 닫을 지 설정
-      progressBar: true/false,     // progressBar를 보이게 할 지 설정
-      barColor: 색상,               // progressBar의 색상 설정
-      pauseOnHover: true/false,    // 알림에 마우스를 올렸을 때 알림을 일시정지 할 지 설정
-      customImage: imageURL        // 원하는 이미지를 알림에 보이도록 설정
+      position: position,             // 행(t, c, b) 과 열(l, c, r)을 조합하여 위치 설정
+      textColor: 문구 색상,             // 알림 글씨의 색상 지정
+      color: 알림 색상,                 // 토스트 배경 색상 지정
+      closeOnClick: true/false,       // 알림을 클릭하여 닫을 지 설정
+      autoClose: true/false,          // 알림을 자동으로 닫기게 할 지 설정
+      autoCloseTime: 숫자,             // 몇 ms 후 알림을 닫을 지 설정
+      progressBar: true/false,        // progressBar를 보이게 할 지 설정
+      barColor: 색상,                  // progressBar의 색상 설정
+      pauseOnHover: true/false,       // 알림에 마우스를 올렸을 때 알림을 일시정지 할 지 설정
+      customImage: imageURL           // 원하는 이미지를 알림에 보이도록 설정
+      confirmBtn: 확인 버튼 문구,         // 확인 버튼 문구 설정
+      cancleBtn: 취소 버튼 문구,          // 취소 버튼 문구 설정
+      confirmBtnColor: 확인 버튼 색상,    // 확인 버튼 색상 설정
+      cancleBtnColor: 취소 버튼 색상      // 취소 버튼 색상 설정
     });
 ```
