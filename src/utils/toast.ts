@@ -1,8 +1,17 @@
 import { ToastOptionType } from "../types/ToastType";
 import EventBus from "./eventBus";
 
+const initialState = {
+  autoClose: true,
+  progressBar: true,
+  pauseOnHover: true,
+  closeOnClick: true,
+  customImage: undefined,
+  autoCloaseTime: 3000
+};
+
 const toast = () => {
-  const alert = (message: string, option: ToastOptionType) => {
+  const alert = (message: string, option: ToastOptionType = initialState) => {
     EventBus.publish("SHOW_TOAST", {
       ...option,
       message,
@@ -11,7 +20,7 @@ const toast = () => {
     });
   };
 
-  const error = (message: string, option: ToastOptionType) => {
+  const error = (message: string, option: ToastOptionType = initialState) => {
     EventBus.publish("SHOW_TOAST", {
       ...option,
       message,
@@ -20,7 +29,7 @@ const toast = () => {
     });
   };
 
-  const warning = (message: string, option: ToastOptionType) => {
+  const warning = (message: string, option: ToastOptionType = initialState) => {
     EventBus.publish("SHOW_TOAST", {
       ...option,
       message,
@@ -29,7 +38,7 @@ const toast = () => {
     });
   };
 
-  const success = (message: string, option: ToastOptionType) => {
+  const success = (message: string, option: ToastOptionType = initialState) => {
     EventBus.publish("SHOW_TOAST", {
       ...option,
       message,
@@ -38,7 +47,7 @@ const toast = () => {
     });
   };
 
-  const info = (message: string, option: ToastOptionType) => {
+  const info = (message: string, option: ToastOptionType = initialState) => {
     EventBus.publish("SHOW_TOAST", {
       ...option,
       message,
@@ -47,7 +56,7 @@ const toast = () => {
     });
   };
 
-  const confirm = (message: string, option: ToastOptionType) => {
+  const confirm = (message: string, option: ToastOptionType = initialState) => {
     return new Promise((resolve) => {
       EventBus.publish("SHOW_CONFIRM_TOAST", { message, ...option, resolve });
     });

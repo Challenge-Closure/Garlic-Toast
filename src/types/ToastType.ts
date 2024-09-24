@@ -3,20 +3,20 @@ export type ToastPosition = "t-l" | "t-c" | "t-r" | "c-l" | "c-c" | "c-r" | "b-l
 export type ToastType = "normal" | "error" | "warning" | "success" | "info" | "alert" | "confirm";
 
 export interface ToastOptionType {
-  type?: ToastType | string;
-  autoClose?: boolean;
-  progressBar?: boolean;
-  pauseOnHover?: boolean;
-  closeOnClick?: boolean;
-  customImage?: undefined | string;
-  position?: ToastPosition;
-  autoCloseTime?: number;
   id?: string | number;
-  message?: string;
   resolve?: Function;
   color?: string;
   bg?: string;
   barColor?: string;
+  message?: string;
+  type?: ToastType | string;
+  autoClose?: boolean;
+  closeOnClick?: boolean;
+  autoCloseTime?: number;
+  progressBar?: boolean;
+  position?: ToastPosition;
+  pauseOnHover?: boolean;
+  customImage?: undefined | string;
 }
 
 export interface AlertToastType {
