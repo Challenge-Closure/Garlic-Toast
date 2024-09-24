@@ -6,7 +6,7 @@ import AlertToast from "./AlertToast";
 import ConfirmToast from "./ConfirmToast";
 import { ToastOptionType } from "../types/ToastType";
 
-const initialState = {
+const initialState: Record<string, ToastOptionType[]> = {
   "t-l": [],
   "t-c": [],
   "t-r": [],

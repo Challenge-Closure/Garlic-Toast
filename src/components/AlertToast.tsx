@@ -6,6 +6,7 @@ interface TimerType {
   remaind: number;
   timer: number;
 }
+
 const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }: AlertToastType) => {
   const timerRef = useRef<TimerType>({ setTimeout: null, remaind: 0, timer: 0 });
 

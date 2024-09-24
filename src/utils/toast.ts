@@ -56,7 +56,7 @@ const toast = () => {
     });
   };
 
-  const confirm = (message: string, option: ToastOptionType = initialState) => {
+  const confirm = (message: string, option: ToastOptionType = initialState): Promise<boolean> => {
     return new Promise((resolve) => {
       EventBus.publish("SHOW_CONFIRM_TOAST", { message, ...option, resolve });
     });
