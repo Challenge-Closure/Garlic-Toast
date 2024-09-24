@@ -1,27 +1,29 @@
 import { useEffect, useRef } from "react";
+import ToastOptionType from "../types/ToastType";
 
-const AlertToast = ({
-  toast,
-  position,
-  setAlertToasts,
-  containerAutoCloseTime,
-}) => {
-  const timeoutRef = useRef(null);
-  const timerRef = useRef(null);
-  const remaindRef = useRef(null);
+interface AlertToastType {
+  toast: ToastOptionType;
+  containerAutoCloseTime: number;
+  setAlertToasts: Function;
+  position: string;
+}
+
+const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }: AlertToastType) => {
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<number>(0);
+  const remaindRef = useRef<number>(0);
 
   const toastPosition = toast.position ?? position;
   useEffect(() => {
     if (toast.autoClose) {
-      timerRef.current =
-        Date.now() + (toast.autoCloseTime ?? containerAutoCloseTime);
+      timerRef.current = Date.now() + (toast.autoCloseTime ?? containerAutoCloseTime);
 
       timeoutRef.current = setTimeout(() => {
-        setAlertToasts((prevToasts) => {
+        setAlertToasts((prevToasts: any) => {
           const updatedToasts = { ...prevToasts };
 
           updatedToasts[toastPosition] = [
-            ...updatedToasts[toastPosition].filter((t) => t.id !== toast.id),
+            ...updatedToasts[toastPosition].filter((t: ToastOptionType) => t.id !== toast.id)
           ];
           return updatedToasts;
         });
@@ -29,12 +31,12 @@ const AlertToast = ({
     }
   }, []);
 
-  const closeAlert = (targetId) => {
-    setAlertToasts((prevToasts) => {
+  const closeAlert = (targetId: any) => {
+    setAlertToasts((prevToasts: any) => {
       const updatedToasts = { ...prevToasts };
 
       updatedToasts[toastPosition] = [
-        ...updatedToasts[toastPosition].filter((t) => t.id !== targetId),
+        ...updatedToasts[toastPosition].filter((t: ToastOptionType) => t.id !== targetId)
       ];
       return updatedToasts;
     });
@@ -47,14 +49,14 @@ const AlertToast = ({
     }
   };
 
-  const startTimeout = (toastId) => {
+  const startTimeout = (toastId: any) => {
     timerRef.current = Date.now() + remaindRef.current;
     timeoutRef.current = setTimeout(() => {
-      setAlertToasts((prevToasts) => {
+      setAlertToasts((prevToasts: any) => {
         const updatedToasts = { ...prevToasts };
 
         updatedToasts[toastPosition] = [
-          ...updatedToasts[toastPosition].filter((t) => t.id !== toastId),
+          ...updatedToasts[toastPosition].filter((t: ToastOptionType) => t.id !== toastId)
         ];
         return updatedToasts;
       });
@@ -67,14 +69,10 @@ const AlertToast = ({
         className={`toast ${toast.type}`}
         onClick={() => toast.closeOnClick && closeAlert(toast.id)}
         onMouseEnter={(e) => {
-          toast.autoClose &&
-            toast.pauseOnHover &&
-            (e.target.classList.add("on"), stopTimeout());
+          toast.autoClose && toast.pauseOnHover && (e.currentTarget.classList.add("on"), stopTimeout());
         }}
         onMouseLeave={(e) => {
-          toast.autoClose &&
-            toast.pauseOnHover &&
-            (e.target.classList.remove("on"), startTimeout(toast.id));
+          toast.autoClose && toast.pauseOnHover && (e.currentTarget.classList.remove("on"), startTimeout(toast.id));
         }}
       >
         <div className="inner">
@@ -86,16 +84,14 @@ const AlertToast = ({
             className="progress"
             style={{
               background: `var(--${toast.type}-text)`,
-              animationDuration: `${
-                toast.autoCloseTime ?? containerAutoCloseTime
-              }ms`,
+              animationDuration: `${toast.autoCloseTime ?? containerAutoCloseTime}ms`
             }}
           ></div>
         )}
         <span
           className="toast-close"
           style={{
-            color: `var(--${toast.type}-text)`,
+            color: `var(--${toast.type}-text)`
           }}
           onClick={() => closeAlert(toast.id)}
         >
