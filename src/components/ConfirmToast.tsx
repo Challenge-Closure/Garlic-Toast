@@ -1,5 +1,4 @@
 import { ToastOptionType } from "../types/ToastType";
-import toast from "../utils/toast";
 
 interface ConfirmToastType {
   toast: ToastOptionType;
@@ -57,8 +56,3 @@ const ConfirmToast = ({ toast, setConfirmToasts }: ConfirmToastType) => {
 };
 
 export default ConfirmToast;
-
-
-toast.confirm("출력메세지", {
-  cancleBtnColor: "red"
-});
