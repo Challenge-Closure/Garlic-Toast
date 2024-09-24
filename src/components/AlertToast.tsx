@@ -1,14 +1,8 @@
 import { useEffect, useRef } from "react";
-import ToastOptionType from "../types/ToastType";
-
-interface AlertToastType {
-  toast: ToastOptionType;
-  containerAutoCloseTime: number;
-  setAlertToasts: Function;
-  position: string;
-}
+import { AlertToastType, ToastOptionType } from "../types/ToastType";
 
 const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }: AlertToastType) => {
+  // NOTE 객체로 묶기
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const timerRef = useRef<number>(0);
   const remaindRef = useRef<number>(0);
@@ -67,6 +61,7 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
     <>
       <div
         className={`toast ${toast.type}`}
+        style={{ background: toast.bg }}
         onClick={() => toast.closeOnClick && closeAlert(toast.id)}
         onMouseEnter={(e) => {
           toast.autoClose && toast.pauseOnHover && (e.currentTarget.classList.add("on"), stopTimeout());
@@ -77,13 +72,15 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
       >
         <div className="inner">
           {toast.customImage ? <img src={toast.customImage} /> : null}
-          <div className="message">{toast.message}</div>
+          <div className="message" style={{ color: toast.color }}>
+            {toast.message}
+          </div>
         </div>
         {toast.autoClose && toast.progressBar && (
           <div
             className="progress"
             style={{
-              background: `var(--${toast.type}-text)`,
+              background: toast.barColor || `var(--${toast.type}-text)`,
               animationDuration: `${toast.autoCloseTime ?? containerAutoCloseTime}ms`
             }}
           ></div>
@@ -91,7 +88,7 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
         <span
           className="toast-close"
           style={{
-            color: `var(--${toast.type}-text)`
+            color: toast.color || `var(--${toast.type}-text)`
           }}
           onClick={() => closeAlert(toast.id)}
         >

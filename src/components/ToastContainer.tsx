@@ -4,19 +4,8 @@ import { createPortal } from "react-dom";
 import EventBus from "../utils/eventBus";
 import AlertToast from "./AlertToast";
 import ConfirmToast from "./ConfirmToast";
-import ToastOptionType from "../types/ToastType";
+import { ToastOptionType } from "../types/ToastType";
 
-interface InitiolStateType {
-  "t-l": object | string[];
-  "t-c": object | string[];
-  "t-r": object | string[];
-  "c-l": object | string[];
-  "c-c": object | string[];
-  "c-r": object | string[];
-  "b-l": object | string[];
-  "b-c": object | string[];
-  "b-r": object | string[];
-}
 const initialState = {
   "t-l": [],
   "t-c": [],
@@ -64,7 +53,10 @@ const ToastContainer = ({ isFold, position = "t-r", time }: ToastContainerProps)
     EventBus.subscribe("SHOW_TOAST", handleToastEvent);
     EventBus.subscribe("SHOW_CONFIRM_TOAST", handleConfirmToastEvent);
 
-    return () => EventBus.unsubscribe();
+    return () => {
+      EventBus.unsubscribe("SHOW_TOAST");
+      EventBus.unsubscribe("SHOW_CONFIRM_TOAST");
+    };
   }, []);
 
   return createPortal(
@@ -72,19 +64,21 @@ const ToastContainer = ({ isFold, position = "t-r", time }: ToastContainerProps)
       <div className={`toast-container`}>
         {Object.keys(alertToasts).map((position) => {
           const positionToasts = alertToasts[position];
-          return positionToasts.length > 0 ? (
-            <div className={`alert-container ${position} ${isFold && "isFold"}`} key={position}>
-              {positionToasts.map((toast: ToastOptionType) => (
-                <AlertToast
-                  key={toast.id}
-                  toast={toast}
-                  containerAutoCloseTime={time}
-                  setAlertToasts={setAlertToasts}
-                  position={position}
-                />
-              ))}
-            </div>
-          ) : null;
+          return (
+            !!positionToasts.length && (
+              <div className={`alert-container ${position} ${isFold && "isFold"}`} key={position}>
+                {positionToasts.map((toast: ToastOptionType) => (
+                  <AlertToast
+                    key={toast.id}
+                    toast={toast}
+                    containerAutoCloseTime={time}
+                    setAlertToasts={setAlertToasts}
+                    position={position}
+                  />
+                ))}
+              </div>
+            )
+          );
         })}
 
         {confirmToasts.map((toast: ToastOptionType) => (

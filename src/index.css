@@ -85,7 +85,7 @@ button {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
-  width: 60vw;
+  width: 50vw;
   height: 80vh;
   gap: 10px;
 }

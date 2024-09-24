@@ -2,21 +2,7 @@
 
 ## 소개
 
-- ### portal과 pub/sub 패턴을 이용하여 만든 커스텀 toast입니다.
-
-## 주요 기능
-
-- ### 기본 alert
-
-- ### error
-
-- ### warning
-
-- ### success
-
-- ### info
-
-- ### confirm
+- ### 사용 편의성과 간편한 커스터마이징에 초점을 맞춘 toast입니다.
 
 ## 사용 방법
 
@@ -36,44 +22,121 @@ toast.confirm(내용).then(isConfirm => {
 
 ### 와 같은 형식으로 사용한다.
 
+- ### 기본 alert
+
+```
+toast.alert(메세지 내용, 옵션)
+```
+
+- ### success
+
+```
+toast.success(메세지 내용, 옵션)
+```
+
+- ### error
+
+```
+toast.error(메세지 내용, 옵션)
+```
+
+- ### warning
+
+```
+toast.warning(메세지 내용, 옵션)
+```
+
+- ### info
+
+```
+toast.info(메세지 내용, 옵션)
+```
+
+- ### confirm
+
+```
+toast.confirm(메세지 내용, 옵션)
+```
+
 ## 설정 방법
 
 #### position 종류
 
-|     |     |     |
-| :-: | :-: | :-: |
-| t-l | t-c | t-r |
-| c-l | c-c | c-r |
-| b-l | b-c | b-r |
+- #### top, center, bottom과 left, center, right를 조합하여 토스트의 위치를 설정할 수 있습니다.
+  |     |     |     |
+  | :-: | :-: | :-: |
+  | t-l | t-c | t-r |
+  | c-l | c-c | c-r |
+  | b-l | b-c | b-r |
 
-### 전체 설정 방법
+### 전체 설정
+
+- ### 전체적인 토스트의 설정을 할 수 있습니다.
 
 #### `<ToastContainer />`에 position과 time(ms)을 props로 내려준다. <br/>
 
 #### ex) `<ToastContainer position="t-r" time={5000} />`<br/>
 
-- time(ms) 후 알림이 사라집니다.
-- isFold true 시 3개까지 스택이 쌓이고, false 시 스택이 쌓이지 않고 나열됩니다.
+- ##### time(ms) 후 알림이 사라집니다.
+- ##### isFold true 시 3개까지 스택이 쌓이고, false 시 스택이 쌓이지 않고 나열됩니다.
 
-### 부분 설정 방법
+### 부분 설정
+
+- ### 필요한 옵션만 추가하여 사용할 수 있습니다.
+
+#### 1. position
+
+- 알림을 보여줄 위치를 설정합니다.
+
+#### 2. color
+
+- 글자의 색상을 설정합니다.
+
+#### 3. bg
+
+- 배경색을 설정합니다.
+
+#### 4. closeOnClick
+
+- 알림을 클릭하여 닫을 지 설정합니다.
+
+#### 5. autoClose
+
+- 알림을 자동으로 닫히게 할 지 설정합니다.
+
+#### 6. autoCloseTime
+
+- 몇 ms 후 알림을 닫을 지 설정합니다.
+
+#### 7. progressBar
+
+- progressBar를 보여줄 지 설정합니다.
+
+#### 8. barColor
+
+- progressBar의 색상을 설정합니다.
+
+#### 9. pauseOnHover
+
+- 알림에 마우스를 올렸을 때 알림의 시간을 일시정지 할 지 설정합니다.
+
+#### 10. customImage
+
+- 알림에 사용할 이미지를 설정합니다.
+
+#### 사용 예시
 
 ```
-toast.info("info", {
+toast.info("정보입니다.", {
       position: position,          // 행(t, c, b) 과 열(l, c, r)을 조합하여 위치 설정
-      autoClose: true/false,       // 알림을 자동으로 닫기게 할 지 설정
-      progressBar: true/false,     // progressBar를 보이게 할 지 설정
-      pauseOnHover: true/false,    // 알림에 마우스를 올렸을 때 알림을 일시정지 할 지 설정
-      autoCloseTime: 숫자,          // 몇 ms 후 알림을 닫을 지 설정
+      color: 색상,                  // 알림 글씨의 색상 지정
+      bg: 색상,                     // 토스트 배경 색상 지정
       closeOnClick: true/false,    // 알림을 클릭하여 닫을 지 설정
+      autoClose: true/false,       // 알림을 자동으로 닫기게 할 지 설정
+      autoCloseTime: 숫자,          // 몇 ms 후 알림을 닫을 지 설정
+      progressBar: true/false,     // progressBar를 보이게 할 지 설정
+      barColor: 색상,               // progressBar의 색상 설정
+      pauseOnHover: true/false,    // 알림에 마우스를 올렸을 때 알림을 일시정지 할 지 설정
       customImage: imageURL        // 원하는 이미지를 알림에 보이도록 설정
     });
 ```
-
-## 업데이트 예정
-
-- promise 로딩 알림
-- 옵션 상수
-- 자유롭고 편리한 css 설정
-- 폭탄이 터지는 듯한 효과
-- 다양한 색상
-- 다양한 애니메이션 효과
