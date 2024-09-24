@@ -141,19 +141,39 @@ toast.confirm(메세지 내용, 옵션)
 
 - 알림에 사용할 이미지를 설정합니다.
 
+#### 11. confirmBtn
+
+- 확인 버튼의 문구를 설정합니다.
+
+#### 12. cancleBtn
+
+- 취소 버튼의 문구를 설정합니다.
+
+#### 13. confirmBtnColor
+
+- 확인 버튼의 색상을 설정합니다.
+
+#### 14. cancleBtnColor
+
+- 취소 버튼의 색상을 설정합니다.
+
 #### 사용 예시
 
 ```
 toast.info("정보입니다.", {
-      position: position,          // 행(t, c, b) 과 열(l, c, r)을 조합하여 위치 설정
-      color: 색상,                  // 알림 글씨의 색상 지정
-      bg: 색상,                     // 토스트 배경 색상 지정
-      closeOnClick: true/false,    // 알림을 클릭하여 닫을 지 설정
-      autoClose: true/false,       // 알림을 자동으로 닫기게 할 지 설정
-      autoCloseTime: 숫자,          // 몇 ms 후 알림을 닫을 지 설정
-      progressBar: true/false,     // progressBar를 보이게 할 지 설정
-      barColor: 색상,               // progressBar의 색상 설정
-      pauseOnHover: true/false,    // 알림에 마우스를 올렸을 때 알림을 일시정지 할 지 설정
-      customImage: imageURL        // 원하는 이미지를 알림에 보이도록 설정
+      position: position,             // 행(t, c, b) 과 열(l, c, r)을 조합하여 위치 설정
+      textColor: 문구 색상,             // 알림 글씨의 색상 지정
+      color: 알림 색상,                 // 토스트 배경 색상 지정
+      closeOnClick: true/false,       // 알림을 클릭하여 닫을 지 설정
+      autoClose: true/false,          // 알림을 자동으로 닫기게 할 지 설정
+      autoCloseTime: 숫자,             // 몇 ms 후 알림을 닫을 지 설정
+      progressBar: true/false,        // progressBar를 보이게 할 지 설정
+      barColor: 색상,                  // progressBar의 색상 설정
+      pauseOnHover: true/false,       // 알림에 마우스를 올렸을 때 알림을 일시정지 할 지 설정
+      customImage: imageURL           // 원하는 이미지를 알림에 보이도록 설정
+      confirmBtn: 확인 버튼 문구,         // 확인 버튼 문구 설정
+      cancleBtn: 취소 버튼 문구,          // 취소 버튼 문구 설정
+      confirmBtnColor: 확인 버튼 색상,    // 확인 버튼 색상 설정
+      cancleBtnColor: 취소 버튼 색상      // 취소 버튼 색상 설정
     });
 ```
