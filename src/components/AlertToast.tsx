@@ -64,7 +64,7 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
     <>
       <div
         className={`toast ${toast.type}`}
-        style={{ background: toast.bg }}
+        style={{ background: toast.color }}
         onClick={() => toast.closeOnClick && closeAlert(toast.id)}
         onMouseEnter={(e) => {
           toast.autoClose && toast.pauseOnHover && (e.currentTarget.classList.add("on"), stopTimeout());
@@ -75,7 +75,7 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
       >
         <div className="inner">
           {toast.customImage ? <img src={toast.customImage} /> : null}
-          <div className="message" style={{ color: toast.color }}>
+          <div className="message" style={{ color: toast.textColor }}>
             {toast.message}
           </div>
         </div>
@@ -91,7 +91,7 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
         <span
           className="toast-close"
           style={{
-            color: toast.color || `var(--${toast.type}-text)`
+            color: toast.textColor || `var(--${toast.type}-text)`
           }}
           onClick={() => closeAlert(toast.id)}
         >
