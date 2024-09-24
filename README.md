@@ -87,8 +87,9 @@ toast.confirm(메세지 내용, 옵션)
 ```
 toast.info("정보입니다.", {
       position: position,          // 행(t, c, b) 과 열(l, c, r)을 조합하여 위치 설정
-      color: 색상                   // 알림 글씨의 색상 지정
-      bg: 색상                      // 토스트 배경 색상 지정
+      color: 색상,                  // 알림 글씨의 색상 지정
+      bg: 색상,                     // 토스트 배경 색상 지정
+      barColor: 색상,               // progressBar의 색상 설정
       autoClose: true/false,       // 알림을 자동으로 닫기게 할 지 설정
       progressBar: true/false,     // progressBar를 보이게 할 지 설정
       pauseOnHover: true/false,    // 알림에 마우스를 올렸을 때 알림을 일시정지 할 지 설정
