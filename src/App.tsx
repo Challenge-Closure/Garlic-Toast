@@ -216,13 +216,11 @@ const App = () => {
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
                 2. position : 알림 토스트의 기본 출력 위치를 설정해주실 수 있습니다.
               </div>
-              <img src="https://github.com/user-attachments/assets/f72063fc-8697-4951-aa91-13ca75aceffd" alt="" />
             </li>
             <li>
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
                 3. time : 알림 토스트의 기본 자동종려 타이머를 설정해주실 수 있습니다.
               </div>
-              <img src="https://github.com/user-attachments/assets/f72063fc-8697-4951-aa91-13ca75aceffd" alt="" />
             </li>
           </ul>
         </div>
