@@ -7,7 +7,7 @@
 
 ## 미리보기
 
-first-sparta-open-source-library-pi.vercel.app
+[미리보기](first-sparta-open-source-library-pi.vercel.app)
 
 ## 사용 방법
 
