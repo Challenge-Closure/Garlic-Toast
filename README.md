@@ -9,7 +9,7 @@
 
 [Demo Site](https://first-sparta-open-source-library.vercel.app)
 
-## 목차
+## [목차](#3-목차)
 
 ### [1. 소개](#1-소개)
 
