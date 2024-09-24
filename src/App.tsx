@@ -323,13 +323,32 @@ const App = () => {
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-          <h2>07. 추가 커스텀</h2>
+          <h2>07. 스타일 커스텀</h2>
+          <img src="https://github.com/user-attachments/assets/f25f7487-c3a8-4ae5-998d-d738127c385b" alt="" />
           <ul style={{ display: "flex", flexDirection: "column", gap: "32px", listStyle: "none", padding: "0" }}>
             <li>
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
                 1. customImage : 알림 토스트에 원하시는 이미지를 출력 하실 수 있습니다.
               </div>
               <img src="https://github.com/user-attachments/assets/87bb5da3-702e-4108-a393-ee28ace575cd" alt="" />
+            </li>
+            <li>
+              <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
+                2. bg : 알림 토스트의 배경 색상을 지정해주실 수 있습니다..
+              </div>
+              <img src="https://github.com/user-attachments/assets/95602e11-3af1-4fcd-a789-3252ee8d156c" alt="" />
+            </li>
+            <li>
+              <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
+                3. color : 알림 토스트의 텍스트 색상을 지정해주실수 있습니다.
+              </div>
+              <img src="https://github.com/user-attachments/assets/2ac9b732-84be-442a-a064-dcbbe4f40411" alt="" />
+            </li>
+            <li>
+              <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
+                4. barColor : 알림 토스트의 프로그레스바 색상을 지정해실 수 있습니다.
+              </div>
+              <img src="https://github.com/user-attachments/assets/353b8f5c-3c21-45a2-a88e-00ea2400031d" alt="" />
             </li>
           </ul>
         </div>
