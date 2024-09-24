@@ -5,9 +5,9 @@
 - ### 사용 편의성과 간편한 커스터마이징에 초점을 맞춘 toast입니다.
 
 
-## 미리보기
+## Demo Site
 
-[미리보기](first-sparta-open-source-library-pi.vercel.app)
+[Demo Site](https://first-sparta-open-source-library.vercel.app)
 
 ## 사용 방법
 
