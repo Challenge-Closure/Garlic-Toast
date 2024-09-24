@@ -4,19 +4,9 @@
 
 - ### portal과 pub/sub 패턴을 이용하여 만든 커스텀 toast입니다.
 
-## 주요 기능
 
-- ### 기본 alert
 
-- ### error
 
-- ### warning
-
-- ### success
-
-- ### info
-
-- ### confirm
 
 ## 사용 방법
 
@@ -36,6 +26,17 @@ toast.confirm(내용).then(isConfirm => {
 
 ### 와 같은 형식으로 사용한다.
 
+- ### 기본 alert
+
+- ### error
+
+- ### warning
+
+- ### success
+
+- ### info
+
+- ### confirm
 ## 설정 방법
 
 #### position 종류

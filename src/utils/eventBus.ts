@@ -1,4 +1,4 @@
-import ToastOptionType from "../types/ToastType";
+import { ToastOptionType } from "../types/ToastType";
 
 const EventBus = () => {
   const topics = new Map();
@@ -10,6 +10,7 @@ const EventBus = () => {
     topics.get(topic).push(listener);
   };
 
+  /** 유연성을 위해 */
   const unsubscribe = () => {
     if (!topics.size) return;
     topics.clear();

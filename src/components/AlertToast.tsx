@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { AlertToastType, ToastOptionType } from "../types/ToastType";
 
 const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }: AlertToastType) => {
+  /** 객체로 묶어서 */
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const timerRef = useRef<number>(0);
   const remaindRef = useRef<number>(0);
