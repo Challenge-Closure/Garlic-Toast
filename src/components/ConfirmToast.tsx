@@ -25,25 +25,29 @@ const ConfirmToast = ({ toast, setConfirmToasts }: ConfirmToastType) => {
         }
       }}
     >
-      <div className="inner-box">
+      <div className="inner-box" style={{ backgroundColor: toast.color }}>
         {toast.customImage && <img src={toast.customImage} />}
-        <div className="message">{toast.message}</div>
+        <div className="message" style={{ color: toast.textColor }}>
+          {toast.message}
+        </div>
         <div className="button-area">
           <button
+            style={{ color: toast.confirmBtnColor }}
             onClick={(e) => {
               e.preventDefault();
               handleConfirm(toast.id, toast.resolve);
             }}
           >
-            OK
+            {toast.confirmBtn || "OK"}
           </button>
           <button
+            style={{ color: toast.cancleBtnColor }}
             onClick={(e) => {
               e.preventDefault();
               handleCancel(toast.id, toast.resolve);
             }}
           >
-            Cancel
+            {toast.cancleBtn || "Cancel"}
           </button>
         </div>
       </div>

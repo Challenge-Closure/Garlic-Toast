@@ -5,8 +5,8 @@ export type ToastType = "normal" | "error" | "warning" | "success" | "info" | "a
 export interface ToastOptionType {
   id?: string | number;
   resolve?: Function;
+  textColor?: string;
   color?: string;
-  bg?: string;
   barColor?: string;
   message?: string;
   type?: ToastType | string;
@@ -17,6 +17,10 @@ export interface ToastOptionType {
   position?: ToastPosition;
   pauseOnHover?: boolean;
   customImage?: undefined | string;
+  confirmBtn?: string;
+  confirmBtnColor?: string;
+  cancleBtn?: string;
+  cancleBtnColor?: string;
 }
 
 export interface AlertToastType {
