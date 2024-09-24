@@ -333,21 +333,45 @@ const App = () => {
             </li>
             <li>
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
-                2. bg : 알림 토스트의 배경 색상을 지정해주실 수 있습니다..
+                2. color : 알림 토스트의 배경 색상을 지정해주실 수 있습니다..
               </div>
-              <img src="https://github.com/user-attachments/assets/95602e11-3af1-4fcd-a789-3252ee8d156c" alt="" />
+              <img src="https://github.com/user-attachments/assets/2ac9b732-84be-442a-a064-dcbbe4f40411" alt="" />
             </li>
             <li>
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
-                3. color : 알림 토스트의 텍스트 색상을 지정해주실수 있습니다.
+                3. textColor : 알림 토스트의 텍스트 색상을 지정해주실수 있습니다.
               </div>
-              <img src="https://github.com/user-attachments/assets/2ac9b732-84be-442a-a064-dcbbe4f40411" alt="" />
+              <img src="" alt="" />
             </li>
             <li>
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
                 4. barColor : 알림 토스트의 프로그레스바 색상을 지정해실 수 있습니다.
               </div>
               <img src="https://github.com/user-attachments/assets/353b8f5c-3c21-45a2-a88e-00ea2400031d" alt="" />
+            </li>
+            <li>
+              <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
+                5. confirmBtn : 확인 토스트의 확인 버튼 문구를 지정해주실 수 있습니다.
+              </div>
+              <img src="" alt="" />
+            </li>
+            <li>
+              <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
+                6. cancleBtn : 확인 토스트의 취소 버튼 문구를 지정해주실 수 있습니다.
+              </div>
+              <img src="" alt="" />
+            </li>
+            <li>
+              <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
+                7. confirmBtnColor : 확인 토스트의 확인 버튼 색상을 지정해실 수 있습니다.
+              </div>
+              <img src="" alt="" />
+            </li>
+            <li>
+              <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
+                8. cancleBtnColor : 확인 토스트의 취소 버튼 색상을 지정해실 수 있습니다.
+              </div>
+              <img src="" alt="" />
             </li>
           </ul>
         </div>
