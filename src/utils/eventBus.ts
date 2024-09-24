@@ -10,10 +10,9 @@ const EventBus = () => {
     topics.get(topic).push(listener);
   };
 
-  /** 유연성을 위해 */
-  const unsubscribe = () => {
-    if (!topics.size) return;
-    topics.clear();
+  const unsubscribe = (topic: string) => {
+    if (!topics.has(topic)) return;
+    topics.delete(topic);
   };
 
   const publish = (topic: string, data: ToastOptionType) => {

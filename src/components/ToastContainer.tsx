@@ -53,7 +53,10 @@ const ToastContainer = ({ isFold, position = "t-r", time }: ToastContainerProps)
     EventBus.subscribe("SHOW_TOAST", handleToastEvent);
     EventBus.subscribe("SHOW_CONFIRM_TOAST", handleConfirmToastEvent);
 
-    return () => EventBus.unsubscribe();
+    return () => {
+      EventBus.unsubscribe("SHOW_TOAST");
+      EventBus.unsubscribe("SHOW_CONFIRM_TOAST");
+    };
   }, []);
 
   return createPortal(

@@ -1,4 +1,4 @@
-import ToastOptionType from "../types/ToastType";
+import { ToastOptionType } from "../types/ToastType";
 import EventBus from "./eventBus";
 
 const toast = () => {
