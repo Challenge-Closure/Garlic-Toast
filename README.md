@@ -4,6 +4,10 @@
 
 - ### 사용 편의성과 간편한 커스터마이징에 초점을 맞춘 toast입니다.
 
+## 배포
+
+[링크](first-sparta-open-source-library.vercel.app)
+
 ## 사용 방법
 
 ### 1. `ToastContainer`를 import 하여 toast를 사용할 컴포넌트에서 `<ToastContainer/ >`형태로 실행 해준다.
