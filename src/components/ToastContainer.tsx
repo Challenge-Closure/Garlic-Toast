@@ -4,19 +4,8 @@ import { createPortal } from "react-dom";
 import EventBus from "../utils/eventBus";
 import AlertToast from "./AlertToast";
 import ConfirmToast from "./ConfirmToast";
-import ToastOptionType from "../types/ToastType";
+import { ToastOptionType } from "../types/ToastType";
 
-interface InitiolStateType {
-  "t-l": object | string[];
-  "t-c": object | string[];
-  "t-r": object | string[];
-  "c-l": object | string[];
-  "c-c": object | string[];
-  "c-r": object | string[];
-  "b-l": object | string[];
-  "b-c": object | string[];
-  "b-r": object | string[];
-}
 const initialState = {
   "t-l": [],
   "t-c": [],

@@ -1,12 +1,5 @@
 import { useEffect, useRef } from "react";
-import ToastOptionType from "../types/ToastType";
-
-interface AlertToastType {
-  toast: ToastOptionType;
-  containerAutoCloseTime: number;
-  setAlertToasts: Function;
-  position: string;
-}
+import { AlertToastType, ToastOptionType } from "../types/ToastType";
 
 const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }: AlertToastType) => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
