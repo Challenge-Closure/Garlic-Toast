@@ -1,15 +1,15 @@
 interface ToastOptionType {
-  type: ToastType | string;
-  autoClose: boolean;
-  progressBar: boolean;
-  pauseOnHover: boolean;
-  closeOnClick: boolean;
-  customImage: undefined | string;
-  position?: ToastPosition;
-  autoCloseTime?: number;
   id?: string | number;
-  message?: string;
   resolve?: Function;
+  message?: string;
+  type?: ToastType | string;
+  autoClose?: boolean;
+  closeOnClick?: boolean;
+  autoCloseTime?: number;
+  progressBar?: boolean;
+  position?: ToastPosition;
+  pauseOnHover?: boolean;
+  customImage?: undefined | string;
 }
 
 export default ToastOptionType;
