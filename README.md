@@ -5,7 +5,7 @@
 - ### 사용 편의성과 간편한 커스터마이징에 초점을 맞춘 toast입니다.
 
 
-## [Demo Site](#2-Demo-Site)
+## Demo Site
 
 [Demo Site](https://first-sparta-open-source-library.vercel.app)
 
@@ -13,13 +13,13 @@
 
 ### [1. 소개](#1-소개)
 
-### [2. Demo Site](#2-Demo-Site)
+### [2. Demo Site](#demo-site)
 
 ### [3. 목차](#3-목차)
 
 ### [4. 사용 방법](#4-사용-방법)
 
-### [5. 설정 방법](#5-설정-방법)
+### [5. 설정 방법](#설정-방법)
 
 ## [사용 방법](#3-사용-방법)
 
@@ -75,7 +75,7 @@ toast.info(메세지 내용, 옵션)
 toast.confirm(메세지 내용, 옵션)
 ```
 
-## [설정 방법](#4-설정-방법)
+## 설정 방법
 
 #### position 종류
 
