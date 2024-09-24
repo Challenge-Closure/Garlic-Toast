@@ -2,7 +2,7 @@
 
 ## 소개
 
-- ### portal과 pub/sub 패턴을 이용하여 만든 커스텀 toast입니다.
+- ### 사용 편의성과 간편한 커스터마이징에 초점을 맞춘 toast입니다.
 
 ## 사용 방법
 
@@ -84,17 +84,59 @@ toast.confirm(메세지 내용, 옵션)
 
 - ### 필요한 옵션만 추가하여 사용할 수 있습니다.
 
+#### 1. position
+
+- 알림을 보여줄 위치를 설정합니다.
+
+#### 2. color
+
+- 글자의 색상을 설정합니다.
+
+#### 3. bg
+
+- 배경색을 설정합니다.
+
+#### 4. closeOnClick
+
+- 알림을 클릭하여 닫을 지 설정합니다.
+
+#### 5. autoClose
+
+- 알림을 자동으로 닫히게 할 지 설정합니다.
+
+#### 6. autoCloseTime
+
+- 몇 ms 후 알림을 닫을 지 설정합니다.
+
+#### 7. progressBar
+
+- progressBar를 보여줄 지 설정합니다.
+
+#### 8. barColor
+
+- progressBar의 색상을 설정합니다.
+
+#### 9. pauseOnHover
+
+- 알림에 마우스를 올렸을 때 알림의 시간을 일시정지 할 지 설정합니다.
+
+#### 10. customImage
+
+- 알림에 사용할 이미지를 설정합니다.
+
+#### 사용 예시
+
 ```
 toast.info("정보입니다.", {
       position: position,          // 행(t, c, b) 과 열(l, c, r)을 조합하여 위치 설정
       color: 색상,                  // 알림 글씨의 색상 지정
       bg: 색상,                     // 토스트 배경 색상 지정
-      barColor: 색상,               // progressBar의 색상 설정
-      autoClose: true/false,       // 알림을 자동으로 닫기게 할 지 설정
-      progressBar: true/false,     // progressBar를 보이게 할 지 설정
-      pauseOnHover: true/false,    // 알림에 마우스를 올렸을 때 알림을 일시정지 할 지 설정
-      autoCloseTime: 숫자,          // 몇 ms 후 알림을 닫을 지 설정
       closeOnClick: true/false,    // 알림을 클릭하여 닫을 지 설정
+      autoClose: true/false,       // 알림을 자동으로 닫기게 할 지 설정
+      autoCloseTime: 숫자,          // 몇 ms 후 알림을 닫을 지 설정
+      progressBar: true/false,     // progressBar를 보이게 할 지 설정
+      barColor: 색상,               // progressBar의 색상 설정
+      pauseOnHover: true/false,    // 알림에 마우스를 올렸을 때 알림을 일시정지 할 지 설정
       customImage: imageURL        // 원하는 이미지를 알림에 보이도록 설정
     });
 ```
