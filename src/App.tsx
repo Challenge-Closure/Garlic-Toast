@@ -56,19 +56,6 @@ const App = () => {
 
   return (
     <>
-      <button
-        onClick={() =>
-          toast.alert("테스트입니다.", {
-            color: "red",
-            bg: "blue",
-            barColor: "green",
-            progressBar: true,
-            autoClose: true
-          })
-        }
-      >
-        테스트
-      </button>
       <ToastContainer isFold={true} position="t-r" time={5000} />
       <h1>First Sparta Open Sorce Library</h1>
       <main id="main-frame">

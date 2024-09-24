@@ -80,7 +80,7 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
           <div
             className="progress"
             style={{
-              background: toast.bg || `var(--${toast.type}-text)`,
+              background: toast.barColor || `var(--${toast.type}-text)`,
               animationDuration: `${toast.autoCloseTime ?? containerAutoCloseTime}ms`
             }}
           ></div>
@@ -88,7 +88,7 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
         <span
           className="toast-close"
           style={{
-            color: toast.barColor || `var(--${toast.type}-text)`
+            color: toast.color || `var(--${toast.type}-text)`
           }}
           onClick={() => closeAlert(toast.id)}
         >
