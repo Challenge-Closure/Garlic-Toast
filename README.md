@@ -4,6 +4,13 @@
 
 - ### 사용 편의성과 간편한 커스터마이징에 초점을 맞춘 toast입니다.
 
+
+## 배포
+
+[링크](first-sparta-open-source-library.vercel.app)
+
+## 사용 방법
+
 ## 목차
 
 ### [1. 소개](#1-소개)
