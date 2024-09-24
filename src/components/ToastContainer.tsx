@@ -64,19 +64,21 @@ const ToastContainer = ({ isFold, position = "t-r", time }: ToastContainerProps)
       <div className={`toast-container`}>
         {Object.keys(alertToasts).map((position) => {
           const positionToasts = alertToasts[position];
-          return positionToasts.length > 0 ? (
-            <div className={`alert-container ${position} ${isFold && "isFold"}`} key={position}>
-              {positionToasts.map((toast: ToastOptionType) => (
-                <AlertToast
-                  key={toast.id}
-                  toast={toast}
-                  containerAutoCloseTime={time}
-                  setAlertToasts={setAlertToasts}
-                  position={position}
-                />
-              ))}
-            </div>
-          ) : null;
+          return (
+            !!positionToasts.length && (
+              <div className={`alert-container ${position} ${isFold && "isFold"}`} key={position}>
+                {positionToasts.map((toast: ToastOptionType) => (
+                  <AlertToast
+                    key={toast.id}
+                    toast={toast}
+                    containerAutoCloseTime={time}
+                    setAlertToasts={setAlertToasts}
+                    position={position}
+                  />
+                ))}
+              </div>
+            )
+          );
         })}
 
         {confirmToasts.map((toast: ToastOptionType) => (
