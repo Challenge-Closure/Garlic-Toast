@@ -95,7 +95,7 @@ toast.confirm(메세지 내용, 옵션)
 #### ex) `<ToastContainer position="t-r" time={5000} />`<br/>
 
 - ##### time(ms) 후 알림이 사라집니다.
-- ##### isFold props 설정 시 3개까지 스택이 쌓입니다.
+- ##### isFold를 props로 내려줄 시 3개까지 스택이 쌓입니다.
 
 ### 부분 설정
 
