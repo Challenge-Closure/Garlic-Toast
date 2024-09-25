@@ -42,7 +42,7 @@ const App = () => {
     } else if (option.type === "confirm") {
       toast.confirm("confirm?", { ...option }).then((res: any) => {
         if (res) {
-          toast.alert("킹킹 준호님", { ...option });
+          toast.alert("킹킹 갓준호", { ...option });
         } else {
           toast.error("confirm cancel", {
             ...option,
@@ -56,7 +56,7 @@ const App = () => {
 
   return (
     <>
-      <ToastContainer isFold={false} position="t-r" time={5000} />
+      <ToastContainer isFold position="t-r" time={5000} />
       <h1>First Sparta Open Sorce Library</h1>
       <main id="main-frame">
         <div id="option">
@@ -202,12 +202,16 @@ const App = () => {
 
         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
           <h2>02. ToastContainer 커스텀</h2>
-          <img src="https://github.com/user-attachments/assets/855bd44c-b25f-4b33-8a90-954c2770f3c1" alt="" />
+          <img
+            style={{ width: "500px" }}
+            src="https://github.com/user-attachments/assets/eab721ab-029f-4d39-91bb-d13a98febe06"
+            alt=""
+          />
 
           <ul style={{ display: "flex", flexDirection: "column", gap: "32px", listStyle: "none", padding: "0" }}>
             <li>
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
-                1. isFold : true로 세팅시, 토스트를 접어서 보여줄 수 있습니다.
+                1. isFold : props로 내려줄 시, 토스트를 접어서 보여줄 수 있습니다.
               </div>
               <img src="https://github.com/user-attachments/assets/f72063fc-8697-4951-aa91-13ca75aceffd" alt="" />
             </li>
@@ -341,7 +345,11 @@ const App = () => {
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
                 3. textColor : 알림 토스트의 텍스트 색상을 지정해주실수 있습니다.
               </div>
-              <img src="https://github.com/user-attachments/assets/3a9ad56a-a8cc-41c0-861b-c0c1ce15a9ad" alt="" />
+              <img
+                style={{ width: "300px" }}
+                src="https://github.com/user-attachments/assets/3a9ad56a-a8cc-41c0-861b-c0c1ce15a9ad"
+                alt=""
+              />
             </li>
             <li>
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
@@ -353,25 +361,41 @@ const App = () => {
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
                 5. confirmBtn : 확인 토스트의 확인 버튼 문구를 지정해주실 수 있습니다.
               </div>
-              <img src="https://github.com/user-attachments/assets/cffc0681-3327-445e-b4e7-56a1744ee10b" alt="" />
+              <img
+                style={{ width: "300px" }}
+                src="https://github.com/user-attachments/assets/cffc0681-3327-445e-b4e7-56a1744ee10b"
+                alt=""
+              />
             </li>
             <li>
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
                 6. cancleBtn : 확인 토스트의 취소 버튼 문구를 지정해주실 수 있습니다.
               </div>
-              <img src="https://github.com/user-attachments/assets/d84b6deb-33aa-4e06-8756-07e6bb07be6c" alt="" />
+              <img
+                style={{ width: "300px" }}
+                src="https://github.com/user-attachments/assets/d84b6deb-33aa-4e06-8756-07e6bb07be6c"
+                alt=""
+              />
             </li>
             <li>
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
                 7. confirmBtnColor : 확인 토스트의 확인 버튼 색상을 지정해실 수 있습니다.
               </div>
-              <img src="https://github.com/user-attachments/assets/21ada90d-97f5-477e-9796-f33655281011" alt="" />
+              <img
+                style={{ width: "300px" }}
+                src="https://github.com/user-attachments/assets/21ada90d-97f5-477e-9796-f33655281011"
+                alt=""
+              />
             </li>
             <li>
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
                 8. cancleBtnColor : 확인 토스트의 취소 버튼 색상을 지정해실 수 있습니다.
               </div>
-              <img src="https://github.com/user-attachments/assets/2dbe7b0a-5c67-4a87-b96b-db1b9ff1f446" alt="" />
+              <img
+                style={{ width: "300px" }}
+                src="https://github.com/user-attachments/assets/2dbe7b0a-5c67-4a87-b96b-db1b9ff1f446"
+                alt=""
+              />
             </li>
           </ul>
         </div>
