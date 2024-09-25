@@ -341,7 +341,7 @@ const App = () => {
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
                 3. textColor : 알림 토스트의 텍스트 색상을 지정해주실수 있습니다.
               </div>
-              <img src="https://github.com/user-attachments/assets/38f85e85-04f6-4872-85bf-66839d71d57a" alt="" />
+              <img src="https://github.com/user-attachments/assets/3a9ad56a-a8cc-41c0-861b-c0c1ce15a9ad" alt="" />
             </li>
             <li>
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
@@ -353,25 +353,25 @@ const App = () => {
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
                 5. confirmBtn : 확인 토스트의 확인 버튼 문구를 지정해주실 수 있습니다.
               </div>
-              <img src="https://github.com/user-attachments/assets/1fe6a3d0-1785-4ad9-b589-9a06fff4f2ea" alt="" />
+              <img src="https://github.com/user-attachments/assets/cffc0681-3327-445e-b4e7-56a1744ee10b" alt="" />
             </li>
             <li>
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
                 6. cancleBtn : 확인 토스트의 취소 버튼 문구를 지정해주실 수 있습니다.
               </div>
-              <img src="https://github.com/user-attachments/assets/d4d9e7ac-d4c2-44b6-a7a1-215412caee49" alt="" />
+              <img src="https://github.com/user-attachments/assets/d84b6deb-33aa-4e06-8756-07e6bb07be6c" alt="" />
             </li>
             <li>
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
                 7. confirmBtnColor : 확인 토스트의 확인 버튼 색상을 지정해실 수 있습니다.
               </div>
-              <img src="https://github.com/user-attachments/assets/77b14d6c-934f-4653-81be-683f53fc9957" alt="" />
+              <img src="https://github.com/user-attachments/assets/21ada90d-97f5-477e-9796-f33655281011" alt="" />
             </li>
             <li>
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
                 8. cancleBtnColor : 확인 토스트의 취소 버튼 색상을 지정해실 수 있습니다.
               </div>
-              <img src="https://github.com/user-attachments/assets/396040d7-b845-4892-ab40-741e2683e195" alt="" />
+              <img src="https://github.com/user-attachments/assets/2dbe7b0a-5c67-4a87-b96b-db1b9ff1f446" alt="" />
             </li>
           </ul>
         </div>
