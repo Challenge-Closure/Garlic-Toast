@@ -25,19 +25,7 @@
 
 ### 1. `ToastContainer`를 import 하여 toast를 사용할 컴포넌트에서 `<ToastContainer/ >`형태로 실행 합니다.
 
-### 2. `toast`를 import 하여 `toast.alert(내용, 옵션)`, `toast.info(내용, 옵션)`,
-
-```
-toast.confirm(내용).then(isConfirm => {
-  if (isConfirm) {
-    toast.success("확인", 옵션)
-    } else {
-    toast.error("취소", 옵션)
-    }
-})
-```
-
-### 와 같은 형식으로 사용합니다.
+### 2. `toast`를 import 하여 아래와 같은 형식으로 사용합니다.
 
 - ### 기본 alert
 
@@ -72,7 +60,13 @@ toast.info(메세지 내용, 옵션)
 - ### confirm
 
 ```
-toast.confirm(메세지 내용, 옵션)
+toast.confirm(내용).then(isConfirm => {
+  if (isConfirm) {
+    toast.success("확인", 옵션)
+    } else {
+    toast.error("취소", 옵션)
+    }
+})
 ```
 
 ## 설정 방법
