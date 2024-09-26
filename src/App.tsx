@@ -245,13 +245,13 @@ const App = () => {
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
                 3. error : 행동에 문제가 생겼을 경우 사용 추천드립니다.
               </div>
-              <img src="https://github.com/user-attachments/assets/d413d278-4958-4e5d-95c7-f11e35134048" alt="" />
+              <img src="https://github.com/user-attachments/assets/3b9a01cb-bb60-4f72-83a1-8937a7c13399" alt="" />
             </li>
             <li>
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
                 4. warning : 사용자에게 경고를 주고 싶으실 경우 사용 추천드립니다.
               </div>
-              <img src="https://github.com/user-attachments/assets/3b9a01cb-bb60-4f72-83a1-8937a7c13399" alt="" />
+              <img src="" alt="" />
             </li>
             <li>
               <div style={{ marginBottom: "12px", fontWeight: "bold" }}>
