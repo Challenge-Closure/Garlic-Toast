@@ -90,7 +90,7 @@ toast.confirm(메세지 내용, 옵션)
 
 - ### 전체적인 토스트의 설정을 할 수 있습니다.
 
-#### `<ToastContainer />`에 position과 time(ms)을 props로 내려준다. <br/>
+#### `<ToastContainer />`에 position과 time(ms)을 props로 내려줍니다. <br/>
 
 #### ex) `<ToastContainer position="t-r" time={5000} />`<br/>
 
