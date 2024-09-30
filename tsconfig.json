@@ -6,9 +6,10 @@
     "module": "es6", // specify module code generation
     "target": "es5", // specify ECMAScript target version
     "allowJs": true, // allow a partial TypeScript and JavaScript codebase
-    "moduleResolution": "node", // specify module resolution strategy
     "allowSyntheticDefaultImports": true,
     "jsx": "react-jsx",
+    "moduleResolution": "Bundler", // specify module resolution strategy
+    "declarationMap": false,
 
     /* Linting */
     "lib": ["es2015", "DOM"],
