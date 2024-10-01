@@ -7,21 +7,22 @@ body:
     id: description
     attributes:
       description: 원하시는 기능을 설명해주세요.
-      label: Description
+      label: 기능
     validations:
       required: true
 
   - type: textarea
     id: possible-solution
     attributes:
-      label: Possible Solution
-      placeholder: I think this is probably...
+      label: 구현 방법
+      description: 구현 방법에 대해 아이디어가 있다면 공유 해주세요.
+      placeholder: 제 생각에는...
     validations:
       required: false
 
   - type: textarea
     id: etc
     attributes:
-      label: etc.
+      label: 기타
     validations:
       required: false
