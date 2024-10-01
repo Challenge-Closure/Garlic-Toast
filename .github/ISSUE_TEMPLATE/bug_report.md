@@ -7,12 +7,7 @@ assignees: ''
 
 ---
 
-name: Bug Report
-description: Report a bug
-labels: [bug]
-title: '[Bug]:'
-body:
-  - type: textarea
+- type: textarea
     id: description
     attributes:
       description: 버그에 대해서 설명해주세요.
@@ -20,12 +15,12 @@ body:
     validations:
       required: true
 
-  - type: textarea
+- type: textarea
     id: expected
     attributes:
       label: Expected behavior
 
-  - type: textarea
+- type: textarea
     id: reproduction-steps
     attributes:
       label: To Reproduce
@@ -33,7 +28,7 @@ body:
       placeholder: |
         최소한으로 재현 가능한 코드 또는 재현 단계를 설명해주세요. 선택 사항이지만 권장됩니다.
 
-  - type: textarea
+- type: textarea
     id: possible-solution
     attributes:
       label: Possible Solution
@@ -41,7 +36,7 @@ body:
     validations:
       required: false
 
-  - type: textarea
+- type: textarea
     id: etc
     attributes:
       label: etc.
