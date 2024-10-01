@@ -1,31 +1,28 @@
-# es-hangul 라이브러리에 기여하기
+# Garlic-Toast 라이브러리에 기여하기
 
 커뮤니티의 모든 분들의 기여를 환영합니다.
 
-> 모든 기여자는 우리의 행동 강령을 준수해야 합니다.
-> <br/>어떤 행동이 허용되고 허용되지 않는지 이해하려면 [전문](./CODE_OF_CONDUCT.md)을 읽어주세요.
+> 모든 기여자는 우리의 행동 강령을 준수해야 합니다. <br/>
+> 어떤 행동이 허용되고 허용되지 않는지 이해하려면 [금지 사항](./CODE_OF_CONDUCT.md)을 읽어주세요.
 
 ## 1. Issues
 
-다음과 같은 방법으로 es-hangul 라이브러리에 기여할 수 있습니다:
+다음과 같은 방법으로 Garlic-Toast 라이브러리에 기여할 수 있습니다:
 
-- Improving our [docs](https://slash.page)
-- [Reporting a bug in our issues tab](https://github.com/toss/slash/issues/new/choose)
-- [Requesting a new feature or package](https://github.com/toss/slash/issues/new/choose)
-- [Having a look at our issue list](https://github.com/toss/slash/issues) to see what's to be fixed
+- [이슈 작성하러 가기](https://github.com/toss/slash/issues/new/choose)
+- [지난 이슈들 보기](https://github.com/toss/slash/issues)
 
 ## 2. Pull Requests
 
-> [Opening a pull request](https://github.com/toss/slash/compare) <br/>
+- [PR하러 가기](https://github.com/toss/slash/compare) <br/>
 
 자신의 PR을 제출할 수 있습니다. PR의 제목은 다음 형식과 일치해야 합니다:
 
 ```
-<type>: <description>
+type: 설명
 ```
 
-> 우리는 당신의 이력에 있는 커밋의 수나 스타일을 중요시하지 않습니다, 왜냐하면 우리는 모든 PR을 main으로 squash merge하기 때문입니다. <br/>
-> 편하게 커밋하세요.
+>
 
 ### 2.1 Type
 
@@ -39,39 +36,49 @@
 배포된 코드를 변경하지 않은 경우 :
 
 - docs - 문서만 변경한 경우
-- test - 테스트만 변경한 경우
 
 그 외 :
 
 - chore - 그 외 모든 것
 
-### 2.2 Description
-
-A clear and concise description of what the pr is about.
-
 ## 3. Convention
 
-함수명에는 특별한 이유가 없다면 hangul을 포함하지 않습니다.
+알림 타입을 추가할 땐 src/utils/toast.ts의 toast 함수 안에 정의 하고 retur 객체에 담아주세요.
 
 ```ts
-// Don't
-function getHangulSimilarity();
-// Do
-function getSimilarity();
+const toast = () => {
+  const alert = (message: string, option: ToastOptionType = initialState) => {
+    EventBus.publish("SHOW_TOAST", {
+      ...option,
+      message,
+      id: Date.now(),
+      type: "normal"
+    });
+  };
 
-// Don't
-function disassembleHangul();
-// Do
-function disassemble();
+  ...
+
+const newType = (message: string, option: ToastOptionType = initialState) => {
+    EventBus.publish("SHOW_TOAST", {
+      ...option,
+      message,
+      id: Date.now(),
+      type: "newType"
+    });
+  };
+
+  return { alert, ..., newType  };
+};
+
+export default toast();
 ```
 
-함수명을 지을 때 아래와 같이 import될 것을 고려해야 합니다.
+옵션명은 명확하고 간결하게 지어주세요.
 
 ```ts
-import { getSimilarity, disassemble, josa } from 'es-hangul' // 따로 나눠서도 제공
-import hangul from 'es-hangul' // hangul default export에 묶어서도 제공
+time // X
+autoCloseTime // O
 
-hangul.getSimilarity(...)
-hangul.disassemble(...)
-hangul.josa(...)
+progressBarColor // X
+barColor // O
 ```
