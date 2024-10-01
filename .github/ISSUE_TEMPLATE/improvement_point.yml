@@ -1,0 +1,27 @@
+name: 개선 방안
+description: 개선점을 제안합니다.
+labels: [fix]
+title: "[Fix] :"
+body:
+  - type: textarea
+    id: description
+    attributes:
+      description: 불편한 점을 설명해주세요.
+      label: 불편사항
+    validations:
+      required: true
+
+  - type: textarea
+    id: possible-solution
+    attributes:
+      label: 개선 방안
+      description: 개선 방법에 대해 아이디어가 있다면 공유 해주세요.
+    validations:
+      required: false
+
+  - type: textarea
+    id: etc
+    attributes:
+      label: 기타
+    validations:
+      required: false
