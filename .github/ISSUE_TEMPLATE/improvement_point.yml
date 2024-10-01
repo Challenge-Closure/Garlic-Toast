@@ -1,7 +1,7 @@
 name: 개선 방안
 description: 개선점을 제안합니다.
-labels: [fix]
-title: "[Fix] :"
+labels: [리팩토링]
+title: "[Refactor] :"
 body:
   - type: textarea
     id: description

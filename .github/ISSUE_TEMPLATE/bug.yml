@@ -1,6 +1,6 @@
 name: 버그 제보
 description: 발견한 버그를 제보합니다.
-labels: [bug]
+labels: [버그]
 title: "[Bug]: "
 body:
   - type: textarea
