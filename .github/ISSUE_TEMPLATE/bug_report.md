@@ -1,38 +1,49 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: ''
-labels: ''
+title: "[Bug]: "
+labels: 버그
 assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+name: Bug Report
+description: Report a bug
+labels: [bug]
+title: '[Bug]:'
+body:
+  - type: textarea
+    id: description
+    attributes:
+      description: 버그에 대해서 설명해주세요.
+      label: Bug description
+    validations:
+      required: true
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: To Reproduce
+      description: 재현 방법을 자세히 알려주세요. 특정 환경에서만 발생하는 것 같다면, OS와 환경에 대한 정보도 함께 제공해주세요.
+      placeholder: |
+        최소한으로 재현 가능한 코드 또는 재현 단계를 설명해주세요. 선택 사항이지만 권장됩니다.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+  - type: textarea
+    id: possible-solution
+    attributes:
+      label: Possible Solution
+      placeholder: I think this is probably...
+    validations:
+      required: false
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
-
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
-
-**Additional context**
-Add any other context about the problem here.
+  - type: textarea
+    id: etc
+    attributes:
+      label: etc.
+    validations:
+      required: false
