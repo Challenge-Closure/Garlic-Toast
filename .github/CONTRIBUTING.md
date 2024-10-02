@@ -9,12 +9,12 @@
 
 다음과 같은 방법으로 Garlic-Toast 라이브러리에 기여할 수 있습니다:
 
-- [이슈 작성하러 가기](https://github.com/toss/slash/issues/new/choose)
-- [지난 이슈들 보기](https://github.com/toss/slash/issues)
+- [이슈 작성하러 가기](https://github.com/Challenge-Closure/Garlic-Toast/issues/new/choose)
+- [지난 이슈들 보기](https://github.com/Challenge-Closure/Garlic-Toast/issues?q=is%3Aopen+is%3Aissue)
 
 ## 2. Pull Requests
 
-- [PR하러 가기](https://github.com/toss/slash/compare) <br/>
+- [PR하러 가기](https://github.com/Challenge-Closure/Garlic-Toast/pulls) <br/>
 
 자신의 PR을 제출할 수 있습니다. PR의 제목은 다음 형식과 일치해야 합니다:
 
