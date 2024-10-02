@@ -268,4 +268,4 @@ toast.alert('토스트 메시지', {
 ## 🍳 CONTRIBUTING
 `Garlic-Toast` 라이브러리에 기여하고 싶다고 생각하셨다면 아래 문서를 참고해주세요.
 
-<a href="https://github.com/Challenge-Closure/Garlic-Toast/blob/dev/CONTRIBUTING.md">CONTRIBUTING</a>
+<a href="https://github.com/Challenge-Closure/Garlic-Toast/blob/dev/.github/CONTRIBUTING.md">CONTRIBUTING</a>
