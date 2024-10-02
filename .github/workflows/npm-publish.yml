@@ -1,4 +1,4 @@
-name: package-deploy-release
+name: Node.js Package
 
 on:
   release:
@@ -27,4 +27,4 @@ jobs:
       - run: npm ci
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.PACKAGE_PUBLISH_KEY_NPM}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_KEY}}
