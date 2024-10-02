@@ -1,8 +1,9 @@
 name: Node.js Package
 
 on:
-  pull_request:
-    branches: ['main']
+  push:
+    pull_request:
+      branches: ["main"]
 
 jobs:
   build:
@@ -22,7 +23,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: https://www.npmjs.com/package/garlic-toast
+          registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm publish
         env:
