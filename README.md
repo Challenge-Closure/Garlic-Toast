@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/a372d640-15db-4926-934b-df9351d1bc85)
+![image](https://github.com/user-attachments/assets/53ca1985-eda1-43f0-b3c2-c0c8b59ac44a)
 
 <p align="center">
 <a href="https://opensource.org/licenses/MIT" rel="nofollow"><img src="https://img.shields.io/github/license/Challenge-Closure/Garlic-Toast" alt="License"></a>
@@ -12,7 +12,7 @@
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://www.npmjs.com/package/garlic-toast">npm</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-  <a href="https://github.com/Challenge-Closure/Garlic-Toast/issues/new">Issues</a>
+  <a href="https://github.com/Challenge-Closure/Garlic-Toast/issues/new/choose">Issues</a>
   <br />
   <br />
 </div>
@@ -269,3 +269,7 @@ toast.alert('토스트 메시지', {
 `Garlic-Toast` 라이브러리에 기여하고 싶다고 생각하셨다면 아래 문서를 참고해주세요.
 
 <a href="https://github.com/Challenge-Closure/Garlic-Toast/blob/dev/.github/CONTRIBUTING.md">CONTRIBUTING</a>
+
+<a href="https://github.com/Challenge-Closure/Garlic-Toast/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Challenge-Closure/Garlic-Toast" />
+</a>
