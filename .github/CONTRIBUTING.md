@@ -2,8 +2,8 @@
 
 커뮤니티의 모든 분들의 기여를 환영합니다.
 
-> 모든 기여자는 우리의 행동 강령을 준수해야 합니다. <br/>
-> 어떤 행동이 허용되고 허용되지 않는지 이해하려면 [금지 사항](./CODE_OF_CONDUCT.md)을 읽어주세요.
+> 편리한 사용법과 확장성에 대해 고민해주세요. <br/>
+> 모든 기여자는 우리의 [규칙](./CODE_OF_CONDUCT.md)을 준수해야 합니다.
 
 ## 1. Issues
 
@@ -76,9 +76,9 @@ export default toast();
 옵션명은 명확하고 간결하게 지어주세요.
 
 ```ts
-time // X
-autoCloseTime // O
+time; // X
+autoCloseTime; // O
 
-progressBarColor // X
-barColor // O
+progressBarColor; // X
+barColor; // O
 ```
