@@ -1,13 +1,14 @@
+import { Listener, Topics } from "../types/EventType";
 import { ToastOptionType } from "../types/ToastType";
 
 const EventBus = () => {
-  const topics = new Map();
+  const topics: Topics = new Map();
 
-  const subscribe = (topic: string, listener: Function) => {
+  const subscribe = (topic: string, listener: Listener<ToastOptionType>) => {
     if (!topics.has(topic)) {
       topics.set(topic, []);
     }
-    topics.get(topic).push(listener);
+    topics.get(topic)?.push(listener);
   };
 
   const unsubscribe = (topic: string) => {
@@ -17,7 +18,7 @@ const EventBus = () => {
 
   const publish = (topic: string, data: ToastOptionType) => {
     if (!topics.has(topic)) return;
-    topics.get(topic).forEach((listener: any) => listener(data));
+    topics.get(topic)?.forEach((listener: any) => listener(data));
   };
 
   return { subscribe, unsubscribe, publish };
