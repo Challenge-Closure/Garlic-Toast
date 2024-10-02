@@ -25,39 +25,43 @@ const App = () => {
   };
 
   const showToastButton = (position: ToastPosition) => {
-    if (option.type === "alert") {
-      toast.alert("alert message!", {
-        ...option,
-        type: "normal",
-        position: position
-      });
-    } else if (option.type === "success") {
-      toast.success("success message!", { ...option, position: position });
-    } else if (option.type === "warning") {
-      toast.warning("warning message!", { ...option, position: position });
-    } else if (option.type === "error") {
-      toast.error("error message!", { ...option, position: position });
-    } else if (option.type === "info") {
-      toast.info("info message!", { ...option, position: position });
-    } else if (option.type === "confirm") {
-      toast.confirm("confirm?", { ...option }).then((res: any) => {
-        if (res) {
-          toast.alert("킹킹 갓준호", { ...option });
-        } else {
-          toast.error("confirm cancel", {
-            ...option,
-            type: "error",
-            position: position
-          });
-        }
-      });
+    switch (option.type) {
+      case "alert":
+        return toast.alert("alert message!", {
+          ...option,
+          type: "normal",
+          position: position
+        });
+      case "success":
+        return toast.success("success message!", { ...option, position: position });
+      case "warning":
+        return toast.warning("warning message!", { ...option, position: position });
+      case "error":
+        return toast.error("error message!", { ...option, position: position });
+      case "info":
+        return toast.info("info message!", { ...option, position: position });
+      case "confirm":
+        return toast.confirm("confirm?", { ...option }).then((res: boolean) => {
+          if (res) {
+            return toast.alert("킹킹 갓준호", { ...option });
+          }
+          if (!res) {
+            return toast.error("confirm cancel", {
+              ...option,
+              type: "error",
+              position: position
+            });
+          }
+        });
+      default:
+        break;
     }
   };
 
   return (
     <>
       <ToastContainer isFold position="t-r" time={5000} />
-      <h1>First Sparta Open Sorce Library</h1>
+      <h1>Garlic Toast</h1>
       <main id="main-frame">
         <div id="option">
           <div className="option-division">
