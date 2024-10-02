@@ -23,7 +23,7 @@ button {
   width: 100%;
   justify-content: space-around;
   margin: 20px;
-  gap: 2vw
+  gap: 2vw;
 }
 
 .option-division {
@@ -113,4 +113,8 @@ button.pauseOnHover-on,
 button.closeOnClick-on,
 button.customImage-on {
   border: 2px solid black;
+}
+
+button {
+  cursor: pointer;
 }
