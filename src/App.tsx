@@ -61,7 +61,7 @@ const App = () => {
   return (
     <>
       <ToastContainer isFold position="t-r" time={5000} />
-      <h1>First Sparta Open Sorce Library</h1>
+      <h1>Garlic Toast</h1>
       <main id="main-frame">
         <div id="option">
           <div className="option-division">
