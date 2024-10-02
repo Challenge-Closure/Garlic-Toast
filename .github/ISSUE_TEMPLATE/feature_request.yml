@@ -16,7 +16,6 @@ body:
     attributes:
       label: 구현 방법
       description: 구현 방법에 대해 아이디어가 있다면 공유 해주세요.
-      placeholder: 제 생각에는...
     validations:
       required: false
 

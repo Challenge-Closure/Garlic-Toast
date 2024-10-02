@@ -24,7 +24,6 @@ body:
     attributes:
       label: 예상되는 해결책
       description: 예상되는 해결책이 있다면 공유해주세요.
-      placeholder: 제 생각에는...
     validations:
       required: false
 
