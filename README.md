@@ -27,7 +27,7 @@
 
 
 ## 🕹️ Demo Site
-  <a href="https://first-sparta-open-source-library.vercel.app" target="_blank">[Demo Site] Garlic-Toast의 여러 옵션들을 확인하시고, 직접 테스트 해보실 수 있습니다.</a>
+  <a href="https://garlic-demo.vercel.app/" target="_blank">[Demo Site] Garlic-Toast의 여러 옵션들을 확인하시고, 직접 테스트 해보실 수 있습니다.</a>
 
 
 <br/>
