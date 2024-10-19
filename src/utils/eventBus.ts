@@ -18,7 +18,7 @@ const EventBus = () => {
 
   const publish = (topic: string, data: ToastOptionType) => {
     if (!topics.has(topic)) return;
-    topics.get(topic)?.forEach((listener: any) => listener(data));
+    topics.get(topic)?.forEach((listener) => listener(data));
   };
 
   return { subscribe, unsubscribe, publish };
