@@ -1,7 +1,7 @@
 {
   "name": "garlic-toast",
   "private": false,
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -47,6 +47,6 @@
   "homepage": "https://github.com/Challenge-Closure/Garlic-Toast.git",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Challenge-Closure/Garlic-Toast.git"
+    "url": "git+https://github.com/Challenge-Closure/Garlic-Toast.git"
   }
 }
