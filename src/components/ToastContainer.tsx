@@ -24,7 +24,7 @@ interface ToastContainerProps {
   time: number;
 }
 
-const ToastContainer = ({ isFold, position = "t-r", time }: ToastContainerProps) => {
+const ToastContainer = ({ isFold, position = "t-r", time = 5000 }: Partial<ToastContainerProps>) => {
   const [alertToasts, setAlertToasts] = useState<any>(initialState);
   const [confirmToasts, setConfirmToasts] = useState<any[]>([]);
 
