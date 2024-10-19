@@ -20,7 +20,7 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
           const updatedToasts = { ...prevToasts };
 
           updatedToasts[toastPosition] = [
-            ...updatedToasts[toastPosition].filter((t: ToastOptionType) => t.id !== toast.id)
+            ...updatedToasts[toastPosition].filter((t: ToastOptionType) => t.id !== toast.id),
           ];
           return updatedToasts;
         });
@@ -33,7 +33,7 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
       const updatedToasts = { ...prevToasts };
 
       updatedToasts[toastPosition] = [
-        ...updatedToasts[toastPosition].filter((t: ToastOptionType) => t.id !== targetId)
+        ...updatedToasts[toastPosition].filter((t: ToastOptionType) => t.id !== targetId),
       ];
       return updatedToasts;
     });
@@ -53,7 +53,7 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
         const updatedToasts = { ...prevToasts };
 
         updatedToasts[toastPosition] = [
-          ...updatedToasts[toastPosition].filter((t: ToastOptionType) => t.id !== toastId)
+          ...updatedToasts[toastPosition].filter((t: ToastOptionType) => t.id !== toastId),
         ];
         return updatedToasts;
       });
@@ -84,14 +84,14 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
             className="progress"
             style={{
               background: toast.barColor || `var(--${toast.type}-text)`,
-              animationDuration: `${toast.autoCloseTime ?? containerAutoCloseTime}ms`
+              animationDuration: `${toast.autoCloseTime ?? containerAutoCloseTime}ms`,
             }}
           ></div>
         )}
         <span
           className="toast-close"
           style={{
-            color: toast.textColor || `var(--${toast.type}-text)`
+            color: toast.textColor || `var(--${toast.type}-text)`,
           }}
           onClick={() => closeAlert(toast.id)}
         >

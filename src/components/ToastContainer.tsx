@@ -15,7 +15,7 @@ const initialState: Record<string, ToastOptionType[]> = {
   "c-r": [],
   "b-l": [],
   "b-c": [],
-  "b-r": []
+  "b-r": [],
 };
 
 interface ToastContainerProps {
@@ -45,7 +45,7 @@ const ToastContainer = ({ isFold, position = "t-r", time = 5000 }: Partial<Toast
       const confirmToast = {
         id: Date.now(),
         ...toast,
-        confirm: true
+        confirm: true,
       };
       setConfirmToasts((prevToasts: any) => [confirmToast, ...prevToasts]);
     };
