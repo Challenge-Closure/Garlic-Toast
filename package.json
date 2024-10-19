@@ -47,6 +47,6 @@
   "homepage": "https://github.com/Challenge-Closure/Garlic-Toast.git",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Challenge-Closure/Garlic-Toast.git"
+    "url": "git+https://github.com/Challenge-Closure/Garlic-Toast.git"
   }
 }
