@@ -1,4 +1,4 @@
-import type { Event } from "./toastType copy";
+import type { Event } from "./toastType";
 
 export type Topic = "SHOW_TOAST" | "SHOW_CONFIRM_TOAST";
 
