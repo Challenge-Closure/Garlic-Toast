@@ -57,7 +57,7 @@ const toast = () => {
     });
   };
 
-  const confirm = (message: string, option: ConfirmOption = defaultOption): Promise<boolean> => {
+  const confirm = (message: string, option: ConfirmOption): Promise<boolean> => {
     return new Promise((resolve) => {
       EventBus.publish(SHOW_CONFIRM_TOAST, { ...option, message, id: Date.now(), confirm: true, resolve });
     });

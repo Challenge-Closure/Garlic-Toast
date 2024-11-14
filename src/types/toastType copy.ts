@@ -4,8 +4,8 @@ export type ToastType = "normal" | "error" | "warning" | "success" | "info" | "a
 
 /** toast, confirm 공통 옵션 */
 type CommonOption = Partial<{
-  textColor: string;
   color: string;
+  textColor: string;
   customImage: string;
 }>;
 
