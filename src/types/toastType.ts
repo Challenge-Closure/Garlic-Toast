@@ -1,6 +1,6 @@
 export type ToastPosition = "t-l" | "t-c" | "t-r" | "c-l" | "c-c" | "c-r" | "b-l" | "b-c" | "b-r";
 
-export type ToastType = "normal" | "error" | "warning" | "success" | "info" | "alert" | "confirm";
+export type ToastType = "normal" | "error" | "warning" | "success" | "info";
 
 /** toast, confirm 공통 옵션 */
 type CommonOption = Partial<{
