@@ -2,7 +2,7 @@ export type ToastPosition = "t-l" | "t-c" | "t-r" | "c-l" | "c-c" | "c-r" | "b-l
 
 export type ToastType = "normal" | "error" | "warning" | "success" | "info" | "alert" | "confirm";
 
-export interface ToastOptionType {
+export type ToastOption = {
   id?: string | number;
   resolve?: Function;
   textColor?: string;
@@ -21,11 +21,11 @@ export interface ToastOptionType {
   confirmBtnColor?: string;
   cancleBtn?: string;
   cancleBtnColor?: string;
-}
+};
 
-export interface AlertToastType {
-  toast: ToastOptionType;
+export type AlertToast = {
+  toast: ToastOption;
   containerAutoCloseTime: number;
   setAlertToasts: Function;
   position: string;
-}
+};

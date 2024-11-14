@@ -1,18 +1,18 @@
-import { ToastOptionType } from "../types/ToastType";
+import { ToastOption } from "../types/ToastType";
 
-interface ConfirmToastType {
-  toast: ToastOptionType;
+type ConfirmToastType = {
+  toast: ToastOption;
   setConfirmToasts: Function;
-}
+};
 
 const ConfirmToast = ({ toast, setConfirmToasts }: ConfirmToastType) => {
-  const handleConfirm = (id: any, resolve: any) => {
-    setConfirmToasts((prevToasts: []) => prevToasts.filter((t: ToastOptionType) => t.id !== id));
+  const handleConfirm = (id, resolve) => {
+    setConfirmToasts((prevToasts: []) => prevToasts.filter((t: ToastOption) => t.id !== id));
     resolve(true);
   };
 
-  const handleCancel = (id: any, resolve: any) => {
-    setConfirmToasts((prevToasts: []) => prevToasts.filter((t: ToastOptionType) => t.id !== id));
+  const handleCancel = (id, resolve) => {
+    setConfirmToasts((prevToasts: []) => prevToasts.filter((t: ToastOption) => t.id !== id));
     resolve(false);
   };
 

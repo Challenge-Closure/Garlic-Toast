@@ -1,4 +1,4 @@
-import { ToastOptionType } from "../types/ToastType";
+import { ToastOption } from "../types/ToastType";
 import EventBus from "./eventBus";
 
 const initialState = {
@@ -7,56 +7,56 @@ const initialState = {
   pauseOnHover: true,
   closeOnClick: true,
   customImage: undefined,
-  autoCloaseTime: 3000
+  autoCloaseTime: 3000,
 };
 
 const toast = () => {
-  const alert = (message: string, option: ToastOptionType = initialState) => {
+  const alert = (message: string, option: ToastOption = initialState) => {
     EventBus.publish("SHOW_TOAST", {
       ...option,
       message,
       id: Date.now(),
-      type: "normal"
+      type: "normal",
     });
   };
 
-  const error = (message: string, option: ToastOptionType = initialState) => {
+  const error = (message: string, option: ToastOption = initialState) => {
     EventBus.publish("SHOW_TOAST", {
       ...option,
       message,
       id: Date.now(),
-      type: "error"
+      type: "error",
     });
   };
 
-  const warning = (message: string, option: ToastOptionType = initialState) => {
+  const warning = (message: string, option: ToastOption = initialState) => {
     EventBus.publish("SHOW_TOAST", {
       ...option,
       message,
       id: Date.now(),
-      type: "warning"
+      type: "warning",
     });
   };
 
-  const success = (message: string, option: ToastOptionType = initialState) => {
+  const success = (message: string, option: ToastOption = initialState) => {
     EventBus.publish("SHOW_TOAST", {
       ...option,
       message,
       id: Date.now(),
-      type: "success"
+      type: "success",
     });
   };
 
-  const info = (message: string, option: ToastOptionType = initialState) => {
+  const info = (message: string, option: ToastOption = initialState) => {
     EventBus.publish("SHOW_TOAST", {
       ...option,
       message,
       id: Date.now(),
-      type: "info"
+      type: "info",
     });
   };
 
-  const confirm = (message: string, option: ToastOptionType = initialState): Promise<boolean> => {
+  const confirm = (message: string, option: ToastOption = initialState): Promise<boolean> => {
     return new Promise((resolve) => {
       EventBus.publish("SHOW_CONFIRM_TOAST", { message, ...option, resolve });
     });

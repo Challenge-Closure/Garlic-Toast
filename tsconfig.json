@@ -1,22 +1,27 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/", // path to output directory
-    "sourceMap": true, // allow sourcemap support
-    "strictNullChecks": true, // enable strict null checks as a best practice
-    "module": "es6", // specify module code generation
-    "target": "es5", // specify ECMAScript target version
-    "allowJs": true, // allow a partial TypeScript and JavaScript codebase
-    "allowSyntheticDefaultImports": true,
-    "jsx": "react-jsx",
-    "moduleResolution": "Bundler", // specify module resolution strategy
-    "declarationMap": false,
+    "outDir": "./dist",                  // 컴파일된 파일의 출력 경로
+    "sourceMap": true,                   // 디버깅을 위해 소스 맵 생성
+    "module": "es6",                     // 모듈 시스템을 ES6로 설정 (import/export 사용)
+    "target": "es5",                     // 컴파일된 코드를 ES5로 변환
+    "allowSyntheticDefaultImports": true,// 기본 모듈 가져오기 허용
+    "jsx": "react-jsx",                  // React의 JSX 구문 지원 (React 17 이상)
+    "moduleResolution": "node",          // Node 스타일의 모듈 해석 사용
+    "lib": ["es2015", "dom"],            // ES2015와 DOM API 사용 가능
 
-    /* Linting */
-    "lib": ["es2015", "DOM"],
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    /* 엄격 모드 */
+    "strict": true,                      // 모든 엄격 모드 활성화
+    "strictNullChecks": true,            // null과 undefined에 대한 엄격한 체크
+    "strictFunctionTypes": true,         // 함수 타입을 엄격하게 검사
+
+    /* 코드 품질 검사 */
+    "noUnusedLocals": true,              // 사용되지 않는 로컬 변수에 대해 경고
+    "noUnusedParameters": true,          // 사용되지 않는 매개변수에 대해 경고
+    "noImplicitAny": true,               // 암시적 any 타입 사용을 허용하지 않음
+
+    /* 최적화 및 호환성 */
+    "skipLibCheck": true,                // 라이브러리 파일 타입 검사 건너뛰기
+    "forceConsistentCasingInFileNames": true // 파일 이름의 대소문자 일관성 강제
   },
-  "include": ["./src/"]
+  "include": ["./src"]                   // 컴파일 대상 파일 위치 (src 디렉토리 포함)
 }
