@@ -1,5 +1,5 @@
 import "./../styles/toast.css";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import EventBus from "../utils/eventBus";
 import AlertToast from "./AlertToast";
@@ -28,7 +28,9 @@ const ToastContainer = ({ isFold, position = "t-r", time = 5000 }: Partial<Toast
   const [alertToasts, setAlertToasts] = useState<any>(initialState);
   const [confirmToasts, setConfirmToasts] = useState<any[]>([]);
 
-  useEffect(() => {
+  const isomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
+  isomorphicLayoutEffect(() => {
     const handleToastEvent = (toast: ToastOptionType) => {
       const toastPosition = toast.position ?? position;
       setAlertToasts((prevToasts: any) => {
