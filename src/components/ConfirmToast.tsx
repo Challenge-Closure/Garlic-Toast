@@ -1,4 +1,4 @@
-import { ToastOption } from "../types/ToastType";
+import { ToastOption } from "../types/toastType";
 
 type ConfirmToastType = {
   toast: ToastOption;

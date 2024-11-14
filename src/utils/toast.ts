@@ -1,7 +1,8 @@
-import { ToastOption } from "../types/ToastType";
+import { SHOW_CONFIRM_TOAST, SHOW_TOAST } from "../constants/topic";
+import { type ConfirmOption, type ToastOption } from "../types/toastType";
 import EventBus from "./eventBus";
 
-const initialState = {
+const defaultOption = {
   autoClose: true,
   progressBar: true,
   pauseOnHover: true,
@@ -11,8 +12,8 @@ const initialState = {
 };
 
 const toast = () => {
-  const alert = (message: string, option: ToastOption = initialState) => {
-    EventBus.publish("SHOW_TOAST", {
+  const alert = (message: string, option: ToastOption = defaultOption) => {
+    EventBus.publish(SHOW_TOAST, {
       ...option,
       message,
       id: Date.now(),
@@ -20,8 +21,8 @@ const toast = () => {
     });
   };
 
-  const error = (message: string, option: ToastOption = initialState) => {
-    EventBus.publish("SHOW_TOAST", {
+  const error = (message: string, option: ToastOption = defaultOption) => {
+    EventBus.publish(SHOW_TOAST, {
       ...option,
       message,
       id: Date.now(),
@@ -29,8 +30,8 @@ const toast = () => {
     });
   };
 
-  const warning = (message: string, option: ToastOption = initialState) => {
-    EventBus.publish("SHOW_TOAST", {
+  const warning = (message: string, option: ToastOption = defaultOption) => {
+    EventBus.publish(SHOW_TOAST, {
       ...option,
       message,
       id: Date.now(),
@@ -38,8 +39,8 @@ const toast = () => {
     });
   };
 
-  const success = (message: string, option: ToastOption = initialState) => {
-    EventBus.publish("SHOW_TOAST", {
+  const success = (message: string, option: ToastOption = defaultOption) => {
+    EventBus.publish(SHOW_TOAST, {
       ...option,
       message,
       id: Date.now(),
@@ -47,8 +48,8 @@ const toast = () => {
     });
   };
 
-  const info = (message: string, option: ToastOption = initialState) => {
-    EventBus.publish("SHOW_TOAST", {
+  const info = (message: string, option: ToastOption = defaultOption) => {
+    EventBus.publish(SHOW_TOAST, {
       ...option,
       message,
       id: Date.now(),
@@ -56,9 +57,9 @@ const toast = () => {
     });
   };
 
-  const confirm = (message: string, option: ToastOption = initialState): Promise<boolean> => {
+  const confirm = (message: string, option: ConfirmOption = defaultOption): Promise<boolean> => {
     return new Promise((resolve) => {
-      EventBus.publish("SHOW_CONFIRM_TOAST", { message, ...option, resolve });
+      EventBus.publish(SHOW_CONFIRM_TOAST, { ...option, message, id: Date.now(), confirm: true, resolve });
     });
   };
 
