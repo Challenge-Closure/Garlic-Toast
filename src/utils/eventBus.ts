@@ -1,4 +1,4 @@
-import type { Listener, Topic, TopicMap } from "../types/eventType";
+import type { Listener, Topic, TopicMap } from "../types/eventBusType";
 import type { Event } from "../types/toastType";
 
 const EventBus = () => {
