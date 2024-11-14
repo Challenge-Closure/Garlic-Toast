@@ -2,17 +2,20 @@ export type ToastPosition = "t-l" | "t-c" | "t-r" | "c-l" | "c-c" | "c-r" | "b-l
 
 export type ToastType = "normal" | "error" | "warning" | "success" | "info" | "alert" | "confirm";
 
+/** toast, confirm 공통 옵션 */
 type CommonOption = Partial<{
   textColor: string;
   color: string;
   customImage: string;
 }>;
 
+/** toast, confirm 공통 이벤트 */
 type CommonEvent = {
   id: number;
   message: string;
 };
 
+/** toast 옵션 */
 export type ToastOption = CommonOption &
   Partial<{
     barColor: string;
@@ -24,11 +27,13 @@ export type ToastOption = CommonOption &
     pauseOnHover: boolean;
   }>;
 
+/** toast 이벤트 */
 export type ToastEvent = ToastOption &
   CommonEvent & {
     type: ToastType;
   };
 
+/** confirm 옵션 */
 export type ConfirmOption = CommonOption &
   Partial<{
     confirmBtn: string;
@@ -37,6 +42,7 @@ export type ConfirmOption = CommonOption &
     cancleBtnColor: string;
   }>;
 
+/** confirm 이벤트 */
 export type ConfirmEvent = ConfirmOption &
   CommonEvent & {
     confirm: boolean;
