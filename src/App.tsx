@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ToastContainer from "./components/ToastContainer";
 import toast from "./utils/toast";
-import { ToastOptionType, ToastPosition } from "./types/toastType";
+import { ToastOption, ToastPosition } from "./types/toastType";
 
 const initialState = {
   type: "alert",
@@ -13,9 +13,9 @@ const initialState = {
 };
 
 const App = () => {
-  const [option, setOption] = useState<ToastOptionType>(initialState);
+  const [option, setOption] = useState<ToastOption>(initialState);
 
-  const buttonClick = (e: React.MouseEvent<HTMLButtonElement>, key: keyof ToastOptionType, value: string | boolean) => {
+  const buttonClick = (e: React.MouseEvent<HTMLButtonElement>, key: keyof ToastOption, value: string | boolean) => {
     const activeElement = document.querySelector(`.${key}-on`);
     if (activeElement) {
       activeElement.classList.remove(`${key}-on`);
