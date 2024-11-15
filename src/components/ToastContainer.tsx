@@ -4,7 +4,7 @@ import { createPortal } from "react-dom";
 import EventBus from "../utils/eventBus";
 import AlertToast from "./AlertToast";
 import ConfirmToast from "./ConfirmToast";
-import { ToastOptionType } from "../types/ToastType";
+import { ToastOptionType } from "../types/tempT";
 
 const initialState: Record<string, ToastOptionType[]> = {
   "t-l": [],

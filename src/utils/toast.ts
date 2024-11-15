@@ -1,4 +1,4 @@
-import { ToastOptionType } from "../types/ToastType";
+import { ToastOptionType } from "../types/tempT";
 import EventBus from "./eventBus";
 
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
   pauseOnHover: true,
   closeOnClick: true,
   customImage: undefined,
-  autoCloaseTime: 3000
+  autoCloaseTime: 3000,
 };
 
 const toast = () => {
@@ -16,7 +16,7 @@ const toast = () => {
       ...option,
       message,
       id: Date.now(),
-      type: "normal"
+      type: "normal",
     });
   };
 
@@ -25,7 +25,7 @@ const toast = () => {
       ...option,
       message,
       id: Date.now(),
-      type: "error"
+      type: "error",
     });
   };
 
@@ -34,7 +34,7 @@ const toast = () => {
       ...option,
       message,
       id: Date.now(),
-      type: "warning"
+      type: "warning",
     });
   };
 
@@ -43,7 +43,7 @@ const toast = () => {
       ...option,
       message,
       id: Date.now(),
-      type: "success"
+      type: "success",
     });
   };
 
@@ -52,7 +52,7 @@ const toast = () => {
       ...option,
       message,
       id: Date.now(),
-      type: "info"
+      type: "info",
     });
   };
 
