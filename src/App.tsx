@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ToastContainer from "./components/ToastContainer";
 import toast from "./utils/toast";
-import { ToastOptionType, ToastPosition } from "./types/ToastType";
+import { ToastOption, ToastPosition } from "./types/toastType";
 
 const initialState = {
   type: "alert",
@@ -9,13 +9,13 @@ const initialState = {
   progressBar: true,
   pauseOnHover: true,
   closeOnClick: true,
-  customImage: undefined
+  customImage: undefined,
 };
 
 const App = () => {
-  const [option, setOption] = useState<ToastOptionType>(initialState);
+  const [option, setOption] = useState<ToastOption>(initialState);
 
-  const buttonClick = (e: React.MouseEvent<HTMLButtonElement>, key: keyof ToastOptionType, value: string | boolean) => {
+  const buttonClick = (e: React.MouseEvent<HTMLButtonElement>, key: keyof ToastOption, value: string | boolean) => {
     const activeElement = document.querySelector(`.${key}-on`);
     if (activeElement) {
       activeElement.classList.remove(`${key}-on`);
@@ -30,7 +30,7 @@ const App = () => {
         return toast.alert("alert message!", {
           ...option,
           type: "normal",
-          position: position
+          position: position,
         });
       case "success":
         return toast.success("success message!", { ...option, position: position });
@@ -49,7 +49,7 @@ const App = () => {
             return toast.error("confirm cancel", {
               ...option,
               type: "error",
-              position: position
+              position: position,
             });
           }
         });

@@ -1,18 +1,18 @@
-import { ToastOptionType } from "../types/ToastType";
+import type { ConfirmEvent } from "../types/toastType";
 
-interface ConfirmToastType {
-  toast: ToastOptionType;
-  setConfirmToasts: Function;
-}
+type ConfirmToastType = {
+  toast: ConfirmEvent;
+  setConfirmToasts: React.Dispatch<React.SetStateAction<ConfirmEvent[]>>;
+};
 
 const ConfirmToast = ({ toast, setConfirmToasts }: ConfirmToastType) => {
-  const handleConfirm = (id: any, resolve: any) => {
-    setConfirmToasts((prevToasts: []) => prevToasts.filter((t: ToastOptionType) => t.id !== id));
+  const handleConfirm = (id: number, resolve: (value: boolean | PromiseLike<boolean>) => void) => {
+    setConfirmToasts((prevToasts) => prevToasts.filter((t: ConfirmEvent) => t.id !== id));
     resolve(true);
   };
 
-  const handleCancel = (id: any, resolve: any) => {
-    setConfirmToasts((prevToasts: []) => prevToasts.filter((t: ToastOptionType) => t.id !== id));
+  const handleCancel = (id: number, resolve: (value: boolean | PromiseLike<boolean>) => void) => {
+    setConfirmToasts((prevToasts) => prevToasts.filter((t: ConfirmEvent) => t.id !== id));
     resolve(false);
   };
 

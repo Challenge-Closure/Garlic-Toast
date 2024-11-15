@@ -1,14 +1,21 @@
 import { useEffect, useRef } from "react";
-import { AlertToastType, ToastOptionType } from "../types/ToastType";
+import type { PositionedToast, ToastEvent, ToastPosition } from "../types/toastType";
 
-interface TimerType {
+type AlertToastProps = {
+  toast: ToastEvent;
+  containerAutoCloseTime: number;
+  setAlertToasts: React.Dispatch<React.SetStateAction<PositionedToast>>;
+  position: ToastPosition;
+};
+
+type Timer = {
   setTimeout: NodeJS.Timeout | null;
   remaind: number;
   timer: number;
-}
+};
 
-const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }: AlertToastType) => {
-  const timerRef = useRef<TimerType>({ setTimeout: null, remaind: 0, timer: 0 });
+const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }: AlertToastProps) => {
+  const timerRef = useRef<Timer>({ setTimeout: null, remaind: 0, timer: 0 });
 
   const toastPosition = toast.position ?? position;
   useEffect(() => {
@@ -16,25 +23,21 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
       timerRef.current.timer = Date.now() + (toast.autoCloseTime ?? containerAutoCloseTime);
 
       timerRef.current.setTimeout = setTimeout(() => {
-        setAlertToasts((prevToasts: any) => {
+        setAlertToasts((prevToasts) => {
           const updatedToasts = { ...prevToasts };
 
-          updatedToasts[toastPosition] = [
-            ...updatedToasts[toastPosition].filter((t: ToastOptionType) => t.id !== toast.id),
-          ];
+          updatedToasts[toastPosition] = [...updatedToasts[toastPosition].filter((t: ToastEvent) => t.id !== toast.id)];
           return updatedToasts;
         });
       }, toast.autoCloseTime ?? containerAutoCloseTime);
     }
   }, []);
 
-  const closeAlert = (targetId: any) => {
-    setAlertToasts((prevToasts: any) => {
+  const closeAlert = (targetId: number) => {
+    setAlertToasts((prevToasts) => {
       const updatedToasts = { ...prevToasts };
 
-      updatedToasts[toastPosition] = [
-        ...updatedToasts[toastPosition].filter((t: ToastOptionType) => t.id !== targetId),
-      ];
+      updatedToasts[toastPosition] = [...updatedToasts[toastPosition].filter((t: ToastEvent) => t.id !== targetId)];
       return updatedToasts;
     });
   };
@@ -46,15 +49,13 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
     }
   };
 
-  const startTimeout = (toastId: any) => {
+  const startTimeout = (toastId: number) => {
     timerRef.current.timer = Date.now() + timerRef.current.remaind;
     timerRef.current.setTimeout = setTimeout(() => {
-      setAlertToasts((prevToasts: any) => {
+      setAlertToasts((prevToasts) => {
         const updatedToasts = { ...prevToasts };
 
-        updatedToasts[toastPosition] = [
-          ...updatedToasts[toastPosition].filter((t: ToastOptionType) => t.id !== toastId),
-        ];
+        updatedToasts[toastPosition] = [...updatedToasts[toastPosition].filter((t: ToastEvent) => t.id !== toastId)];
         return updatedToasts;
       });
     }, timerRef.current.remaind);
