@@ -47,8 +47,8 @@ const ToastContainer = ({ isFold, position = "t-r", time = 5000 }: Partial<Toast
     };
 
     //FIXME - 타입 오류
-    EventBus.subscribe(SHOW_TOAST, handleToastEvent);
-    EventBus.subscribe(SHOW_CONFIRM_TOAST, handleConfirmToastEvent);
+    EventBus.subscribe(SHOW_TOAST, handleToastEvent as any);
+    EventBus.subscribe(SHOW_CONFIRM_TOAST, handleConfirmToastEvent as any);
 
     return () => {
       EventBus.unsubscribe(SHOW_TOAST);
