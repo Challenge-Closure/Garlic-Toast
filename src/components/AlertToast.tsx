@@ -76,7 +76,7 @@ const AlertToast = ({ toast, position, setAlertToasts, containerAutoCloseTime }:
       >
         <div className="inner">
           {toast.customImage ? <img src={toast.customImage} /> : null}
-          <div className="message" style={{ color: toast.textColor }}>
+          <div className="message" style={{ color: toast.textColor, width: toast.width, height: toast.height }}>
             {toast.message}
           </div>
         </div>

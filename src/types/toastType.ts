@@ -25,6 +25,9 @@ export type ToastOption = CommonOption &
     progressBar: boolean;
     position: ToastPosition;
     pauseOnHover: boolean;
+    width: number;
+    height: number;
+    display: string;
   }>;
 
 /** toast 이벤트 */
