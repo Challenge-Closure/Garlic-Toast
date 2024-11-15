@@ -35,8 +35,12 @@
 
 ## 🪛 Installation
 ```sh
-npm install garlic-toast       # npm
-yarn add garlic-toast          # yarn
+# npm
+npm install garlic-toast
+# yarn
+yarn add garlic-toast
+# pnpm
+pnpm add garlic-toast
 ```
 <br/>
 
