@@ -56,38 +56,39 @@ const ToastContainer = ({ isFold, position = "t-r", time = 5000 }: Partial<Toast
     };
   }, []);
 
-  if (typeof window === "undefined") return;
+  if (typeof window !== "undefined") {
+    const alertToastKeys = Object.keys(alertToasts) as unknown as ToastPosition[];
+    return createPortal(
+      <>
+        <div className={`toast-container`}>
+          {alertToastKeys.map((position) => {
+            const positionToasts = alertToasts[position];
+            return (
+              !!positionToasts.length && (
+                <div className={`alert-container ${position} ${isFold && "isFold"}`} key={position}>
+                  {positionToasts.map((toast: ToastEvent) => (
+                    <AlertToast
+                      key={toast.id}
+                      toast={toast}
+                      containerAutoCloseTime={time}
+                      setAlertToasts={setAlertToasts}
+                      position={position}
+                    />
+                  ))}
+                </div>
+              )
+            );
+          })}
 
-  const alertToastKeys = Object.keys(alertToasts) as unknown as ToastPosition[];
-  return createPortal(
-    <>
-      <div className={`toast-container`}>
-        {alertToastKeys.map((position) => {
-          const positionToasts = alertToasts[position];
-          return (
-            !!positionToasts.length && (
-              <div className={`alert-container ${position} ${isFold && "isFold"}`} key={position}>
-                {positionToasts.map((toast: ToastEvent) => (
-                  <AlertToast
-                    key={toast.id}
-                    toast={toast}
-                    containerAutoCloseTime={time}
-                    setAlertToasts={setAlertToasts}
-                    position={position}
-                  />
-                ))}
-              </div>
-            )
-          );
-        })}
-
-        {confirmToasts.map((toast: ConfirmEvent) => (
-          <ConfirmToast key={toast.id} toast={toast} setConfirmToasts={setConfirmToasts} />
-        ))}
-      </div>
-    </>,
-    document.body
-  );
+          {confirmToasts.map((toast: ConfirmEvent) => (
+            <ConfirmToast key={toast.id} toast={toast} setConfirmToasts={setConfirmToasts} />
+          ))}
+        </div>
+      </>,
+      document.body
+    );
+  }
+  return;
 };
 
 export default ToastContainer;
