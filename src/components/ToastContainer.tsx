@@ -4,9 +4,10 @@ import { createPortal } from "react-dom";
 import EventBus from "../utils/eventBus";
 import AlertToast from "./AlertToast";
 import ConfirmToast from "./ConfirmToast";
-import { ToastOptionType } from "../types/ToastType";
+import type { ConfirmEvent, PositionedToast, ToastEvent, ToastPosition } from "../types/toastType";
+import { SHOW_CONFIRM_TOAST, SHOW_TOAST } from "../constants/topic";
 
-const initialState: Record<string, ToastOptionType[]> = {
+const initialState: PositionedToast = {
   "t-l": [],
   "t-c": [],
   "t-r": [],
@@ -18,56 +19,55 @@ const initialState: Record<string, ToastOptionType[]> = {
   "b-r": [],
 };
 
-interface ToastContainerProps {
+type ToastContainerProps = {
   isFold: boolean;
-  position: string;
+  position: ToastPosition;
   time: number;
-}
+};
 
 const ToastContainer = ({ isFold, position = "t-r", time = 5000 }: Partial<ToastContainerProps>) => {
-  const [alertToasts, setAlertToasts] = useState<any>(initialState);
-  const [confirmToasts, setConfirmToasts] = useState<any[]>([]);
+  const [alertToasts, setAlertToasts] = useState<PositionedToast>(initialState);
+  const [confirmToasts, setConfirmToasts] = useState<ConfirmEvent[]>([]);
 
   useEffect(() => {
-    const handleToastEvent = (toast: ToastOptionType) => {
-      const toastPosition = toast.position ?? position;
-      setAlertToasts((prevToasts: any) => {
+    const handleToastEvent = (event: ToastEvent) => {
+      const toastPosition = event.position ?? position;
+      setAlertToasts((prevToasts: PositionedToast) => {
         const updatedToasts = { ...prevToasts };
 
         isFold
-          ? (updatedToasts[toastPosition] = [{ ...toast }, ...updatedToasts[toastPosition].slice(0, 2)])
-          : (updatedToasts[toastPosition] = [{ ...toast }, ...updatedToasts[toastPosition]]);
+          ? (updatedToasts[toastPosition] = [{ ...event }, ...updatedToasts[toastPosition].slice(0, 2)])
+          : (updatedToasts[toastPosition] = [{ ...event }, ...updatedToasts[toastPosition]]);
         return updatedToasts;
       });
     };
 
-    const handleConfirmToastEvent = (toast: any) => {
-      const confirmToast = {
-        id: Date.now(),
-        ...toast,
-        confirm: true,
-      };
-      setConfirmToasts((prevToasts: any) => [confirmToast, ...prevToasts]);
+    const handleConfirmToastEvent = (event: ConfirmEvent) => {
+      setConfirmToasts((prevToasts) => [event, ...prevToasts]);
     };
 
-    EventBus.subscribe("SHOW_TOAST", handleToastEvent);
-    EventBus.subscribe("SHOW_CONFIRM_TOAST", handleConfirmToastEvent);
+    //FIXME - 타입 오류
+    EventBus.subscribe(SHOW_TOAST, handleToastEvent as any);
+    EventBus.subscribe(SHOW_CONFIRM_TOAST, handleConfirmToastEvent as any);
 
     return () => {
-      EventBus.unsubscribe("SHOW_TOAST");
-      EventBus.unsubscribe("SHOW_CONFIRM_TOAST");
+      EventBus.unsubscribe(SHOW_TOAST);
+      EventBus.unsubscribe(SHOW_CONFIRM_TOAST);
     };
   }, []);
 
+  if (typeof window === "undefined") return;
+
+  const alertToastKeys = Object.keys(alertToasts) as unknown as ToastPosition[];
   return createPortal(
     <>
       <div className={`toast-container`}>
-        {Object.keys(alertToasts).map((position) => {
+        {alertToastKeys.map((position) => {
           const positionToasts = alertToasts[position];
           return (
             !!positionToasts.length && (
               <div className={`alert-container ${position} ${isFold && "isFold"}`} key={position}>
-                {positionToasts.map((toast: ToastOptionType) => (
+                {positionToasts.map((toast: ToastEvent) => (
                   <AlertToast
                     key={toast.id}
                     toast={toast}
@@ -81,7 +81,7 @@ const ToastContainer = ({ isFold, position = "t-r", time = 5000 }: Partial<Toast
           );
         })}
 
-        {confirmToasts.map((toast: ToastOptionType) => (
+        {confirmToasts.map((toast: ConfirmEvent) => (
           <ConfirmToast key={toast.id} toast={toast} setConfirmToasts={setConfirmToasts} />
         ))}
       </div>
