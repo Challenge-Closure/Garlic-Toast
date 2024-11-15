@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ToastContainer from "./components/ToastContainer";
 import toast from "./utils/toast";
-import { ToastOptionType, ToastPosition } from "./types/tempT";
+import { ToastOptionType, ToastPosition } from "./types/toastType";
 
 const initialState = {
   type: "alert",

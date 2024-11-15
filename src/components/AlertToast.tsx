@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { AlertToastType, ToastOptionType } from "../types/tempT";
+import { AlertToastType, ToastOptionType } from "../types/toastType";
 
 interface TimerType {
   setTimeout: NodeJS.Timeout | null;

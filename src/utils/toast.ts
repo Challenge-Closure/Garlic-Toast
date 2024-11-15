@@ -1,4 +1,4 @@
-import { ToastOptionType } from "../types/tempT";
+import { ToastOptionType } from "../types/toastType";
 import EventBus from "./eventBus";
 
 const initialState = {

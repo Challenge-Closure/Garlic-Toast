@@ -1,4 +1,4 @@
-import { ToastOptionType } from "../types/tempT";
+import { ToastOptionType } from "../types/toastType";
 
 interface ConfirmToastType {
   toast: ToastOptionType;

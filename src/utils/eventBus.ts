@@ -1,5 +1,5 @@
-import { Listener, Topics } from "../types/temp";
-import { ToastOptionType } from "../types/tempT";
+import { Listener, Topics } from "../types/eventBusType";
+import { ToastOptionType } from "../types/toastType";
 
 const EventBus = () => {
   const topics: Topics = new Map();
